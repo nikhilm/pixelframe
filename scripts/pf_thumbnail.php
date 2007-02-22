@@ -30,7 +30,7 @@
 
  @return bool true on success, false on failure
 */
-function makeThumbnail($imageName, $thumbnail, $width=96, $height=96)
+function makeThumbnail($imageName, $thumbnail, $width=70, $height=70)
 {
     //try to load jpeg, otherwise try png
     $image = null;
