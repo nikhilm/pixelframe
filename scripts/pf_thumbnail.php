@@ -23,13 +23,26 @@
 /**
 * Creates a thumbnail from an image.
 
- @param string $image Filename of the original image(png or jpeg)
+ @param string $imageName Filename of the original image(png or jpeg)
  @param string $thumbnail File to write the thumbnail to.
  @param integer $width Width of the thumbnail
  @param integer $height Hieght of the thumbnail
 
  @return bool true on success, false on failure
 */
-function makeThumbnail($image, $thumbnail, $width, $height)
+function makeThumbnail($imageName, $thumbnail, $width=96, $height=96)
 {
+    //try to load jpeg, otherwise try png
+    $image = null;
+    if(!($image = imagecreatefromjpeg( $imageName)))
+    {
+        if(!($image = imagecreatefrompng( $imageName)))
+        {
+            return false;
+        }
+    }
+
+    $thumb = imagecreatetruecolor($width, $height);
+
+    return imagecopyresampled($thumb, $image, 0, 0, 0, 0, $width, $height, imagesx($image), imagesy($image));
 } 
