@@ -1,0 +1,78 @@
+<html>
+  <head>
+    <title>Ajax Slideshow</title>
+    <meta content="">
+    <style>
+    div#slideshow {
+        border:solid 5px black;
+        padding:1px;
+        margin-left:25%;
+        width:50%;
+        text-align:center;
+    }
+    
+    div#slideshow #controls {
+        padding:20px;
+    }
+    img.slide {
+        padding:50px;
+    }
+        
+    </style>
+    <script language="javascript">
+    currentImage = 0;
+    image = null;
+    function $(string) {
+        return document.getElementById(string);
+    }
+    function init() {
+        createElement();
+        attachControls();
+        fetchNextImage();
+    }
+    function createElement() {
+        image = document.createElement('img');
+        image.className = 'slide';        
+        $('slideshow').appendChild(image);
+    }
+    
+    function attachControls() {
+        $('prevButton').onclick = fetchPreviousImage;
+        $('nextButton').onclick = fetchNextImage;
+    }
+    
+    function fetchNextImage() {
+        if(fetchAndDisplayImage(currentImage))
+            currentImage++;
+    }
+    
+    function fetchPreviousImage() {
+        currentImage--;
+        if(!fetchAndDisplayImage(currentImage))
+            currentImage++;
+        
+    }
+    
+    function fetchAndDisplayImage(img) {
+        console.log(img);
+        lst = ['cube.png', 'skater_tux.png', 'arch_tux.png', 'the_one_ring.png'];
+        //create ajax request
+        //fetch image
+        if (img >= lst.length || img < 0) return false;
+        image.src = 'images/'+lst[img];
+        return true;
+        
+    }
+    
+    window.onload = init;
+    </script>    
+  </head>
+  <body>
+  <div id = "slideshow">
+            <div id="controls">
+                <a id="prevButton" href="#">&lt;&lt;prev</a>
+                <a id="nextButton" href="#">next&gt;&gt;</a>
+            </div>
+  </div>
+  </body>
+</html>

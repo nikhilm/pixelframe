@@ -1,0 +1,48 @@
+ ------------
+= PixelFrame =
+ ------------
+ 
+What is Pixelframe?
+
+Pixelframe is a simple, fast image gallery which looks good while doing its job.
+Using the new-fangled magic of Ajax and PHP at the back, Pixelframe lets people
+browse your photos painlessly and quickly.
+
+What do I need to run Pixelframe?
+
+Pixelframe is designed for all kinds of servers. We know everyone does not have
+access to a database, so Pixelframe doesn't need one! So all you need to run PF is a webserver supporting PHP.
+
+ -----------------
+= Design Document =
+ -----------------
+
+Pixelframe's aim is to be simple and lightweight. As such all steps from installation, administration to deletion should be simple, requiring minimum input from the user.
+
+== Installation ==
+Installation should involve extracting the archive to a suitable directory and running a setup script to do initialisation. The setup script should ask for the theme, and any setting required.
+
+== Admin ==
+The admin script should have the following actions:
+
+ => Add Gallery
+ => Remove Gallery
+ => Change Settings (theme etc)
+ 
+    === Add Gallery ===
+    The add gallery control panel should ask the user for the directory where the images are kept. It should make sure it has read/write permissions to the directory.
+    Then it should generate thumbnails of the images (use GD or similar) and ask the user if he would like to add captions. In this case he should be shown all the images, and captions added to the one's he wants.
+    
+    ===Remove gallery ===
+    The script should ask the user if he is absolutely sure. Also the following options must be given:
+        -> Delete only Pixelframe settings
+        -> Delete Pf settings and thumbnails
+        -> Delete everything(including the directory)
+        
+    === Change settings ===
+    Settings involve:
+        => theme
+        => dir within galleries to store thumbnails in
+        
+
+        
