@@ -24,7 +24,7 @@
 * Creates a thumbnail from an image.
 
  @param string $imageName Filename of the original image(png or jpeg)
- @param string $thumbnail File to write the thumbnail to.
+ @param string $thumbnail File to write the thumbnail to (jpg/png ONLY).
  @param integer $width Width of the thumbnail
  @param integer $height Hieght of the thumbnail
 
@@ -44,5 +44,17 @@ function makeThumbnail($imageName, $thumbnail, $width=96, $height=96)
 
     $thumb = imagecreatetruecolor($width, $height);
 
-    return imagecopyresampled($thumb, $image, 0, 0, 0, 0, $width, $height, imagesx($image), imagesy($image));
+    if(!imagecopyresampled($thumb, $image, 0, 0, 0, 0, $width, $height, imagesx($image), imagesy($image))) return false;
+
+    $ext = substr($thumbnail, -3);
+    if($ext == "jpg")
+    {
+        if(!imagejpeg($thumb, $thumbnail)) return false;
+    }
+    else if($ext == "png")
+    {
+        if(!imagepng($thumb, $thumbnail)) return false;
+    }
+
+    return true;
 } 
