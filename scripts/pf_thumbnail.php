@@ -34,9 +34,9 @@ function makeThumbnail($imageName, $thumbnail, $width=96, $height=96)
 {
     //try to load jpeg, otherwise try png
     $image = null;
-    if(!($image = imagecreatefromjpeg( $imageName)))
+    if(!($image = @imagecreatefromjpeg( $imageName)))
     {
-        if(!($image = imagecreatefrompng( $imageName)))
+        if(!($image = @imagecreatefrompng( $imageName)))
         {
             return false;
         }
