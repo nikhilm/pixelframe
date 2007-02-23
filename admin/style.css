@@ -31,3 +31,9 @@ div#wrapper {
     width:60%;
 }
 
+div#header {
+    background:#000;
+    border:solid 3px #A5D738;
+    border-top:none;
+    height:50px;
+}
