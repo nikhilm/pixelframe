@@ -37,3 +37,7 @@ div#header {
     border-top:none;
     height:50px;
 }
+
+div#header img {
+    padding:10px 10px;
+}
