@@ -11,7 +11,7 @@
 
 <div id="wrapper">
 <div id="header">
-<img src="../logo.png" />
+<img src="../logo_icon.png" />
 </div>
 </div>
 
