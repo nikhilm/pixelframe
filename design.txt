@@ -44,5 +44,65 @@ The admin script should have the following actions:
         => theme
         => dir within galleries to store thumbnails in
         
+== Interface ==
+The user interface for browsing galleries should be like:
 
+A bar across the top showing the thumbnails.
+
+Previous and Next buttons.
+
+The view window
+
+A small notice about pixelframe.
+
+== Backend ==
+The backend apart from the setup and admin scripts will need:
+
+A script to generate thumbnails - pf_thumbnail.php
+A script to read and write XML config files - pf_configrw.php
+
+The MAIN script which generates the UI - pixelframe.php?gallery = 
+
+A script which will respond to Ajax requests from the client and do the needful - pf_requesthandler.php
+
+Any more scripts as needed
+
+== Frontend ==
+Javascript:
+ Files from Juice for effects and utilities
+ Script to communicate with the server
+ Script to modify the UI as required
+ 
+CSS:
+ The theme stylesheet
+ 
+== Themes ==
+
+Themes should consist of a CSS file ( style.css ) defining the design and layout of the page. All images should be contained in the images directory.
+In addition every theme should contain a theme.pft file which is a plain text file like so:
+Name = MyTheme
+Author = Nikhil
+Homepage = http://www.mytheme.com
+        
+
+
+======================================================
+
+
+=== Walkthrough ===
+
+Installation:
+The user extracted the files to a directory.
+
+Running setup.php:
+    First setup.php checks if it has write access to the installation path. Otherwise whine and die.
+    
+    If successful
+    Questions:
+    1. Theme
+    2. Subdir to store thumbnails in
+    3. Thumbnail size
+    4. Password for settings
+    
+    A
         
