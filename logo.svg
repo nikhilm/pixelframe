@@ -19,17 +19,17 @@
      id="defs4" />
   <sodipodi:namedview
      id="base"
-     pagecolor="#ffffff"
+     pagecolor="black"
      bordercolor="#666666"
      borderopacity="1.0"
      gridtolerance="10000"
      guidetolerance="10"
      objecttolerance="10"
-     inkscape:pageopacity="0.0"
+     inkscape:pageopacity="1"
      inkscape:pageshadow="2"
      inkscape:zoom="1"
-     inkscape:cx="347.39828"
-     inkscape:cy="689.08829"
+     inkscape:cx="382.03234"
+     inkscape:cy="664.30581"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      inkscape:window-width="1280"
@@ -53,7 +53,7 @@
      id="layer1">
     <g
        id="g8147"
-       transform="translate(0,1.324798)">
+       transform="translate(184,-263.6752)">
       <path
          id="path1886"
          d="M 182,370.36218 L 182,382.36218"
@@ -128,15 +128,32 @@
          style="font-family:Bitstream Vera Sans;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:48;text-anchor:start;text-align:start;writing-mode:lr;line-height:125%">PixelFrame</flowPara></flowRoot>    <flowRoot
        xml:space="preserve"
        id="flowRoot2812"
-       transform="matrix(0.791875,0,0,0.791875,23.98868,72.71002)"
-       style="fill:black"><flowRegion
+       transform="matrix(0.410464,0,0,0.410464,113.435,209.1879)"
+       style="fill:white;fill-opacity:0.94117647"><flowRegion
          id="flowRegion2814"><rect
            id="rect2816"
            width="273"
            height="101"
            x="299"
            y="351.36218"
-           style="fill:black" /></flowRegion><flowPara
+           style="fill:white;fill-opacity:0.94117647" /></flowRegion><flowPara
          id="flowPara2818"
-         style="font-size:48px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:black;font-family:URW Gothic L">PixelFrame</flowPara></flowRoot>  </g>
+         style="font-size:48px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:white;fill-opacity:0.94117647;font-family:URW Gothic L">PixelFrame</flowPara></flowRoot>    <path
+       style="fill:#aad301;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3.14064813;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 209.69512,356.06222 L 209.69512,376.40726 L 215.60749,376.40726 L 215.60749,361.58583 C 215.60749,361.58583 216.2534,361.50072 217.21922,361.49674 C 220.11669,361.48479 225.90959,362.16315 225.90959,367.74118 C 225.90959,374.54639 218.81475,373.79933 218.81475,373.79933 L 218.81475,376.40726 L 230.04826,376.40726 L 230.04826,356.06222 L 209.69512,356.06222 z M 218.68516,364.6554 L 218.68516,371.02133 C 218.68516,371.02133 222.75093,371.59781 222.75093,368.08134 C 222.75094,364.56487 218.73098,364.6554 218.68516,364.6554 z "
+       id="rect2790"
+       inkscape:export-filename="/home/nikhil/workspace/pixelframe/logo_icon.png"
+       inkscape:export-xdpi="116.06113"
+       inkscape:export-ydpi="116.06113" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot2792"><flowRegion
+         id="flowRegion2794"><rect
+           id="rect2796"
+           width="47"
+           height="81"
+           x="113"
+           y="357.36218" /></flowRegion><flowPara
+         id="flowPara2798"
+         style="font-family:Bitstream Vera Sans;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:90;text-anchor:start;text-align:start;writing-mode:lr;line-height:125%">P</flowPara></flowRoot>  </g>
 </svg>
