@@ -53,31 +53,38 @@ div#album-list {
     border-top:solid 1px #000;
 }
 
-li {
-    clear:none;
-    display:inline;
+div#album-list ul {
+    list-style-type:square;
 }
 
-div#album-list span.album-actions {
-    margin-left:60%;
+div#album-list ul li {
+    font-size:18px;
+    color:#555;
+    padding:15px;
+}
+
+/*div#album-list span.album-actions {
     font-size:15px;
     font-weight:bold;
     padding:5px;
-    margin-left:30%;
-    position:absolute;
+    text-align:center;
 }
 
 li.edit-action {    
     color:#8FB301;
     background:#fff;
-    border:solid 1px #8FB301;
     padding:5px;
+    width:10%;
 }
 
 li.delete-action {
     color:#F00;
     background:#FFE9E9;
-    border:solid 1px #FF856A;
     padding:5px;
-    margin-left:10px;
+    width:10%;
+}*/
+
+/*====Division specific styles====*/
+div#panel {
+    display:hidden;
 }

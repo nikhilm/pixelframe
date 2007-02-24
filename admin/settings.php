@@ -17,17 +17,22 @@ Settings
 
 <div id="content">
 
+<!--Control and Information Panels hidden -->
+<div id="panel">
+<div id="success">
+</div>
+<div id="error">
+</div>
+</div>
+
+<h3>Albums</h3>
+<p>Select an Album below to change its settings:</p>
 <div id="album-list">
 <!--= getFormattedAlbumList(); -->
 <ul>
-        <li>Album 1</li><span class="album-actions"><li class="edit-action">Edit</li><li class="delete-action">Delete</li></span>
-</ul>
-<ul>
-        <li>Album 2</li><span class="album-actions"><li class="edit-action">Edit</li><li class="delete-action">Delete</li></span>
-</ul>
-<ul>
-        <li>Europe pics</li><span class="album-actions"><li class="edit-action">Edit</li><li class="delete-action">Delete</li></span>
-</ul>
+        <li>Album 1</li>
+        <li>Album 2</li>
+        <li>Europe pics</li>
 </ul>
 </div>
 </div>
