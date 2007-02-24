@@ -1,4 +1,4 @@
-
+<!---Add password checking code here -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
@@ -26,7 +26,26 @@ Settings
 <div id="errorPanel">
 </div>
 <div id="editPanel">
-Edit
+<h2>Edit &lt;album name&gt;</h2>
+
+<!--Album stats -->
+
+<p>Name: &lt;Name&gt;</p>
+<p>Photos: &lt;Number&gt;</p>
+
+
+<form action="" onsubmit="">
+<label>Change theme:</label>
+<select>
+<!--put themes here-->
+<option>Hello</option>
+</select>
+</form>
+
+<!--Delete-->
+<p id="delete">Delete this Album
+<input id="deleteButton" type="Submit" value="Delete!" /></p>
+
 </div>
 <div id="loadingPanel">
 </div>

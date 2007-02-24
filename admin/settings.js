@@ -34,6 +34,15 @@ function clearPanel() {
             elem.style.visibility = "hidden";
         }
     );
+    panel.style.display = "none";
+}
+
+/*
+ * Show the panel
+*/
+function showPanel() {
+    $('panel').style.display = "block";
+    $('panel').style.visibility = "visible";
 }
     
 /**
@@ -41,10 +50,10 @@ function clearPanel() {
 */
 function launchEditPanel() {
     clearPanel();
-    
+    showPanel();
     //fetch and set edit panel data here
     
-    $('editPanel').style.visibility = "";
+    $('editPanel').style.visibility = "visible";
 }
 
 window.onload = clearPanel;
