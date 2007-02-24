@@ -15,9 +15,23 @@
 Settings
 </div>
 
+<div id="content">
+
 <div id="album-list">
-<?= getFormattedAlbumList(); ?>
+<!--= getFormattedAlbumList(); -->
+<ul>
+        <li>Album 1</li><span class="album-actions"><li class="edit-action">Edit</li><li class="delete-action">Delete</li></span>
+</ul>
+<ul>
+        <li>Album 2</li><span class="album-actions"><li class="edit-action">Edit</li><li class="delete-action">Delete</li></span>
+</ul>
+<ul>
+        <li>Europe pics</li><span class="album-actions"><li class="edit-action">Edit</li><li class="delete-action">Delete</li></span>
+</ul>
+</ul>
 </div>
+</div>
+
 </div>
 
 </body>
