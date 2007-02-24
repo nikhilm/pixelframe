@@ -28,4 +28,17 @@
 * Clear the panel by hiding all children
 */
 function clearPanel() {
-    panel = $(
+    panel = $('panel');
+    $A(panel.childNodes).each(function (elem) { elem.style.display = "hidden"; });
+}
+    
+/**
+* Fetch and launch the edit panel for the album
+*/
+function launchEditPanel() {
+    clearPanel();
+    
+    //fetch and set edit panel data here
+    
+    $('editPanel').style.display = "visible";
+}
