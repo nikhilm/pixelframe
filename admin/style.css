@@ -63,8 +63,8 @@ div#album-list span.album-actions {
     font-size:15px;
     font-weight:bold;
     padding:5px;
-    float:right;
-    margin-top:-30px;
+    margin-left:30%;
+    position:absolute;
 }
 
 li.edit-action {    
