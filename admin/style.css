@@ -33,11 +33,13 @@ div#wrapper {
 
 div#header {
     background:#000;
-    border:solid 3px #A5D738;
-    border-top:none;
-    height:50px;
+    color:#fff;
+    font-size:25px;
+    font-family:"Helvetica" sans-serif;
+    padding:8px 0 10px 0;
 }
 
 div#header img {
-    padding:10px 10px;
+    padding:4px 15px 0 15px;
+    float:left;
 }

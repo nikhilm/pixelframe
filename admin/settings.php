@@ -12,6 +12,11 @@
 <div id="wrapper">
 <div id="header">
 <img src="../logo_icon.png" />
+Settings
+</div>
+
+<div id="album-list">
+<?= getFormattedAlbumList(); ?>
 </div>
 </div>
 
