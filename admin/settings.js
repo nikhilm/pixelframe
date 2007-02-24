@@ -29,7 +29,11 @@
 */
 function clearPanel() {
     panel = $('panel');
-    $A(panel.childNodes).each(function (elem) { elem.style.display = "hidden"; });
+    $A(panel.childNodes).each(function (elem) { 
+        if(elem.nodeType == Node.ELEMENT_NODE)
+            elem.style.visibility = "hidden";
+        }
+    );
 }
     
 /**
@@ -40,5 +44,7 @@ function launchEditPanel() {
     
     //fetch and set edit panel data here
     
-    $('editPanel').style.display = "visible";
+    $('editPanel').style.visibility = "";
 }
+
+window.onload = clearPanel;

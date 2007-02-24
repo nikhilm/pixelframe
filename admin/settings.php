@@ -6,6 +6,8 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <title>Pixelframe: Settings</title>
 <link rel="stylesheet" type="text/css" href="style.css" />
+<script language="javascript" src="../js/base.js" />
+<script language="javascript" src="settings.js" />
 </head>
 <body>
 
@@ -19,9 +21,14 @@ Settings
 
 <!--Control and Information Panels hidden -->
 <div id="panel">
-<div id="success">
+<div id="successPanel">
 </div>
-<div id="error">
+<div id="errorPanel">
+</div>
+<div id="editPanel">
+Edit
+</div>
+<div id="loadingPanel">
 </div>
 </div>
 
@@ -30,7 +37,7 @@ Settings
 <div id="album-list">
 <!--= getFormattedAlbumList(); -->
 <ul>
-        <li>Album 1</li>
+        <li onclick="launchEditPanel();">Album 1</li>
         <li>Album 2</li>
         <li>Europe pics</li>
 </ul>

@@ -63,28 +63,4 @@ div#album-list ul li {
     padding:15px;
 }
 
-/*div#album-list span.album-actions {
-    font-size:15px;
-    font-weight:bold;
-    padding:5px;
-    text-align:center;
-}
-
-li.edit-action {    
-    color:#8FB301;
-    background:#fff;
-    padding:5px;
-    width:10%;
-}
-
-li.delete-action {
-    color:#F00;
-    background:#FFE9E9;
-    padding:5px;
-    width:10%;
-}*/
-
 /*====Division specific styles====*/
-div#panel {
-    display:hidden;
-}
