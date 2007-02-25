@@ -48,19 +48,29 @@ div#content {
     padding:50px;
 }
 
-div#album-list {
+/*==Album list styles==*/
+ul#album-list {
     font-size:20px;
     border-top:solid 1px #000;
+    padding-top:20px;
 }
 
-div#album-list ul {
+ul#album-list {
     list-style-type:square;
 }
 
-div#album-list ul li {
+ul#album-list li {
     font-size:18px;
     color:#555;
     padding:15px;
+    cursor:pointer;
+}
+
+ul#album-list li:hover {
+    font-weight:bold;
+    background-color:#EFFFEB;
+    border:solid 1px #6AB450;
+    list-style:disc #6AB450;
 }
 
 /*====Division specific styles====*/
@@ -79,21 +89,27 @@ div#panel h2 {
     margin-left:2%;
 }
 
-div #editPanel {
-    background:#EFFFEB;
-    border:solid 1px #6AB450;
+div#panel #cancel-button {
+    margin:20px 5%;
 }
 
-div#editPanel * {
+/*--Edit Panel--*/
+div #edit-panel {
+    background:#EFFFEB;
+    border:solid 1px #6AB450;
+    padding-bottom:20px;
+}
+
+div#edit-panel * {
     margin-left:3%;
 }
 
-div#editPanel p#delete {
-    color:red;
-    font-size:18px;
+div#edit-panel div {
+    padding:10px 0 ;
+    width:50%;
 }
 
-div#editPanel input#deleteButton {
+div#edit-panel input#album-delete {
     background:#FFEEEE;
     color:red;
     border:solid 2px red;

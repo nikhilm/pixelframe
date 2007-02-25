@@ -24,6 +24,16 @@
 * Requires ../js/base.js
 */
 
+/*
+ *Adds the cancel button to elem
+*/
+function addCancelButton(elem) {
+    cancel = $('cancel-button');
+    cancel.onclick = clearPanel;
+    cancel.style.visibility = "visible";
+    $(elem).appendChild(cancel);
+}
+
 /**
 * Clear the panel by hiding all children
 */
@@ -41,7 +51,7 @@ function clearPanel() {
  * Show the panel
 */
 function showPanel() {
-    $('panel').style.display = "block";
+    $('panel').style.display = "inherit";
     $('panel').style.visibility = "visible";
 }
     
@@ -53,5 +63,28 @@ function launchEditPanel() {
     showPanel();
     //fetch and set edit panel data here
     
-    $('editPanel').style.visibility = "visible";
+    $('edit-panel').style.visibility = "visible";
+    addCancelButton('edit-panel');
+    
+    var heading = $('album-title').firstChild;
+    heading.nodeValue = this.childNodes[0].nodeValue;
 }
+
+/*
+ * Setup the application on load
+ */
+function setup() {
+    $('album-save').onclick=saveChanges;
+
+    $A($('album-list').childNodes).each( function (elem) { 
+        if(elem.nodeType == Node.ELEMENT_NODE)
+            elem.onclick = launchEditPanel;
+        }
+    );
+}
+
+/*
+ * Send changes to server
+*/
+function saveChanges() {}
+//window.onload = setup();

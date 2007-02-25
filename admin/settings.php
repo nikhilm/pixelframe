@@ -9,7 +9,7 @@
 <script language="javascript" src="../js/base.js" />
 <script language="javascript" src="settings.js" />
 </head>
-<body>
+<body onload="setup()">
 
 <div id="wrapper">
 <div id="header">
@@ -21,46 +21,58 @@ Settings
 
 <!--Control and Information Panels hidden -->
 <div id="panel">
-<div id="successPanel">
+<div id="success-panel">
 </div>
-<div id="errorPanel">
+<div id="error-panel">
 </div>
-<div id="editPanel">
-<h2>Edit &lt;album name&gt;</h2>
+<div id="edit-panel">
+<h2 id="album-title">Edit album</h2>
 
 <!--Album stats -->
+<form id="album-edit-form">
+<div>
+<label for="album-name">Name:</label> <input id="album-name" value="Name" />
+</div>
 
-<p>Name: &lt;Name&gt;</p>
-<p>Photos: &lt;Number&gt;</p>
+<div>
+<label>Photos: &lt;Number&gt;</label>
+</div>
 
-
-<form action="" onsubmit="">
-<label>Change theme:</label>
-<select>
+<div>
+<label for="album-theme-selector">Change theme:</label>
+<select id="album-theme-selector">
 <!--put themes here-->
 <option>Hello</option>
 </select>
+</div>
+
+<div>
+<input type="button" value="Save changes" id="album-save" />
+</div>
+
+<div style="border-top:inset 1px #000;margin-top:50px;">
+<!--Delete-->
+<label for="album-delete">Delete this Album</label>
+<input id="album-delete" type="button" value="Delete!" />
+</div>
 </form>
 
-<!--Delete-->
-<p id="delete">Delete this Album
-<input id="deleteButton" type="Submit" value="Delete!" /></p>
-
 </div>
-<div id="loadingPanel">
-</div>
+<div id="loading-panel">
 </div>
 
-<h3>Albums</h3>
+<!--The cancel button used by all panels-->
+<input type="button" value="Cancel" id="cancel-button" />
+</div>
+
+<h3 onclick="setup()">Albums</h3>
 <p>Select an Album below to change its settings:</p>
-<div id="album-list">
 <!--= getFormattedAlbumList(); -->
-<ul>
-        <li onclick="launchEditPanel();">Album 1</li>
+<ul id="album-list">
+        <li>Album 1</li>
         <li>Album 2</li>
         <li>Europe pics</li>
 </ul>
-</div>
 </div>
 
 </div>
