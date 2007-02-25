@@ -55,5 +55,3 @@ function launchEditPanel() {
     
     $('editPanel').style.visibility = "visible";
 }
-
-window.onload = clearPanel;

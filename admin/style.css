@@ -64,7 +64,7 @@ div#album-list ul li {
 }
 
 /*====Division specific styles====*/
-div#panel { visibility:hidden; padding-bottom:50px;}
+div#panel { visibility:hidden; display:none; padding-bottom:50px;}
 
 div#panel div {
     font-size:16px;
