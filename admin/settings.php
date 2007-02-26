@@ -25,8 +25,10 @@ Settings
 <!--Control and Information Panels hidden -->
 <div id="panel">
 <div id="success-panel">
+<h2>Success!</h2>
 </div>
 <div id="error-panel">
+<h2>Error!</h2>
 </div>
 <div id="edit-panel">
 <h2 id="album-title">Edit album</h2>

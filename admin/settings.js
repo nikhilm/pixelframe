@@ -75,7 +75,7 @@ function launchEditPanel() {
     
     
     showPanel('edit-panel');
-    new Effects.Appear('edit-panel', {duration:1000, height:5000});
+    new Effects.BlindDown('edit-panel');
 }
 
 /**
@@ -94,12 +94,11 @@ function launchMessagePanel(mode, msg) {
     msgDiv = document.createElement('div');
     text = document.createTextNode(msg);
     msgDiv.appendChild(text);
-    panel.replaceChild(msgDiv, panel.firstChild);
-    
+    panel.replaceChild(msgDiv, panel.lastChild);
     showPanel(panel);
     setTimeout(function () {
-        new Effects.Fade(panel, {duration:1000,onComplete:function() { clearPanel(); }});
-    }, arguments[2]||1000);
+        clearPanel();
+    }, arguments[2]||2000);
 }
 
 /*
@@ -119,6 +118,6 @@ function setup() {
  * Send changes to server
 */
 function saveChanges() {
-    launchMessagePanel("success", "Settings saved");
+    launchMessagePanel("error", "Settings saved");
 }
 //window.onload = setup();
