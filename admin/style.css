@@ -48,14 +48,16 @@ div#content {
     padding:50px;
 }
 
+div#content h3 {
+    margin-top:10%;
+}
+
 /*==Album list styles==*/
 ul#album-list {
     font-size:20px;
     border-top:solid 1px #000;
-    padding-top:20px;
-}
-
-ul#album-list {
+    border-bottom:solid 1px #000;
+    padding:20px 25px;
     list-style-type:square;
 }
 
@@ -113,4 +115,16 @@ div#edit-panel input#album-delete {
     background:#FFEEEE;
     color:red;
     border:solid 2px red;
+}
+
+/*--Password panel--*/
+div#password-div {
+    border-top:solid 1px #000;
+    padding:20px;
+}
+
+div#password-div input {
+    margin-top:5%;
+    margin-left:3%;
+    background:#EEE;
 }

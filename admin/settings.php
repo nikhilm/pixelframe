@@ -73,7 +73,18 @@ Settings
         <li>Album 2</li>
         <li>Europe pics</li>
 </ul>
+
+<h3>Change password</h3>
+<div id="password-div">
+<div>
+<label for="password-input">New Password:</label><input id="password-input" />
 </div>
+<div>
+<label for="password-confirm-input">Confirm Password:</label><input id="password-confirm-input" />
+</div>
+</div>
+</div>
+
 
 </div>
 
