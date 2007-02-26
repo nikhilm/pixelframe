@@ -21,7 +21,7 @@
 */
 
 /*
-* Requires ../js/base.js
+* Requires ../js/base.js, ../js/effects.js
 */
 
 /*
@@ -40,19 +40,23 @@ function addCancelButton(elem) {
 function clearPanel() {
     panel = $('panel');
     $A(panel.childNodes).each(function (elem) { 
-        if(elem.nodeType == Node.ELEMENT_NODE)
+        if(elem.nodeType == Node.ELEMENT_NODE) {
             elem.style.visibility = "hidden";
+            elem.style.display = "none";
         }
+    }
     );
     panel.style.display = "none";
 }
 
 /*
- * Show the panel
+ * Show the panel along with the elem
 */
-function showPanel() {
+function showPanel(elem) {
     $('panel').style.display = "inherit";
     $('panel').style.visibility = "visible";
+    $(elem).style.display = "inherit";
+    $(elem).style.visibility = "visible";
 }
     
 /**
@@ -60,14 +64,42 @@ function showPanel() {
 */
 function launchEditPanel() {
     clearPanel();
-    showPanel();
     //fetch and set edit panel data here
     
-    $('edit-panel').style.visibility = "visible";
     addCancelButton('edit-panel');
     
     var heading = $('album-title').firstChild;
     heading.nodeValue = this.childNodes[0].nodeValue;
+    
+    $('album-save').onclick = saveChanges;
+    
+    
+    showPanel('edit-panel');
+    new Effects.Appear('edit-panel', {duration:1000, height:5000});
+}
+
+/**
+* Launch the success or error panels with a message
+*
+* @param mode string success / error
+* @param msg string message
+* @param delay int Amount of time after which panel should disappear in milliseconds (Default:2000ms)
+*/
+function launchMessagePanel(mode, msg) {
+    clearPanel();
+
+    panel = $(mode+"-panel");
+    if(!panel) alert("Invalid mode");
+    
+    msgDiv = document.createElement('div');
+    text = document.createTextNode(msg);
+    msgDiv.appendChild(text);
+    panel.replaceChild(msgDiv, panel.firstChild);
+    
+    showPanel(panel);
+    setTimeout(function () {
+        new Effects.Fade(panel, {duration:1000,onComplete:function() { clearPanel(); }});
+    }, arguments[2]||1000);
 }
 
 /*
@@ -86,5 +118,7 @@ function setup() {
 /*
  * Send changes to server
 */
-function saveChanges() {}
+function saveChanges() {
+    launchMessagePanel("success", "Settings saved");
+}
 //window.onload = setup();

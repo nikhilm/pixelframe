@@ -128,3 +128,10 @@ div#password-div input {
     margin-left:3%;
     background:#EEE;
 }
+
+/*--Success panel--*/
+div#success-panel {
+    background:#EFFFEB;
+    border:solid 1px #6AB450;
+    padding-bottom:20px;
+}

@@ -7,6 +7,9 @@
 <title>Pixelframe: Settings</title>
 <link rel="stylesheet" type="text/css" href="style.css" />
 <script language="javascript" src="../js/base.js" />
+<script language="javascript" src="../js/dom.js" />
+<script language="javascript" src="../js/extension.js" />
+<script language="javascript" src="../js/effects.js" />
 <script language="javascript" src="settings.js" />
 </head>
 <body onload="setup()">
@@ -65,7 +68,7 @@ Settings
 <input type="button" value="Cancel" id="cancel-button" />
 </div>
 
-<h3 onclick="setup()">Albums</h3>
+<h3>Albums</h3>
 <p>Select an Album below to change its settings:</p>
 <!--= getFormattedAlbumList(); -->
 <ul id="album-list">
