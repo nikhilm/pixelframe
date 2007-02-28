@@ -153,12 +153,15 @@ Effects.Width = Class.create();
 Object.extend(Object.extend(Effects.Width.prototype, new Effects.Base()), {
     initialize:function(el) {
         this.element = $(el);
-        this.setOptions(arguments[1]);        
+        this.setOptions(arguments[1]); 
+        this.element.setStyle({overflow:'hidden'});       
+        console.log("Starting effect");
         this.activate(parseInt((this.element.getStyle('width')||this.element.offsetWidth)), this.options.width);
     },    
     update:function() {
+        console.log(this.now);
         this.element.setStyle({
-            width:Math.round(this.now)
+            width:Math.round(this.now)+"px"
         });
     }
 });
@@ -177,7 +180,7 @@ Object.extend(Object.extend(Effects.Height.prototype, new Effects.Base()), {
     },
     update:function() {
         this.element.setStyle({
-            height:Math.round(this.now)
+            height:Math.round(this.now)+"px"
         });
     }
 });
@@ -287,7 +290,6 @@ Effects.Fade = function(el) {
  * Shrinks the element's size to 0, 0.
 */
 Effects.Shrink = function(el) {
-    $(el).setStyle({overflow:'hidden'});
     new Effects.Width(el, Object.extend({width:0}, this.options));
     new Effects.Height(el, Object.extend({height:0}, this.options));
 }
