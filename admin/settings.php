@@ -70,7 +70,7 @@ Settings
 <input type="button" value="Cancel" id="cancel-button" />
 </div>
 
-<h3>Albums</h3>
+<h3 id="album-header">Albums</h3>
 <p>Select an Album below to change its settings:</p>
 <!--= getFormattedAlbumList(); -->
 <ul id="album-list">
@@ -79,7 +79,7 @@ Settings
         <li>Europe pics</li>
 </ul>
 
-<h3>Change password</h3>
+<h3 id="password-header">Change password</h3>
 <div id="password-div">
 <div>
 <label for="password-input">New Password:</label><input id="password-input" type="password"/>
