@@ -145,8 +145,13 @@ Object.extend(Object.extend(Effects.Move.prototype, new Effects.Multiple()), {
     }
 });
 
+function _restoreSize(elem, w, h) {
+   $(elem).setStyle({width:w+"px", height:h+"px"});
+} 
+
 /**
  * Sets the width of the element.
+ * Accepts additional argument restore:true/false which restores original size after effect
  * Example: new Effects.Width('width', {width:500});
 */
 Effects.Width = Class.create();
@@ -155,7 +160,14 @@ Object.extend(Object.extend(Effects.Width.prototype, new Effects.Base()), {
         this.element = $(el);
         this.setOptions(arguments[1]); 
         this.element.setStyle({overflow:'hidden'});       
-        console.log("Starting effect");
+        
+        if(this.options.restoreSize) {
+            w = this.element.getDimensions().width;
+            h = this.element.getDimensions().height;        
+            this.options.onComplete = function() { _restoreSize(this, w, h);};
+        }
+
+
         this.activate(parseInt((this.element.getStyle('width')||this.element.offsetWidth)), this.options.width);
     },    
     update:function() {
@@ -168,6 +180,7 @@ Object.extend(Object.extend(Effects.Width.prototype, new Effects.Base()), {
 
 /**
  * Sets the height of the element.
+ * Accepts additional argument restore:true/false which restores original size after effect
  * Example: new Effects.Width('height', {width:50});
 */
 Effects.Height = Class.create();
@@ -176,6 +189,14 @@ Object.extend(Object.extend(Effects.Height.prototype, new Effects.Base()), {
         this.element = $(el);
         this.setOptions(arguments[1]);
         this.element.setStyle({overflow:'hidden'});
+
+        if(this.options.restoreSize) {
+            w = this.element.getDimensions().width;
+            h = this.element.getDimensions().height;        
+            this.options.onComplete = function() { _restoreSize(this, w, h); };
+        }
+
+
         this.activate(parseInt((this.element.getStyle('height')||this.element.offsetHeight)), this.options.height);
     },
     update:function() {

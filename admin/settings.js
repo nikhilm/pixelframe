@@ -84,7 +84,7 @@ function launchEditPanel() {
 *
 * @param mode string success / error
 * @param msg string message
-* @param delay int Amount of time after which panel should disappear in milliseconds (Default:2000ms)
+* @param delay int Amount of time after which panel should disappear in milliseconds (Default:1000ms)
 */
 function launchMessagePanel(mode, msg) {
     clearPanel();
@@ -98,8 +98,9 @@ function launchMessagePanel(mode, msg) {
     panel.replaceChild(msgDiv, panel.lastChild);
     showPanel(panel);
     setTimeout(function () {
-        clearPanel();
-    }, arguments[2]||2000);
+        new Effects.BlindUp(panel, {restoreSize:true, duration:arguments[2]||1000});
+        setTimeout(clearPanel, arguments[2]||1000);
+    }, arguments[2]||1000);
 }
 
 /*

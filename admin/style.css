@@ -123,6 +123,10 @@ div#password-div {
     padding:20px;
 }
 
+div#content h3#password-header {
+    margin-top:100px;
+}
+
 div#password-div input {
     margin-top:5%;
     margin-left:3%;
