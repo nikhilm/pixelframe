@@ -31,6 +31,7 @@ function addCancelButton(elem) {
     cancel = $('cancel-button');
     cancel.onclick = clearPanel;
     cancel.style.visibility = "visible";
+    cancel.style.display = "";
     $(elem).appendChild(cancel);
 }
 

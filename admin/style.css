@@ -129,6 +129,11 @@ div#password-div input {
     background:#EEE;
 }
 
+div #password-div input#password-change-button {
+    margin-left:0;
+}
+
+
 
 /*--Success panel--*/
 div#success-panel {

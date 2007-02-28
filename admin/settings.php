@@ -82,11 +82,14 @@ Settings
 <h3>Change password</h3>
 <div id="password-div">
 <div>
-<label for="password-input">New Password:</label><input id="password-input" />
+<label for="password-input">New Password:</label><input id="password-input" type="password"/>
 </div>
 <div>
-<label for="password-confirm-input">Confirm Password:</label><input id="password-confirm-input" />
+<label for="password-confirm-input">Confirm Password:</label><input id="password-confirm-input" type="password" />
 </div>
+
+<input type="button" value="Change password" id="password-change-button" />
+
 </div>
 </div>
 
