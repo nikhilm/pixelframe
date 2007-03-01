@@ -82,14 +82,15 @@ Settings
 <h3 id="password-header">Change password</h3>
 <div id="password-div">
 <div>
+<form action="" method="" id="password-change-form">
 <label for="password-input">New Password:</label><input id="password-input" type="password"/>
 </div>
 <div>
 <label for="password-confirm-input">Confirm Password:</label><input id="password-confirm-input" type="password" />
 </div>
 
-<input type="button" value="Change password" id="password-change-button" />
-
+<input type="submit" value="Change password" id="password-change-button" />
+</form>
 </div>
 </div>
 

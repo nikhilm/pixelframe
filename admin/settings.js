@@ -24,6 +24,16 @@
 * Requires ../js/base.js, ../js/effects.js
 */
 
+/********************************************
+* CONSTANTS
+*********************************************/
+URL = "index.php"
+
+
+/*********************************************
+ * UI RELATED FUNCTIONS
+*********************************************/
+
 /*
  *Adds the cancel button to elem
 */
@@ -107,6 +117,7 @@ function launchMessagePanel(mode, msg) {
  * Setup the application on load
  */
 function setup() {
+    //album list
     $('album-save').onclick=saveChanges;
 
     $A($('album-list').childNodes).each( function (elem) { 
@@ -114,12 +125,74 @@ function setup() {
             elem.onclick = launchEditPanel;
         }
     );
+
+    //password
+    $("password-change-button").onclick = changePassword;
+    console.log("setup");
 }
+
+
+/*****************************************************
+ * MOST BACKGROUND/COMMUNICATION FUNCTIONS BEGIN HERE
+*****************************************************/
 
 /*
  * Send changes to server
 */
 function saveChanges() {
-    launchMessagePanel("error", "Settings saved");
+    //transmit changes
+    //Ajax.Request(URL, {
+    //    parameters:{
+    //        action:"save",
+    //        name:"name",
+    //        etc
+    //    },
+    //    onSuccess: function(req) {
+    //        launchMessagePanel("success", req.status);
+    //        refreshAlbums();
+    //    },
+    //    onFailure: function(req) {
+    //        launchMessagePanel("error", req.status);
+    //    }
+    //});
+
+    //Set onSuccess to launch success panel with message passed by server and refresh the album list
+    //onFailure to launch error panel
+    launchMessagePanel("success", "Settings saved");
 }
-//window.onload = setup();
+
+/*
+ * Change the password
+*/
+function changePassword() {
+    console.log("Called");
+    //check if new password and confirm match
+    pass = $("password-input").value;
+    confirm = $("password-confirm-input").value;
+
+    if(pass == "") {
+        launchMessagePanel("error", "The new password field is empty");
+        $("password-input").focus();
+        return;
+    }
+
+    if(pass != confirm) {
+        launchMessagePanel("error", "New password and confirmation do not match");
+        $("password-input").focus();
+        return;
+    }
+
+    //Ajax.Request(URL, {
+    //    parameters: {
+    //        action:"changepassword",
+    //        newpassword:pass
+    //    },
+    //    onSuccess: function(req) {
+    //        launchMessagePanel("success", req.status);
+    //    },
+    //    onFailure: function(req) {
+    //        launchMessagePanel("error", req.status);
+    //    }
+    //});
+    launchMessagePanel("success", "Password successfully changed");
+}
