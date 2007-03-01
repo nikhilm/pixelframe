@@ -79,10 +79,13 @@ Settings
         <li>Europe pics</li>
 </ul>
 
+
+
+
 <h3 id="password-header">Change password</h3>
 <div id="password-div">
 <div>
-<form action="" method="" id="password-change-form">
+<form action="#">
 <label for="password-input">New Password:</label><input id="password-input" type="password"/>
 </div>
 <div>
@@ -91,6 +94,9 @@ Settings
 
 <input type="submit" value="Change password" id="password-change-button" />
 </form>
+
+
+
 </div>
 </div>
 

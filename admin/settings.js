@@ -128,6 +128,7 @@ function setup() {
 
     //password
     $("password-change-button").onclick = changePassword;
+    $("password-change-button").onsubmit = changePassword;
     console.log("setup");
 }
 
@@ -171,6 +172,7 @@ function changePassword() {
     confirm = $("password-confirm-input").value;
 
     if(pass == "") {
+        console.log("empty");
         launchMessagePanel("error", "The new password field is empty");
         $("password-input").focus();
         return;
