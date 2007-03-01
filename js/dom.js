@@ -204,18 +204,18 @@ function $() {
 
 Event = Class.create();
 Object.extend(Event, {
-    eventList = false,
+    eventList : false,
     push:function(event) {
-        if(!eventList) eventList = [];
-        eventList.push(event);
+        if(!this.eventList) this.eventList = [];
+        this.eventList.push(event);
     },
     unloadAll:function() {
-        if(!eventList) return;
-        $A(eventList).each( function(item) {
+        if(!this.eventList) return;
+        $A(this.eventList).each( function(item) {
             item[0].removeEvent(item[1], item[2], item[3]);
             item[0] = null;
         });
     }
-}
+});
 
 $(window).addEvent('unload', Event.unloadAll, false);
