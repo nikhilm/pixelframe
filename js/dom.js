@@ -153,6 +153,7 @@ Object.extend(CustomElement.prototype, {
     },
     
     addEvent:function(type, callback, useCapture) {
+        Event.push([this, type, callback, useCapture]);
         //try W3C
         if(window.addEventListener) {
             window.addEventListener(type, callback, useCapture);
@@ -199,3 +200,22 @@ function $() {
     }
     return ret;
 }
+
+
+Event = Class.create();
+Object.extend(Event, {
+    eventList = false,
+    push:function(event) {
+        if(!eventList) eventList = [];
+        eventList.push(event);
+    },
+    unloadAll:function() {
+        if(!eventList) return;
+        $A(eventList).each( function(item) {
+            item[0].removeEvent(item[1], item[2], item[3]);
+            item[0] = null;
+        });
+    }
+}
+
+$(window).addEvent('unload', Event.unloadAll, false);
