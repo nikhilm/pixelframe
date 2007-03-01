@@ -152,10 +152,10 @@ Object.extend(CustomElement.prototype, {
         return { x:left, y:top, width:w, height:h};
     },
     
-    addEvent:function(type, callback, bubble) {
+    addEvent:function(type, callback, useCapture) {
         //try W3C
         if(window.addEventListener) {
-            window.addEventListener(type, callback, bubble);
+            window.addEventListener(type, callback, useCapture);
         }
         //else MS
         else {
@@ -163,14 +163,14 @@ Object.extend(CustomElement.prototype, {
         }
     },
 
-    removeEvent:function(type, callback, bubble) {
+    removeEvent:function(type, callback, useCapture) {
         //try W3C
         if(window.addEventListener) {
-            window.removeEventListener(type, callback, bubble);
+            window.removeEventListener(type, callback, useCapture);
         }
         //else MS
         else {
-            window.detachEvent(type, callback);
+            window.detachEvent('on'+type, callback);
         }
     } 
 });
