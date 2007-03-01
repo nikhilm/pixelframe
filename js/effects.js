@@ -146,6 +146,7 @@ Object.extend(Object.extend(Effects.Move.prototype, new Effects.Multiple()), {
 });
 
 function _restoreSize(elem, w, h) {
+    console.log(elem, w, h);
    $(elem).setStyle({width:w+"px", height:h+"px"});
 } 
 
@@ -164,7 +165,9 @@ Object.extend(Object.extend(Effects.Width.prototype, new Effects.Base()), {
         if(this.options.restoreSize) {
             w = this.element.getDimensions().width;
             h = this.element.getDimensions().height;        
-            this.options.onComplete = function() { _restoreSize(this, w, h);};
+            //lets not interfere with onComplete
+            elem = this.element;
+            setTimeout(function() { _restoreSize(elem, w, h); }, this.options.duration);
         }
 
 
@@ -193,7 +196,10 @@ Object.extend(Object.extend(Effects.Height.prototype, new Effects.Base()), {
         if(this.options.restoreSize) {
             w = this.element.getDimensions().width;
             h = this.element.getDimensions().height;        
-            this.options.onComplete = function() { _restoreSize(this, w, h); };
+            this.options.onComplete = function() {
+                this.options.onComplete();
+                _restoreSize(this, w, h);
+            }
         }
 
 
