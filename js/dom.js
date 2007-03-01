@@ -150,7 +150,29 @@ Object.extend(CustomElement.prototype, {
             this.setStyle({display:'none'});
         }
         return { x:left, y:top, width:w, height:h};
-    }
+    },
+    
+    addEvent:function(type, callback, bubble) {
+        //try W3C
+        if(window.addEventListener) {
+            window.addEventListener(type, callback, bubble);
+        }
+        //else MS
+        else {
+            window.attachEvent(type, callback);
+        }
+    },
+
+    removeEvent:function(type, callback, bubble) {
+        //try W3C
+        if(window.addEventListener) {
+            window.removeEventListener(type, callback, bubble);
+        }
+        //else MS
+        else {
+            window.detachEvent(type, callback);
+        }
+    } 
 });
 
 //actual extend
