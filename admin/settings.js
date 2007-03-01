@@ -39,7 +39,7 @@ URL = "index.php"
 */
 function addCancelButton(elem) {
     cancel = $('cancel-button');
-    cancel.onclick = clearPanel;
+    cancel.addEvent('click', clearPanel, false);
     cancel.style.visibility = "visible";
     cancel.style.display = "";
     $(elem).appendChild(cancel);
@@ -82,7 +82,7 @@ function launchEditPanel() {
     var heading = $('album-title').firstChild;
     heading.nodeValue = this.childNodes[0].nodeValue;
     
-    $('album-save').onclick = saveChanges;
+    $('album-save').addEvent('click', saveChanges, false);
     
     
     showPanel('edit-panel');
@@ -118,18 +118,17 @@ function launchMessagePanel(mode, msg) {
  */
 function setup() {
     //album list
-    $('album-save').onclick=saveChanges;
+    $('album-save').addEvent('click', saveChanges, false);
 
     $A($('album-list').childNodes).each( function (elem) { 
         if(elem.nodeType == Node.ELEMENT_NODE)
-            elem.onclick = launchEditPanel;
+            $(elem).addEvent('click', launchEditPanel, false);
         }
     );
 
     //password
-    $("password-change-button").onclick = changePassword;
-    $("password-change-button").onsubmit = changePassword;
-    console.log("setup");
+    $("password-change-button").addEvent('click', changePassword, false);
+    $("password-change-button").addEvent('submit', changePassword, false);
 }
 
 
