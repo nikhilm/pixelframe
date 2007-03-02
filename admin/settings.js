@@ -73,16 +73,15 @@ function showPanel(elem) {
 /**
 * Fetch and launch the edit panel for the album
 */
-function launchEditPanel() {
+function launchEditPanel(evt) {
+    
     clearPanel();
     //fetch and set edit panel data here
     
     addCancelButton('edit-panel');
     
     var heading = $('album-title').firstChild;
-    heading.nodeValue = this.childNodes[0].nodeValue;
-    
-    $('album-save').addEvent('click', saveChanges, false);
+    heading.nodeValue = evt.target.childNodes[0].nodeValue;
     
     
     showPanel('edit-panel');
@@ -117,18 +116,18 @@ function launchMessagePanel(mode, msg) {
  * Setup the application on load
  */
 function setup() {
-    //album list
-    $('album-save').addEvent('click', saveChanges, false);
 
     $A($('album-list').childNodes).each( function (elem) { 
-        if(elem.nodeType == Node.ELEMENT_NODE)
+        if(elem.nodeType == Node.ELEMENT_NODE) {
             $(elem).addEvent('click', launchEditPanel, false);
         }
-    );
-
+    });
+    
+    //album list
+    $("album-edit-form").addEvent('submit', saveChanges, false);
     //password
-    $("password-change-button").addEvent('click', changePassword, false);
-    $("password-change-button").addEvent('submit', changePassword, false);
+    $("password-change-form").addEvent('submit', changePassword, false);
+    
 }
 
 
@@ -139,7 +138,8 @@ function setup() {
 /*
  * Send changes to server
 */
-function saveChanges() {
+function saveChanges(evt) {
+    evt.preventDefault();
     //transmit changes
     //Ajax.Request(URL, {
     //    parameters:{
@@ -164,14 +164,13 @@ function saveChanges() {
 /*
  * Change the password
 */
-function changePassword() {
-    console.log("Called");
+function changePassword(evt) {
+    evt.preventDefault();
     //check if new password and confirm match
     pass = $("password-input").value;
     confirm = $("password-confirm-input").value;
 
     if(pass == "") {
-        console.log("empty");
         launchMessagePanel("error", "The new password field is empty");
         $("password-input").focus();
         return;
