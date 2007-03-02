@@ -34,7 +34,7 @@ Settings
 <h2 id="album-title">Edit album</h2>
 
 <!--Album stats -->
-<form id="album-edit-form">
+<form id="album-edit-form" action="">
 <div>
 <label for="album-name">Name:</label> <input id="album-name" value="Name" />
 </div>
@@ -52,7 +52,7 @@ Settings
 </div>
 
 <div>
-<input type="button" value="Save changes" id="album-save" />
+<input type="submit" value="Save changes" id="album-save" />
 </div>
 
 <div style="border-top:inset 1px #000;margin-top:50px;">
@@ -84,8 +84,8 @@ Settings
 
 <h3 id="password-header">Change password</h3>
 <div id="password-div">
+<form action="" id="password-change-form">
 <div>
-<form action="#">
 <label for="password-input">New Password:</label><input id="password-input" type="password"/>
 </div>
 <div>
