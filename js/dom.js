@@ -167,11 +167,11 @@ Object.extend(CustomElement.prototype, {
     removeEvent:function(type, callback, useCapture) {
         //try W3C
         if(window.addEventListener) {
-            window.removeEventListener(type, callback, useCapture);
+            this.removeEventListener(type, callback, useCapture);
         }
         //else MS
         else {
-            window.detachEvent('on'+type, callback);
+            this.detachEvent('on'+type, callback);
         }
     } 
 });
