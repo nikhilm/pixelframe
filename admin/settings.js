@@ -33,6 +33,9 @@ URL = "index.php"
 /*********************************************
  * UI RELATED FUNCTIONS
 *********************************************/
+function _restoreSize(elem, w, h) {
+    $(elem).setStyle( { width:w+"px", height:h+"px" });
+}
 
 /*
  *Adds the cancel button to elem
@@ -101,13 +104,22 @@ function launchMessagePanel(mode, msg) {
     panel = $(mode+"-panel");
     if(!panel) alert("Invalid mode");
     
+    
     msgDiv = document.createElement('div');
     text = document.createTextNode(msg);
     msgDiv.appendChild(text);
     panel.replaceChild(msgDiv, panel.lastChild);
     showPanel(panel);
+    
+    //save size
+    w = panel.getDimensions().width;
+    h = panel.getDimensions().height;
     setTimeout(function () {
-        new Effects.BlindUp(panel, {restoreSize:true, duration:arguments[2]||1000});
+        new Effects.BlindUp(panel, {
+            onComplete:function() { _restoreSize(this, w, h); },
+            duration:arguments[2]||1000
+        });
+        
         setTimeout(clearPanel, arguments[2]||1000);
     }, arguments[2]||1000);
 }
