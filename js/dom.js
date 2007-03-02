@@ -153,14 +153,14 @@ Object.extend(CustomElement.prototype, {
     },
     
     addEvent:function(type, callback, useCapture) {
-        Event.push([this, type, callback, useCapture]);
+        //Event.push([this, type, callback, useCapture]);
         //try W3C
         if(window.addEventListener) {
-            window.addEventListener(type, callback, useCapture);
+            this.addEventListener(type, callback, useCapture);
         }
         //else MS
         else {
-            window.attachEvent(type, callback);
+            this.attachEvent(type, callback);
         }
     },
 

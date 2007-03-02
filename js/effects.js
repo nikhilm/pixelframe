@@ -161,15 +161,6 @@ Object.extend(Object.extend(Effects.Width.prototype, new Effects.Base()), {
         this.element = $(el);
         this.setOptions(arguments[1]); 
         this.element.setStyle({overflow:'hidden'});       
-        
-        if(this.options.restoreSize) {
-            w = this.element.getDimensions().width;
-            h = this.element.getDimensions().height;        
-            //lets not interfere with onComplete
-            elem = this.element;
-            setTimeout(function() { _restoreSize(elem, w, h); }, this.options.duration);
-        }
-
 
         this.activate(parseInt((this.element.getStyle('width')||this.element.offsetWidth)), this.options.width);
     },    
@@ -192,16 +183,6 @@ Object.extend(Object.extend(Effects.Height.prototype, new Effects.Base()), {
         this.element = $(el);
         this.setOptions(arguments[1]);
         this.element.setStyle({overflow:'hidden'});
-
-        if(this.options.restoreSize) {
-            w = this.element.getDimensions().width;
-            h = this.element.getDimensions().height;        
-            this.options.onComplete = function() {
-                this.options.onComplete();
-                _restoreSize(this, w, h);
-            }
-        }
-
 
         this.activate(parseInt((this.element.getStyle('height')||this.element.offsetHeight)), this.options.height);
     },
