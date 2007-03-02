@@ -110,6 +110,7 @@ function launchMessagePanel(mode, msg) {
     msgDiv.appendChild(text);
     panel.replaceChild(msgDiv, panel.lastChild);
     showPanel(panel);
+    window.location = "#";
     
     //save size
     w = panel.getDimensions().width;
