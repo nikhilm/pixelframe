@@ -110,7 +110,7 @@ function launchMessagePanel(mode, msg) {
     msgDiv.appendChild(text);
     panel.replaceChild(msgDiv, panel.lastChild);
     showPanel(panel);
-    window.location = "#";
+    window.location = "#";//move focus to top
     
     //save size
     w = panel.getDimensions().width;
@@ -124,6 +124,9 @@ function launchMessagePanel(mode, msg) {
         setTimeout(clearPanel, arguments[2]||1000);
     }, arguments[2]||1000);
 }
+
+function success(msg) { launchMessagePanel("success", msg); }
+function error(msg) { launchMessagePanel("error", msg); }
 
 /*
  * Setup the application on load
@@ -161,17 +164,17 @@ function saveChanges(evt) {
     //        etc
     //    },
     //    onSuccess: function(req) {
-    //        launchMessagePanel("success", req.status);
+    //        success( req.status);
     //        refreshAlbums();
     //    },
     //    onFailure: function(req) {
-    //        launchMessagePanel("error", req.status);
+    //        error( req.status);
     //    }
     //});
 
     //Set onSuccess to launch success panel with message passed by server and refresh the album list
     //onFailure to launch error panel
-    launchMessagePanel("success", "Settings saved");
+    success( "Settings saved");
 }
 
 /*
@@ -184,16 +187,17 @@ function changePassword(evt) {
     confirm = $("password-confirm-input").value;
 
     if(pass == "") {
-        launchMessagePanel("error", "The new password field is empty");
+        error( "The new password field is empty");
         $("password-input").focus();
         return;
     }
 
     if(pass != confirm) {
-        launchMessagePanel("error", "New password and confirmation do not match");
+        error( "New password and confirmation do not match");
         $("password-input").focus();
         return;
     }
+    background:#eee;
 
     //Ajax.Request(URL, {
     //    parameters: {
@@ -201,11 +205,11 @@ function changePassword(evt) {
     //        newpassword:pass
     //    },
     //    onSuccess: function(req) {
-    //        launchMessagePanel("success", req.status);
+    //        success( req.status);
     //    },
     //    onFailure: function(req) {
-    //        launchMessagePanel("error", req.status);
+    //        error( req.status);
     //    }
     //});
-    launchMessagePanel("success", "Password successfully changed");
+    success( "Password successfully changed");
 }
