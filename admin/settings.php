@@ -91,10 +91,7 @@ Settings
 <div id="add-album-div">
 <a href="" id="add-album-link">Add an Album</a>
 </div>
-
-OR
-
-<p>Select an Album below to change its settings:</p>
+<h4>Select an Album below to change its settings:</h4>
 <!--= getFormattedAlbumList(); -->
 <ul id="album-list">
         <li>Album 1</li>

@@ -71,6 +71,7 @@ function showPanel(elem) {
     $('panel').style.visibility = "visible";
     $(elem).style.display = "inherit";
     $(elem).style.visibility = "visible";
+    window.location="#";
 }
     
 /**
@@ -153,6 +154,8 @@ function setup() {
     $("add-album-link").addEvent('click', launchAddAlbumPanel, false);
     //album list
     $("album-edit-form").addEvent('submit', saveChanges, false);
+    //edit panel
+    //$("album-delete").addEvent('click', deleteAlbum, false);
     //password
     $("password-change-form").addEvent('submit', changePassword, false);
     
