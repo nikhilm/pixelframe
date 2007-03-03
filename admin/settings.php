@@ -70,7 +70,15 @@ Settings
 <input type="button" value="Cancel" id="cancel-button" />
 </div>
 
+<!---Albums-->
 <h3 id="album-header">Albums</h3>
+
+<div id="add-album-div">
+<a href="" >Add an Album</a>
+</div>
+
+OR
+
 <p>Select an Album below to change its settings:</p>
 <!--= getFormattedAlbumList(); -->
 <ul id="album-list">

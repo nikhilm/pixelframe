@@ -53,6 +53,20 @@ div#content h3 {
 }
 
 /*==Album list styles==*/
+div#add-album-div {
+    font-size:20px;
+    height:46px;
+    width:30%;
+    padding:15px 0;
+}
+div#add-album-div a {    
+    text-decoration:none;    
+    color:#999;
+    background:url(../images/add_album.png) center left no-repeat;
+    padding:0 0 0 40px;
+}
+
+
 ul#album-list {
     font-size:20px;
     border-top:solid 1px #000;
