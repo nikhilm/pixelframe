@@ -197,7 +197,6 @@ function changePassword(evt) {
         $("password-input").focus();
         return;
     }
-    background:#eee;
 
     //Ajax.Request(URL, {
     //    parameters: {
@@ -212,4 +211,23 @@ function changePassword(evt) {
     //    }
     //});
     success( "Password successfully changed");
+}
+
+function addAlbum(evt) {
+    evt.preventDefault();
+//     Ajax.Request(URL, {
+//         parameters: {
+//             action:"addalbum",
+//             name:/* TODO */,
+//             location:/* TODO */
+//         },
+//         onSuccess: function(req) {
+//             success( req.status);
+//         },
+//         onFailure: function(req) {
+//             luanchMessagePanel("error", req.status);
+//         }
+//     });
+//     
+    success("Album added");
 }
