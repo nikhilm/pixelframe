@@ -30,6 +30,21 @@ Settings
 <div id="error-panel">
 <h2>Error!</h2>
 </div>
+
+<div id="add-album-panel">
+<h3>Add Album</h3>
+<form id="album-add-form" action="">
+<div>
+<label for="album-add-name">Name</label><input id="album-add-name" />
+</div>
+<div>
+<label for="album-add-location">Location</label><input id="album-add-location" />
+</div>
+
+<input type="submit" id="album-add-button" value="Add Album" />
+</form>
+</div>
+
 <div id="edit-panel">
 <h2 id="album-title">Edit album</h2>
 
@@ -74,7 +89,7 @@ Settings
 <h3 id="album-header">Albums</h3>
 
 <div id="add-album-div">
-<a href="" >Add an Album</a>
+<a href="" id="add-album-link">Add an Album</a>
 </div>
 
 OR

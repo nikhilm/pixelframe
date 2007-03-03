@@ -52,6 +52,18 @@ div#content h3 {
     margin-top:1%;
 }
 
+input {
+    border:inset 2px #999;
+}
+
+input[type=submit] {
+    border:outset 2px #eee;
+}
+
+input[type=button] {
+    border:outset 2px #eee;
+}
+
 /*==Album list styles==*/
 div#add-album-div {
     font-size:20px;
@@ -61,11 +73,33 @@ div#add-album-div {
 }
 div#add-album-div a {    
     text-decoration:none;    
-    color:#999;
+    color:#888;
     background:url(../images/add_album.png) center left no-repeat;
     padding:0 0 0 40px;
 }
 
+/*-- Add album panel --*/
+div#add-album-panel {
+    background:#EFFFEB;
+    border:solid 1px #6AB450;
+    padding-bottom:20px;
+}
+
+div#add-album-panel div {
+    padding:10px 0 ;
+    width:50%;
+}
+
+div#add-album-panel input {
+    margin-top:5%;
+    margin-left:3%;
+}
+
+input#album-add-button {
+    margin-left:3%;
+}
+
+/*--Album list--*/
 
 ul#album-list {
     font-size:20px;
@@ -97,7 +131,7 @@ div#panel div {
     padding:0 0 15px 15px;
 }
 
-div#panel h2 {
+div#panel h2, div#panel h3 {
     font-size:20px;
     border-bottom:solid 1px #000;
     padding:10px;
@@ -144,7 +178,6 @@ div#content h3#password-header {
 div#password-div input {
     margin-top:5%;
     margin-left:3%;
-    background:#EEE;
 }
 
 div #password-div input#password-change-button {

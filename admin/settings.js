@@ -91,6 +91,14 @@ function launchEditPanel(evt) {
     new Effects.BlindDown('edit-panel');
 }
 
+function launchAddAlbumPanel(evt) {
+    evt.preventDefault();
+    clearPanel();
+    addCancelButton('add-album-panel');
+    showPanel('add-album-panel');
+    new Effects.BlindDown('add-album-panel');
+}
+
 /**
 * Launch the success or error panels with a message
 *
@@ -139,6 +147,10 @@ function setup() {
         }
     });
     
+    
+    //add album
+    $("album-add-form").addEvent('submit', addAlbum, false);
+    $("add-album-link").addEvent('click', launchAddAlbumPanel, false);
     //album list
     $("album-edit-form").addEvent('submit', saveChanges, false);
     //password
