@@ -6,17 +6,17 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <title>Pixelframe: Settings</title>
 <link rel="stylesheet" type="text/css" href="style.css" />
-<script language="javascript" src="../js/base.js" />
-<script language="javascript" src="../js/dom.js" />
-<script language="javascript" src="../js/extension.js" />
-<script language="javascript" src="../js/effects.js" />
-<script language="javascript" src="settings.js" />
+<script language="javascript" src="../js/base.js" type="text/javascript" />
+<script language="javascript" src="../js/dom.js" type="text/javascript" />
+<script language="javascript" src="../js/extension.js" type="text/javascript" />
+<script language="javascript" src="../js/effects.js" type="text/javascript" />
+<script language="javascript" src="settings.js" type="text/javascript" />
 </head>
 <body onload="setup()">
 
 <div id="wrapper">
 <div id="header">
-<img src="../logo_icon.png" />
+<img src="../logo_icon.png" alt="Pixelframe Logo"/>
 Settings
 </div>
 
@@ -32,7 +32,6 @@ Settings
 </div>
 
 <div id="add-album-panel">
-<h3>Add Album</h3>
 <form id="album-add-form" action="">
 <div>
 <label for="album-add-name">Name</label><input id="album-add-name" />
@@ -84,6 +83,9 @@ Settings
 <!--The cancel button used by all panels-->
 <input type="button" value="Cancel" id="cancel-button" />
 </div>
+
+
+
 
 <!---Albums-->
 <h3 id="album-header">Albums</h3>
