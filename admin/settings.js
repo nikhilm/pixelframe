@@ -90,6 +90,8 @@ function launchEditPanel(evt) {
     
     showPanel('edit-panel');
     new Effects.BlindDown('edit-panel');
+    
+    $('album-delete').addEvent('click', deleteAlbum, false);
 }
 
 function launchAddAlbumPanel(evt) {
@@ -98,6 +100,7 @@ function launchAddAlbumPanel(evt) {
     addCancelButton('add-album-panel');
     showPanel('add-album-panel');
     new Effects.BlindDown('add-album-panel');
+    $('album-add-name').focus();
 }
 
 /**
@@ -245,4 +248,22 @@ function addAlbum(evt) {
 //     });
 //     
     success("Album added");
+}
+
+function deleteAlbum(evt) {
+    var deleteIt = confirm("Are you sure you want to delete the album? This action is irreversible!");
+    if(!deleteIt) return;
+
+    evt.preventDefault();
+//     Ajax.Request(URL, {
+//         parameters: {
+//             action:"deletealbum",
+//             name:/* TODO */,
+//             location:/* TODO */
+//         },
+//         onSuccess: function(req) { success(req.status); },
+//         onFailure: function(req) { error(req.status); }
+//     });
+    success("Album deleted");
+    $('album-list').getElementsByTagName('li')[0].remove();
 }
