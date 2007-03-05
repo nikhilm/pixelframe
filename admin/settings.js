@@ -248,6 +248,11 @@ function addAlbum(evt) {
 //     });
 //     
     success("Album added");
+    var albumName = $('album-add-name').value;
+    var li = document.createElement('li');
+    li.appendChild(document.createTextNode(albumName));
+    $('album-list').appendChild(li);
+    $('album-add-form').reset();
 }
 
 function deleteAlbum(evt) {
