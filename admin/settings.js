@@ -84,8 +84,8 @@ function launchEditPanel(evt) {
     
     addCancelButton('edit-panel');
     
-    var heading = $('album-title').firstChild;
-    heading.nodeValue = evt.target.childNodes[0].nodeValue;
+    var heading = $('edit-panel').getElementsByTagName('h2')[0];
+    heading.childNodes[0].nodeValue = "Edit "+evt.target.childNodes[0].nodeValue;
     
     
     showPanel('edit-panel');
@@ -99,7 +99,7 @@ function launchAddAlbumPanel(evt) {
     clearPanel();
     addCancelButton('add-album-panel');
     showPanel('add-album-panel');
-    new Effects.BlindDown('add-album-panel');
+    //new Effects.BlindDown('add-album-panel');
     $('album-add-name').focus();
 }
 

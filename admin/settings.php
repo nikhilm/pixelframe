@@ -32,6 +32,7 @@ Settings
 </div>
 
 <div id="add-album-panel">
+<h2>Add Album</h2>
 <form id="album-add-form" action="">
 <div>
 <label for="album-add-name">Name</label><input id="album-add-name" />
@@ -45,7 +46,7 @@ Settings
 </div>
 
 <div id="edit-panel">
-<h2 id="album-title">Edit album</h2>
+<h2>Edit album</h2>
 
 <!--Album stats -->
 <form id="album-edit-form" action="">
@@ -70,7 +71,6 @@ Settings
 </div>
 
 <div style="border-top:inset 1px #000;margin-top:50px;">
-<!--Delete-->
 <label for="album-delete">Delete this Album</label>
 <input id="album-delete" type="button" value="Delete!" />
 </div>
