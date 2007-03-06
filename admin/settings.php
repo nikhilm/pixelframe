@@ -33,6 +33,7 @@ Settings
 
 <div id="add-album-panel">
 <h2>Add Album</h2>
+
 <form id="album-add-form" action="">
 <div>
 <label for="album-add-name">Name</label><input id="album-add-name" />

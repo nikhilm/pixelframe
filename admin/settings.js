@@ -99,7 +99,10 @@ function launchAddAlbumPanel(evt) {
     clearPanel();
     addCancelButton('add-album-panel');
     showPanel('add-album-panel');
-    //new Effects.BlindDown('add-album-panel');
+    new Effects.BlindDown('add-album-panel', {duration:200,onComplete:function() {
+        //solves a problem with showing the title
+        $('add-album-panel').setStyle({overflow: ""});
+    }});
     $('album-add-name').focus();
 }
 
