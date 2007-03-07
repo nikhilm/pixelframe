@@ -36,7 +36,8 @@ class ConfigReader {
      */
     function __construct($filename) {
         if(!$dom = domxml_open_file($filename)) {
-            die "Could not open file $filename";
+            print("Could not open file $filename");
+            exit();
         }
     }
     
@@ -59,7 +60,7 @@ class ConfigReader {
     function get($node) {
         $searchpath = explode('/', $node);
         
-        $target = $dom->document_element();
+        $target = $dom;
         foreach($searchpath as $elem) {
             if($target->get_elements_by_tagname($elem)) {
                 $target = $elem[0];
