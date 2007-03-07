@@ -35,7 +35,8 @@ class ConfigReader {
      * @param $filename string The file to parse
      */
     function __construct($filename) {
-        if(!$dom = domxml_open_file($filename)) {
+        $dom = new DomDocument;
+        if(!$dom->load($filename)) {
             print("Could not open file $filename");
             exit();
         }
