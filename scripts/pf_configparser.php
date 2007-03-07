@@ -35,8 +35,8 @@ class ConfigReader {
      * @param $filename string The file to parse
      */
     function __construct($filename) {
-        $dom = new DomDocument;
-        if(!$dom->load($filename)) {
+        $this->dom = new DomDocument;
+        if(!$this->dom->load($filename)) {
             print("Could not open file $filename");
             exit();
         }
@@ -58,21 +58,25 @@ class ConfigReader {
      * @param $node string The node to fetch data for. Node can be nested with nodes seperated by '/'
      * @returns Array The array containing the data as described above
     */
-    function get($node) {
+    function get($node) {    
         $searchpath = explode('/', $node);
         
-        $target = $dom;
+        $target = $this->dom;
         foreach($searchpath as $elem) {
-            if($target->get_elements_by_tagname($elem)) {
-                $target = $elem[0];
+            if($target = $target->getElementsByTagname($elem)) {
+                $target = $target->item(0);
+            }
+            else {
+                print("No such node $searchpath");
+                exit();
             }
         }
         
         $ret = array();
         $ret["attributes"] = array();
-        $ret["data"] = $target->get_content();
+        $ret["data"] = $target->textContent;
         
-        foreach($target->attributes() as $attr) {
+        foreach($target as $attr) {
             $ret["attributes"][$attr->name()] = $attr->value();
         }
         
