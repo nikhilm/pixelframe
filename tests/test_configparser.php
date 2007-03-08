@@ -5,6 +5,7 @@
 include("../scripts/pf_configparser.php");
 
 //try read
-$rd = ConfigReader("test_config.xml");
-print_r($rd.get('settings/albums/album'));
+$rd = new ConfigReader("test_config.xml");
+$dat = $rd->get('settings/albums/album');
+print_r($dat['attributes']);
 ?>
