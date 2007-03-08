@@ -42,6 +42,33 @@ class ConfigReader {
         }
     }
     
+    private function getNode($path) {
+        $searchpath = explode('/', $path);
+        $target = $this->dom;
+        foreach($searchpath as $elem) {
+            if($target = $target->getElementsByTagname($elem)) {
+                $target = $target->item(0);
+            }
+            else {
+                print("No such node $searchpath");
+                exit();
+            }
+        }
+        return $target;
+    }
+    
+    private function getNodeInformation($target) {
+        $ret = array();
+        $ret["attributes"] = array();
+        $ret["data"] = $target->textContent;
+        
+        $i = 0;
+        while(($attribute = $target->attributes->item($i++)))
+            $ret['attributes'][$attribute->name] = $attribute->value;
+        
+        return $ret;
+    }
+    
     /**
      * Returns an associative array containing the node attributes and data
      * In case multiple nodes of the same name exist only the first one is returned
@@ -59,27 +86,30 @@ class ConfigReader {
      * @returns Array The array containing the data as described above
     */
     function get($node) {    
-        $searchpath = explode('/', $node);
+        $target = $this->getNode($node);
         
-        $target = $this->dom;
-        foreach($searchpath as $elem) {
-            if($target = $target->getElementsByTagname($elem)) {
-                $target = $target->item(0);
-            }
-            else {
-                print("No such node $searchpath");
-                exit();
-            }
-        }
-        
+        return $this->getNodeInformation($target);
+    }
+    
+    /**
+     * Returns an array of children of the node with each element being a sub array
+     * in the form returned by get.
+     * @param $node string The node whose children should be returned
+     * @returns Array the array of nodes
+    */
+    function getChildren($node) {
         $ret = array();
-        $ret["attributes"] = array();
-        $ret["data"] = $target->textContent;
+        $target = $this->getNode($node);
         
-        foreach($target as $attr) {
-            $ret["attributes"][$attr->name()] = $attr->value();
+        $i = 0;
+        while(($child = $target->childNodes->item($i++))) {
+            if($child->nodeType == XML_ELEMENT_NODE) {
+                $ret[] = $this->getNodeInformation($child);
+            }
         }
-        
+            
         return $ret;
     }
+    
+    
 }
