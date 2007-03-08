@@ -36,7 +36,7 @@ class ConfigReader {
      */
     function __construct($filename) {
         $this->dom = new DomDocument;
-        if(!$this->dom->load($filename)) {
+        if(!@$this->dom->load($filename)) {
             print("Could not open file $filename");
             exit();
         }
@@ -113,3 +113,101 @@ class ConfigReader {
     
     
 }
+
+/**
+ * Class ConfigWriter
+ * Allows creation and editing of configuration files
+ * Remember to call close to save changes
+ *
+ * @author Nikhil Marathe
+*/
+class ConfigWriter {
+    private $dom = NULL;
+    private $filename = "";
+    
+    /**
+     * Create/Edit a configuration file
+     * @param $filename String the file edit
+    */
+    function __construct($filename) {
+        $this->filename = $filename;
+        //try opening otherwise we will create new
+        $this->dom = new DOMDocument;
+        if(!@$this->dom->load($filename))
+            $this->dom = DOMImplementation::createDocument();
+        
+        $this->dom->formatOutput = TRUE;
+    }
+    
+    /*
+     * Takes a / seperated string and adds nodes as necessary ONLY till the second-last node.
+     * Returns the second last node
+    */
+    function ensureNodes($path) {
+        $nodes = explode('/', $path);
+        array_pop($nodes);
+        $target = $this->dom;
+        foreach($nodes as $elem) {
+            print_r($target);
+            //if $elem exists then set target to elem
+            if($target->getElementsByTagName($elem)->length == 0) {
+                $target->appendChild($this->dom->createElement($elem));
+            }            
+            $target = $target->getElementsByTagName($elem)->item(0);
+        }
+        return $target;
+    }
+    
+    /**
+     * Adds an option to the file with data data
+     * @param $name String The name of the option
+     * @param $data String the data
+    */
+    function add($name, $data) {
+        $parent = $this->ensureNodes($name);
+        $n = array_pop(explode('/', $name));
+        
+        $node = $this->dom->createElement($n);
+        $node->appendChild($this->dom->createTextNode($data));
+        
+        $parent->appendChild($node);
+        return $node;
+    }
+    
+    /**
+     * Adds an option alongwith attributes
+     * @param $attrs Array array of attributes in name=>value pairs
+    */
+    function addWithAttributes($name, $attrs, $data) {
+        print($data);
+        $n = $this->add($name, $data);
+        foreach($attrs as $name=>$value)
+            $n->setAttribute($name, $value);
+        return $n;
+    }
+    
+    /**
+     * Remove option
+    */
+    function remove($name) {
+        $path = explode('/', $name);
+        $node = array_pop($path);
+        $target = $this->dom;
+        foreach($path as $elem) {
+            if($target->getElementsByTagName($elem)->length == 0)
+                return;
+            $target = $target->getElementsByTagName($elem)->item(0);
+        }
+        print("Trying to remove $node");
+        return @$target->removeChild(@$target->getElementsByTagName($node)->item(0));
+    }
+    
+    /**
+     * Saves and closes the file
+    */
+    function close() {
+        if(!$this->dom->save($this->filename))
+            print("Error");
+    }
+}
+            
