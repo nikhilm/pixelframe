@@ -148,7 +148,6 @@ class ConfigWriter {
         array_pop($nodes);
         $target = $this->dom;
         foreach($nodes as $elem) {
-            print_r($target);
             //if $elem exists then set target to elem
             if($target->getElementsByTagName($elem)->length == 0) {
                 $target->appendChild($this->dom->createElement($elem));
@@ -197,7 +196,6 @@ class ConfigWriter {
      * @param $attrs Array array of attributes in name=>value pairs
     */
     function addWithAttributes($name, $attrs, $data) {
-        print($data);
         $n = $this->add($name, $data);
         foreach($attrs as $name=>$value)
             $n->setAttribute($name, $value);
