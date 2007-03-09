@@ -23,6 +23,7 @@
 
 define("PF_VERSION", 0.1);
 define("PF_NAME", "PixelFrame");
+define("PF_DEFAULT_PASSWORD", strtolower(PF_NAME));
 define("PF_INSTALL_DIR", realpath('../').'/');
 define("PF_CONFIG_FILE", PF_INSTALL_DIR."config.xml");
 define("PF_SCRIPTS_DIR", PF_INSTALL_DIR."scripts/");
