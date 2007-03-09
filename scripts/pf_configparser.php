@@ -223,8 +223,8 @@ class ConfigWriter {
      * Saves and closes the file
     */
     function close() {
-        if(!$this->dom->save($this->filename))
-            print("Error");
+        if(!@$this->dom->save($this->filename))
+            return FALSE;
     }
 }
             
