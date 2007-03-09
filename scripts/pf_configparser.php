@@ -160,17 +160,35 @@ class ConfigWriter {
     
     /**
      * Adds an option to the file with data data
+     * Note: the replace parameter will only check if the node name is the same
+     *
      * @param $name String The name of the option
      * @param $data String the data
+     * @param $replace Boolean Replaces an already existing node instead of appending
     */
-    function add($name, $data) {
+    function add($name, $data, $replace=FALSE) {
         $parent = $this->ensureNodes($name);
         $n = array_pop(explode('/', $name));
         
         $node = $this->dom->createElement($n);
         $node->appendChild($this->dom->createTextNode($data));
         
-        $parent->appendChild($node);
+        
+        if($replace) {
+            $nodeToReplace = NULL;
+            $i = 0;
+            $child = NULL;
+            while(($child = $parent->childNodes->item($i++))) {
+                if($node->nodeName == $child->nodeName) {
+                    $nodeToReplace = $child;
+                    break;
+                }
+            }
+            $parent->replaceChild($node, $nodeToReplace);
+        }
+        else {        
+            $parent->appendChild($node);
+        }
         return $node;
     }
     
@@ -198,7 +216,6 @@ class ConfigWriter {
                 return;
             $target = $target->getElementsByTagName($elem)->item(0);
         }
-        print("Trying to remove $node");
         return @$target->removeChild(@$target->getElementsByTagName($node)->item(0));
     }
     
