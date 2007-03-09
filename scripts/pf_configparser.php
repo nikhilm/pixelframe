@@ -64,7 +64,8 @@ class ConfigReader {
         
         $i = 0;
         while(($attribute = $target->attributes->item($i++)))
-            $ret['attributes'][$attribute->name] = $attribute->value;
+            $ret['attributes'][$attribut
+            print_r($target);e->name] = $attribute->value;
         
         return $ret;
     }
