@@ -225,6 +225,7 @@ class ConfigWriter {
     function close() {
         if(!@$this->dom->save($this->filename))
             return FALSE;
+        return TRUE;
     }
 }
             
