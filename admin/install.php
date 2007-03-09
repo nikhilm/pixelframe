@@ -33,15 +33,17 @@ else
     error("Could not write to ".PF_INSTALL_DIR);
 
 //generate default stuff if needed
-if(file_exists(PF_CONFIG_FILE))
+if(file_exists(PF_CONFIG_FILE)) {
     success(GOOD_TO_GO);
+}
 else {    
     $conf = new ConfigWriter(PF_CONFIG_FILE);
-    $conf->add("settings/password", PF_DEFAULT_PASSWORD);
+    $conf->add("settings/password", md5(PF_DEFAULT_PASSWORD));
     if(!$conf->close()) {
         error("Could not write to file ".PF_CONFIG_FILE);
     }
     else {
+        success("Wrote ".PF_NAME." settings.");
         success(GOOD_TO_GO);
     }
 }
