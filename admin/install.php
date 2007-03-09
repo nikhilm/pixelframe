@@ -14,6 +14,11 @@ Install
 <div class="message">
 <?php
 
+include("../scripts/pf_constants.php");
+include(PF_SCRIPTS_DIR."pf_configparser.php");
+
+define("GOOD_TO_GO", PF_NAME." is all set to go. To add albums or change settings go to <a href=\"settings.php\">settings.php</a>\n");
+
 function success($msg) {
     print("<p class=\"success\">$msg</p>\n");
 }
@@ -21,13 +26,25 @@ function error($msg) {
     print("<p class=\"error\">$msg</p>\n");
 }
 
-define("DIR", '/home/httpd/html');
-if(is_writable(DIR))
-    success(realpath(DIR)." is writeable");
-else
-    error("Could not write to ".realpath(DIR));
 
-//generate default stuff
+if(is_writable(PF_INSTALL_DIR))
+    success(PF_INSTALL_DIR." is writeable");
+else
+    error("Could not write to ".PF_INSTALL_DIR);
+
+//generate default stuff if needed
+if(file_exists(PF_CONFIG_FILE))
+    success(GOOD_TO_GO);
+else {    
+    $conf = new ConfigWriter(PF_CONFIG_FILE);
+    $conf->add("settings/password", PF_DEFAULT_PASSWORD);
+    if(!$conf->close()) {
+        error("Could not write to file ".PF_CONFIG_FILE);
+    }
+    else {
+        success(GOOD_TO_GO);
+    }
+}
 
 ?>
 </div>
