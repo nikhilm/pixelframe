@@ -1,3 +1,6 @@
+<?php
+include("../scripts/pf_constants.php");
+?>
 <!---Add password checking code here -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -12,6 +15,7 @@
 <script language="javascript" src="../js/effects.js" type="text/javascript" />
 <script language="javascript" src="settings.js" type="text/javascript" />
 </head>
+
 <body onload="setup()">
 
 <div id="wrapper">
@@ -21,6 +25,28 @@ Settings
 </div>
 
 <div id="content">
+
+
+
+
+
+<?php
+/*##################################
+###    PASSWORD IS GOOD ############
+##################################*/
+
+//retrieve password from config file
+include(PF_SCRIPTS_DIR."pf_configparser.php");
+
+$cr = new ConfigReader(PF_CONFIG_FILE);
+$pass = $cr->get("settings/password");
+$pass = $pass['data'];
+
+
+/* TODO : perform password checks here
+ This is a fake check */
+if(md5($_POST['pf-password']) == $pass) {
+?>
 
 <!--Control and Information Panels hidden -->
 <div id="panel">
@@ -121,6 +147,37 @@ Settings
 
 
 </div>
+
+
+
+
+
+
+
+
+<?php
+}
+
+/*#################################
+  # OTHERWISE SHOW PASSWORD FORM  #
+  ###############################*/
+else {
+    //if its wrong display that
+    if(isset($_POST['pf-password']))
+        print("<strong style=\"color:red\">The password was wrong. Try again.</strong>\n");
+?>
+
+<h2>Enter password</h2>
+<form action="settings.php" method="post" id="login-password-form">
+<div>
+<label for="pf-password">Password</label><input type="password" id="pf-password" name="pf-password" />
+</div>
+<div>
+<input type="submit" value="Submit">
+</div>
+</form>
+
+<?php } ?>
 </div>
 
 

@@ -168,14 +168,15 @@ div#password-div {
     padding:20px;
 }
 
-div#content h3#password-header {
-    margin-top:100px;
-}
-
 div#password-div input {
     margin-top:5%;
     margin-left:3%;
 }
+
+div#content h3#password-header {
+    margin-top:100px;
+}
+
 
 div #password-div input#password-change-button {
     margin-left:0;
@@ -212,3 +213,11 @@ div#error-panel {
 div#error-panel h2 {
     background:url(../images/error.png) top left no-repeat ;
 }
+
+
+/* -- LOGIN FORM -- */
+form#login-password-form input {
+    margin-top:5%;
+    margin-left:3%;
+}
+
