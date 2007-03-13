@@ -101,7 +101,7 @@ function launchAddAlbumPanel(evt) {
     showPanel('add-album-panel');
     new Effects.BlindDown('add-album-panel', {duration:200,onComplete:function() {
         //solves a problem with showing the title
-        $('add-album-panel').setStyle({overflow: ""});
+        $('add-album-panel').setStyle({overflow: "inherit"});
     }});
     $('album-add-name').focus();
 }
