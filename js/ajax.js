@@ -6,6 +6,7 @@
 /* Adds a class for Ajax requests */
 var Ajax = Class.create();
 Object.extend(Ajax.prototype, {
+    requestObject:null,
     /**
      * Initialize creates an ajax and submits the request to the server
      * It accepts the following arguments
@@ -19,6 +20,8 @@ Object.extend(Ajax.prototype, {
      *              onFailure: Function
      *              payload: The payload data in case of post
      *              contentType: The content type for post data. (Default:application/x-www-form-urlencoded)
+     *              async: true/false (Default:true)
+     *              immediate: true/false (Default:true)
      *
      * Note: The onSuccess and onFailure functions will be passed the request object as the first arguments
      */
@@ -30,10 +33,13 @@ Object.extend(Ajax.prototype, {
             method:'get',
             onSuccess:function() {},
             onFailure:function() {},
-            contentType:'application/x-www-form-urlencoded'
+            contentType:'application/x-www-form-urlencoded',
+            payload:null,
+            async:true,
+            immediate:true
         }, extras);
         
-        this.activate();
+        if(this.extras.immediate) this.activate();
     },
     
     _getRequestObject:function() {
@@ -55,7 +61,7 @@ Object.extend(Ajax.prototype, {
         if(req == null)
             alert("Could not create Ajax object");
         
-        return req;
+        this.requestObject = req;
     },
     
     _formatParameters: function() {
@@ -66,5 +72,37 @@ Object.extend(Ajax.prototype, {
     },
     
     activate:function() {
+        if(!this.requestObject) alert("Request object not created");
+        var completeURL = this.URL;
+        if(this.extras.method == 'get') {
+            params = _formatParameters();
+            //prevent caching in IE
+            params += "&random="+Math.random();
+            
+            completeURL += params;
+        }
+        
+        else if(this.extras.method == 'post') {
+            this.requestObject.setRequestHeader('Content-Type', this.extras.contentType);
+        }
+        
+        this.requestObject.open(this.extras.method, completeURL, this.extras.async);
+        
+        this.requestObject.onreadystatechange = this._handleStateChange;
+        
+        this.requestObject.send(this.extras.payload);
+    },
+    
+    _handleStateChange:function() {
+        if(!this.requestObject) alert("Request object not created");
+        
+        if(this.requestObject.readyState == 4) {
+            if(this.requestObject.status == 200) {
+                this.extras.onSuccess(this.requestObject);
+            }
+            else {
+                this.extras.onFailure(this.requestObject);
+            }
+        }
     }
 });
