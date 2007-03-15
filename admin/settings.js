@@ -181,12 +181,13 @@ function setup() {
  * then it displays the contents of the node message
 */
 function displayMessage(doc) {
-    if(doc.getElementsById('status')) {
-        var status = doc.getElementById('status')[0];
-        if(doc.getElementById('message')) {
-            var message = doc.getElementById('message')[0];
-            if('error' == status)   error(message);
-            else if('success' == status)    success(message);
+    var reply = doc.getElementsByTagName('reply')[0];
+    if(reply.getElementsByTagName('status')) {
+        var status = reply.getElementsByTagName('status')[0].firstChild.nodeValue;
+        if(reply.getElementsByTagName('message')) {
+            var message = reply.getElementsByTagName('message')[0].firstChild.nodeValue
+            if(status == 'error') error(message);
+            else if(status == 'success') success(message);
         }
     }
 }
@@ -272,8 +273,6 @@ function addAlbum(evt) {
             }
         }
     );
-
-    success("Album added");
     var albumName = $('album-add-name').value;
     var li = document.createElement('li');
     li.appendChild(document.createTextNode(albumName));
