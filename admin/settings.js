@@ -21,13 +21,13 @@
 */
 
 /*
-* Requires ../js/base.js, ../js/effects.js
+* Requires ../js/base.js, ../js/effects.js, ../js/ajax.js
 */
 
 /********************************************
 * CONSTANTS
 *********************************************/
-URL = "index.php"
+URL = "settings-control.php"
 
 
 /*********************************************
@@ -177,25 +177,42 @@ function setup() {
 *****************************************************/
 
 /*
+ * Accepts an XML document. If it contains a node status('error'/'success')
+ * then it displays the contents of the node message
+*/
+function displayMessage(doc) {
+    if(doc.getElementsById('status')) {
+        var status = doc.getElementById('status')[0];
+        if(doc.getElementById('message')) {
+            var message = doc.getElementById('message')[0];
+            if('error' == status)   error(message);
+            else if('success' == status)    success(message);
+        }
+    }
+}
+
+/*
  * Send changes to server
 */
 function saveChanges(evt) {
     evt.preventDefault();
     //transmit changes
-    //Ajax.Request(URL, {
-    //    parameters:{
-    //        action:"save",
-    //        name:"name",
-    //        etc
-    //    },
-    //    onSuccess: function(req) {
-    //        success( req.status);
-    //        refreshAlbums();
-    //    },
-    //    onFailure: function(req) {
-    //        error( req.status);
-    //    }
-    //});
+    new Ajax(URL, 
+        {
+            action:"save",
+            name:"name"
+        },
+                
+        {
+            onSuccess: function(req) {
+                displayMessage(req.responseXML);
+                refreshAlbums();
+            },
+            onFailure: function(req) {
+                error( req.status);
+            }
+        }
+    );
 
     //Set onSuccess to launch success panel with message passed by server and refresh the album list
     //onFailure to launch error panel
@@ -223,37 +240,39 @@ function changePassword(evt) {
         return;
     }
 
-    //Ajax.Request(URL, {
-    //    parameters: {
-    //        action:"changepassword",
-    //        newpassword:pass
-    //    },
-    //    onSuccess: function(req) {
-    //        success( req.status);
-    //    },
-    //    onFailure: function(req) {
-    //        error( req.status);
-    //    }
-    //});
+    new Ajax(URL, {        
+            action:"changepassword",
+            newpassword:pass
+        },
+        {
+            onSuccess: function(req) {
+                displayMessage(req.responseXML);
+            },
+            onFailure: function(req) {
+                error( req.status);
+            }
+        }
+    );
     success( "Password successfully changed");
 }
 
 function addAlbum(evt) {
     evt.preventDefault();
-//     Ajax.Request(URL, {
-//         parameters: {
-//             action:"addalbum",
-//             name:/* TODO */,
-//             location:/* TODO */
-//         },
-//         onSuccess: function(req) {
-//             success( req.status);
-//         },
-//         onFailure: function(req) {
-//             luanchMessagePanel("error", req.status);
-//         }
-//     });
-//     
+    new Ajax(URL, {
+            action:"addalbum",
+            name:"misc",/* TODO */
+            location:"crap"/* TODO */
+        },
+        {
+            onSuccess: function(req) {
+                displayMessage(req.responseXML);
+            },
+            onFailure: function(req) {
+                luanchMessagePanel("error", req.status);
+            }
+        }
+    );
+
     success("Album added");
     var albumName = $('album-add-name').value;
     var li = document.createElement('li');
@@ -267,15 +286,16 @@ function deleteAlbum(evt) {
     if(!deleteIt) return;
 
     evt.preventDefault();
-//     Ajax.Request(URL, {
-//         parameters: {
-//             action:"deletealbum",
-//             name:/* TODO */,
-//             location:/* TODO */
-//         },
-//         onSuccess: function(req) { success(req.status); },
-//         onFailure: function(req) { error(req.status); }
-//     });
+    new Ajax(URL, {
+            action:"deletealbum",
+            name:"album",/* TODO */,
+            location:"Crap"/* TODO */
+        },
+        {
+            onSuccess: function(req) { displayMessage(req.responseXML); },
+            onFailure: function(req) { error(req.status); }
+        }
+    );
     success("Album deleted");
     $('album-list').getElementsByTagName('li')[0].remove();
 }
