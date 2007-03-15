@@ -53,13 +53,15 @@ function addCancelButton(elem) {
 */
 function clearPanel() {
     panel = $('panel');
-    $A(panel.childNodes).each(function (elem) { 
-        if(elem.nodeType == Node.ELEMENT_NODE) {
-            elem.style.visibility = "hidden";
-            elem.style.display = "none";
+    if(panel.childNodes) {
+        $A(panel.childNodes).each(function (elem) { 
+            if(elem.nodeType == Node.ELEMENT_NODE) {
+                elem.style.visibility = "hidden";
+                elem.style.display = "none";
+            }
         }
+        );
     }
-    );
     panel.style.display = "none";
 }
 
@@ -147,23 +149,25 @@ function error(msg) { launchMessagePanel("error", msg); }
  * Setup the application on load
  */
 function setup() {
-
-    $A($('album-list').childNodes).each( function (elem) { 
-        if(elem.nodeType == Node.ELEMENT_NODE) {
-            $(elem).addEvent('click', launchEditPanel, false);
-        }
-    });
+    if($('album-list').childNodes) {
+        $A($('album-list').childNodes).each( function (elem) { 
+            if(elem.nodeType == Node.ELEMENT_NODE) {
+                $(elem).addEvent('click', launchEditPanel, false);
+            }
+        });
+    }
     
-    
-    //add album
-    $("album-add-form").addEvent('submit', addAlbum, false);
-    $("add-album-link").addEvent('click', launchAddAlbumPanel, false);
-    //album list
-    $("album-edit-form").addEvent('submit', saveChanges, false);
-    //edit panel
-    //$("album-delete").addEvent('click', deleteAlbum, false);
-    //password
-    $("password-change-form").addEvent('submit', changePassword, false);
+    try {
+        //add album
+        $("album-add-form").addEvent('submit', addAlbum, false);
+        $("add-album-link").addEvent('click', launchAddAlbumPanel, false);
+        //album list
+        $("album-edit-form").addEvent('submit', saveChanges, false);
+        //edit panel
+        //$("album-delete").addEvent('click', deleteAlbum, false);
+        //password
+        $("password-change-form").addEvent('submit', changePassword, false);
+    } catch(e) {}
     
 }
 
