@@ -288,7 +288,7 @@ function deleteAlbum(evt) {
     evt.preventDefault();
     new Ajax(URL, {
             action:"deletealbum",
-            name:"album",/* TODO */,
+            name:"album",/* TODO */
             location:"Crap"/* TODO */
         },
         {
