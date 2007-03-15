@@ -1,5 +1,5 @@
 <? /*
-  pf_thumbnail.php - contains functions related to generating thumbnails
+  pf_configparser.php - contains functions related to parsing configuration files
 *
 * Copyright (C)      2007  Nikhil Marathe <nsm.nikhil@gmail.com>
 *               
