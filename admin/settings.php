@@ -13,6 +13,7 @@ include("../scripts/pf_constants.php");
 <script language="javascript" src="../js/dom.js" type="text/javascript" />
 <script language="javascript" src="../js/extension.js" type="text/javascript" />
 <script language="javascript" src="../js/effects.js" type="text/javascript" />
+<script language="javascript" src="../js/ajax.js" type="text/javascript" />
 <script language="javascript" src="settings.js" type="text/javascript" />
 </head>
 
