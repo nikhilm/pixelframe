@@ -20,7 +20,7 @@ include("../scripts/pf_constants.php");
 
 <div id="wrapper">
 <div id="header">
-<img src="../logo_icon.png" alt="Pixelframe Logo"/>
+<img src="../images/logo.png" alt="Pixelframe Logo"/>
 Settings
 </div>
 
