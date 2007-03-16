@@ -14,8 +14,8 @@ Install
 <div class="message">
 <?php
 
-include("../scripts/pf_constants.php");
-include(PF_SCRIPTS_DIR."pf_configparser.php");
+include_once("../scripts/pf_constants.php");
+include_once(PF_SCRIPTS_DIR."pf_configparser.php");
 
 define("GOOD_TO_GO", PF_NAME." is all set to go.  The default password is <strong>".PF_DEFAULT_PASSWORD."</strong> To change password, add albums or change settings go to <a href=\"settings.php\">settings.php</a>\n");
 

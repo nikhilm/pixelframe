@@ -1,5 +1,5 @@
 <?php
-include("../scripts/pf_constants.php");
+include_once("../scripts/pf_constants.php");
 ?>
 <!---Add password checking code here -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
@@ -37,7 +37,7 @@ Settings
 ##################################*/
 
 //retrieve password from config file
-include(PF_SCRIPTS_DIR."pf_configparser.php");
+include_once(PF_SCRIPTS_DIR."pf_configparser.php");
 
 $cr = new ConfigReader(PF_CONFIG_FILE);
 $pass = $cr->get("settings/password");
