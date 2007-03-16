@@ -282,8 +282,8 @@ function addAlbum(evt) {
             method:'post',
             payload:formatParameters( {
                 action:'addalbum',
-                name:'newalbum',
-                location:'/'
+                name:$('album-add-name').value,
+                location:$('album-add-location').value
             })
         }
     );
