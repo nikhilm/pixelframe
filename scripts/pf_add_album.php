@@ -31,10 +31,15 @@ function init($args) {
     $name = $args['name'];
     $location = $args['location'];
     
-    define("ALBUM_DIR", $_SERVER['DOCUMENT_ROOT'].$location);
+    define("ALBUM_DIR", $_SERVER['DOCUMENT_ROOT'].'/'.$location);
+    //check if it exists
+    if(!is_dir(ALBUM_DIR)) {
+        error("It seems like the directory $location does not exist.");
+        return;
+    }
     //check if directory writeable
     if(!is_writeable(ALBUM_DIR)) {
-        error("Could not create album. Could not write to $location. Make sure you entered the correct path");
+        error("Could not create album. Could not write to $location. Make sure you entered the correct path ".ALBUM_DIR);
         return;
     }
     
@@ -50,10 +55,13 @@ function init($args) {
         }
     }
     //generate thumbnails
-    $files = glob("*.jpg *.jpeg *.png");
-    foreach($files as $file) {
-        if(!makeThumbnail($file, PF_THUMBNAIL_DIR.$file)) {
-            error("Could not create thumbnail for image $file");
+    //it seems glob cannot take multiple patterns
+    $pattern = array("*.jpg", "*.jpeg", "*.png");
+    foreach($pattern as $pat) {
+        foreach(glob($pat) as $file) {
+            if(!makeThumbnail($file, PF_THUMBNAIL_DIR.$file)) {
+                error("Could not create thumbnail for image $file");
+            }
         }
     }
     
