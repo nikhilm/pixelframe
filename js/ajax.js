@@ -69,7 +69,7 @@ Object.extend(Ajax.prototype, {
         var formatted = [];
         for(item in this.parameters)
             formatted.push(item + "=" + this.parameters[item]);
-        return escape(formatted.join('&'));
+        return formatted.join('&');
     },
     
     activate:function() {
