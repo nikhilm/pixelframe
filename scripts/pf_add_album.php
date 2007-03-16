@@ -21,6 +21,10 @@
 * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
+include_once("pf_constants.php");
+include_once(PF_SCRIPTS_DIR."pf_thumbnail.php");
+include_once(PF_SCRIPTS_DIR."pf_configparser.php");
+
 // success and error are external functions in ../admin/settings-control.php
 
 function init($args) {
@@ -33,4 +37,33 @@ function init($args) {
         error("Could not create album. Could not write to $location. Make sure you entered the correct path");
         return;
     }
+    
+    //get a list of photos (jpg/png)
+    //generate thumbnails
+    chdir(ALBUM_DIR);
+    
+    //try to make thumbnail directory
+    if(!is_dir(PF_THUMBNAIL_DIR)) {
+        if(!mkdir(PF_THUMBNAIL_DIR)) {
+            error("Could not create thumbnails directory in $location");
+            return;
+        }
+    }
+    //generate thumbnails
+    $files = glob("*.jpg *.jpeg *.png");
+    foreach($files as $file) {
+        if(!makeThumbnail($file, PF_THUMBNAIL_DIR.$file)) {
+            error("Could not create thumbnail for image $file");
+        }
+    }
+    
+    //add album to config file
+    $cp = new ConfigWriter(PF_CONFIG_FILE);
+    $attributes = array( "name" => $name, "location" => $location );
+    $cp->addWithAttributes('settings/albums/album', $attributes, "");
+    if(!$cp->close()) {
+        error("Could not write to configuration file");
+    }
+    
+    success("Successfully created album $name in $location.");
 }
