@@ -198,8 +198,8 @@ function displayMessage(doc) {
 function formatParameters(obj) {
     var formatted = [];
     for(item in obj)
-        formatted.push(item + "=" + obj[item]);
-    return escape(formatted.join('&'));
+        formatted.push(item + "=" + obj[item]);    
+    return formatted.join('&');
 }
 
 /*
