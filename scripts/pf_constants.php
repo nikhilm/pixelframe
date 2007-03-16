@@ -28,4 +28,5 @@ define("PF_INSTALL_DIR", realpath('../').'/');
 define("PF_CONFIG_FILE", PF_INSTALL_DIR."config.xml");
 define("PF_SCRIPTS_DIR", PF_INSTALL_DIR."scripts/");
 define("PF_IMAGES_DIR", PF_INSTALL_DIR."images/");
+define("PF_THUMBNAIL_DIR", "thumbnails/");//relative thumbnail directory
 ?>
