@@ -20,11 +20,17 @@
 * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-header('Content-Type: text/xml');
-print('<?xml version="1.0" encoding="utf-8" ?>');
-print('<reply>');
-print('<status>success</status> ');
-print('<message>Successfully calculated the answer to life the universe and everything</message>');
-print('</reply>');
+include_once('../scripts/pf_constants.php');
 
+
+/*
+ * outputs XML header and stuff before outputting message
+*/
+define("PF_SETTINGS_DOCUMENT_ROOT", "reply");
+function outputXML($message) { 
+    header('Content-Type: text/xml');
+    print('<?xml version="1.0" encoding="utf-8" ?>');
+    print('<'.PF_SETTINGS_DOCUMENT_ROOT.'>');
+    print('</'.PF_SETTINGS_DOCUMENT_ROOT.'>');
+}
 ?>
