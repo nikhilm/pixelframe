@@ -193,25 +193,35 @@ function displayMessage(doc) {
 }
 
 /*
+ * Formats data as a request
+*/
+function formatParameters(obj) {
+    var formatted = [];
+    for(item in obj)
+        formatted.push(item + "=" + obj[item]);
+    return escape(formatted.join('&'));
+}
+
+/*
  * Send changes to server
 */
 function saveChanges(evt) {
     evt.preventDefault();
     //transmit changes
-    new Ajax(URL, 
-        {
-            action:"save",
-            name:"name"
-        },
-                
-        {
+    new Ajax(URL, {}, {
             onSuccess: function(req) {
                 displayMessage(req.responseXML);
                 refreshAlbums();
             },
             onFailure: function(req) {
                 error( req.status);
-            }
+            },
+            
+            method:'post',
+            payload:formatParameters({
+                action:'save',
+                name:'crap'
+            })
         }
     );
 
@@ -241,17 +251,19 @@ function changePassword(evt) {
         return;
     }
 
-    new Ajax(URL, {        
-            action:"changepassword",
-            newpassword:pass
-        },
-        {
+    new Ajax(URL, {}, {
             onSuccess: function(req) {
                 displayMessage(req.responseXML);
             },
             onFailure: function(req) {
                 error( req.status);
-            }
+            },
+            
+            method:'post',
+            payload:formatParameters({
+                action:'save',
+                name:'crap'
+            })
         }
     );
     success( "Password successfully changed");
@@ -259,18 +271,20 @@ function changePassword(evt) {
 
 function addAlbum(evt) {
     evt.preventDefault();
-    new Ajax(URL, {
-            action:"addalbum",
-            name:"misc",/* TODO */
-            location:"crap"/* TODO */
-        },
-        {
+    new Ajax(URL, {}, {
             onSuccess: function(req) {
                 displayMessage(req.responseXML);
             },
             onFailure: function(req) {
                 luanchMessagePanel("error", req.status);
-            }
+            },
+            
+            method:'post',
+            payload:formatParameters( {
+                action:'addalbum',
+                name:'newalbum',
+                location:'/'
+            })
         }
     );
     var albumName = $('album-add-name').value;
@@ -285,14 +299,15 @@ function deleteAlbum(evt) {
     if(!deleteIt) return;
 
     evt.preventDefault();
-    new Ajax(URL, {
-            action:"deletealbum",
-            name:"album",/* TODO */
-            location:"Crap"/* TODO */
-        },
-        {
+    new Ajax(URL, {}, {
             onSuccess: function(req) { displayMessage(req.responseXML); },
-            onFailure: function(req) { error(req.status); }
+            onFailure: function(req) { error(req.status); },
+            method:'post',
+            payload:formatParameters({
+                action:"deletealbum",
+                name:"album",/* TODO */
+                location:"Crap"/* TODO */
+            })
         }
     );
     success("Album deleted");
