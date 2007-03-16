@@ -88,7 +88,7 @@ $DELEGATES = array( "save" => "pf_save_album.php",
                     "addalbum" => "pf_add_album.php",
                     "deletealbum" => "pf_delete_album.php" );
 
-if(array_key_exists($_POST[PF_SETTINGS_ACTION])) {
+if(array_key_exists($_POST[PF_SETTINGS_ACTION], $DELEGATES)) {
     success("Action exists. Associated script is {$DELEGATES[$_POST[PF_SETTINGS_ACTION]]}");
 }
 else {
