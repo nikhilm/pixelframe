@@ -28,6 +28,11 @@ define("PF_STATUS_TAG", "status");
 define("PF_STATUS_SUCCESS", "success");
 define("PF_STATUS_ERROR", "error");
 define("PF_MESSAGE_TAG", "message");
+define("PF_SETTINGS_ACTION", "action"); //the key for the action name in _POST
+
+/*######################
+####   UTILITIES   #####
+######################*/
 
 /*
  * outputs XML header and stuff before outputting message
@@ -61,6 +66,33 @@ function success($message) {
 */
 function error($message) {
     formatMessage(PF_STATUS_ERROR, $message);
+}
+
+/*############################
+####   DELEGATION STUFF   ####
+############################*/
+
+/*
+ * HOW DELEGATION WORKS
+ * --------------------
+ * The DELEGATES array contains a key => value pair with each action
+ * associated with a certain script.
+ * The 'action' element of the _POST array is checked with the DELEGATES array
+ * and the matching script is included. After inclusion the init function is called
+ * with all remaining arguments in the _POST array.
+ * All scripts in the DELEGATES array MUST IMPLEMENT an init method accepting an array
+*/
+
+$DELEGATES = array( "save" => "pf_save_album.php",
+                    "changepassword" => "pf_change_password.php",
+                    "addalbum" => "pf_add_album.php",
+                    "deletealbum" => "pf_delete_album.php" );
+
+if(array_key_exists($_POST[PF_SETTINGS_ACTION])) {
+    success("Action exists. Associated script is {$DELEGATES[$_POST[PF_SETTINGS_ACTION]]}");
+}
+else {
+    error("No such action {$_POST['action']}.");
 }
 
 ?>
