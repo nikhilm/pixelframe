@@ -218,6 +218,9 @@ div#error-panel h2 {
 div#loading-panel {
     text-align:center;
 }
+div#loading-panel img {
+    margin-top:50px;
+}
 
 /* -- LOGIN FORM -- */
 form#login-password-form input {
