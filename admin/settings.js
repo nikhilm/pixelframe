@@ -263,8 +263,8 @@ function changePassword(evt) {
             
             method:'post',
             payload:formatParameters({
-                action:'save',
-                name:'crap'
+                action:'changepassword',
+                newPassword:pass
             })
         }
     );
