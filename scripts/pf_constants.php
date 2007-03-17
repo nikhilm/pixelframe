@@ -25,8 +25,15 @@ define("PF_VERSION", 0.1);
 define("PF_NAME", "PixelFrame");
 define("PF_DEFAULT_PASSWORD", strtolower(PF_NAME));
 define("PF_INSTALL_DIR", realpath('../').'/');
-define("PF_CONFIG_FILE", PF_INSTALL_DIR."config.xml");
-define("PF_SCRIPTS_DIR", PF_INSTALL_DIR."scripts/");
-define("PF_IMAGES_DIR", PF_INSTALL_DIR."images/");
+define("PF_REL_INSTALL_DIR", str_replace($_SERVER['DOCUMENT_ROOT'], "", PF_INSTALL_DIR)); //relative to document root
+//assign both relative and absolute paths
+foreach( array( "_CONFIG_FILE" => "config.xml",
+                "_SCRIPTS_DIR" => "scripts/",
+                "_IMAGES_DIR" => "images/" )
+        as $k=>$v) {
+        define("PF".$k, PF_INSTALL_DIR.$v);
+        define("PF_REL".$k, PF_REL_INSTALL_DIR.$v);
+}
+
 define("PF_THUMBNAIL_DIR", "thumbnails/");//relative thumbnail directory
 ?>
