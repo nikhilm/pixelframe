@@ -57,6 +57,9 @@ if(md5($_POST['pf-password']) == $pass) {
 <div id="error-panel">
 <h2>Error!</h2>
 </div>
+<div id="loading-panel">
+<img src="<?php print(PF_REL_IMAGES_DIR."loading.gif"); ?>" alt="Loading..."></img>
+</div>
 
 <div id="add-album-panel">
 <h2>Add Album</h2>

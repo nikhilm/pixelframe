@@ -144,6 +144,7 @@ function launchMessagePanel(mode, msg) {
 
 function success(msg) { launchMessagePanel("success", msg); }
 function error(msg) { launchMessagePanel("error", msg); }
+function loading() { clearPanel();showPanel($('loading-panel')); }
 
 /*
  * Setup the application on load
@@ -207,6 +208,7 @@ function formatParameters(obj) {
 */
 function saveChanges(evt) {
     evt.preventDefault();
+    loading();
     //transmit changes
     new Ajax(URL, {}, {
             onSuccess: function(req) {
@@ -225,9 +227,6 @@ function saveChanges(evt) {
         }
     );
 
-    //Set onSuccess to launch success panel with message passed by server and refresh the album list
-    //onFailure to launch error panel
-    success( "Settings saved");
 }
 
 /*
@@ -235,6 +234,7 @@ function saveChanges(evt) {
 */
 function changePassword(evt) {
     evt.preventDefault();
+    
     //check if new password and confirm match
     pass = $("password-input").value;
     confirm = $("password-confirm-input").value;
@@ -251,6 +251,8 @@ function changePassword(evt) {
         return;
     }
 
+    loading();
+
     new Ajax(URL, {}, {
             onSuccess: function(req) {
                 displayMessage(req.responseXML);
@@ -266,11 +268,11 @@ function changePassword(evt) {
             })
         }
     );
-    success( "Password successfully changed");
 }
 
 function addAlbum(evt) {
     evt.preventDefault();
+    loading();
     new Ajax(URL, {}, {
             onSuccess: function(req) {
                 displayMessage(req.responseXML);
@@ -299,6 +301,8 @@ function deleteAlbum(evt) {
     if(!deleteIt) return;
 
     evt.preventDefault();
+    
+    loading();
     new Ajax(URL, {}, {
             onSuccess: function(req) { displayMessage(req.responseXML); },
             onFailure: function(req) { error(req.status); },
@@ -310,6 +314,5 @@ function deleteAlbum(evt) {
             })
         }
     );
-    success("Album deleted");
     $('album-list').getElementsByTagName('li')[0].remove();
 }

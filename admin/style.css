@@ -214,6 +214,10 @@ div#error-panel h2 {
     background:url(../images/error.png) top left no-repeat ;
 }
 
+/*--Loading Panel--*/
+div#loading-panel {
+    text-align:center;
+}
 
 /* -- LOGIN FORM -- */
 form#login-password-form input {
