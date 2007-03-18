@@ -309,8 +309,7 @@ function deleteAlbum(evt) {
             method:'post',
             payload:formatParameters({
                 action:"deletealbum",
-                name:"album",/* TODO */
-                location:"Crap"/* TODO */
+                name:$('album-name').value,
             })
         }
     );
