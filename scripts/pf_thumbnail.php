@@ -47,7 +47,7 @@ function makeThumbnail($imageName, $thumbnail, $width=70, $height=70)
     if(!imagecopyresampled($thumb, $image, 0, 0, 0, 0, $width, $height, imagesx($image), imagesy($image))) return false;
 
     $ext = substr($thumbnail, -3);
-    if($ext == "jpg")
+    if($ext == "jpg" || $ext == "jpeg")
     {
         if(!imagejpeg($thumb, $thumbnail)) return false;
     }
