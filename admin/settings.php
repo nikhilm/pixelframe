@@ -66,7 +66,7 @@ if(md5($_POST['pf-password']) == $pass) {
 
 <form id="album-add-form" action="">
 <div>
-<label for="album-add-name">Name</label><input id="album-add-name" readonly/>
+<label for="album-add-name">Name</label><input id="album-add-name" />
 </div>
 <div>
 <label for="album-add-location">Location</label><input id="album-add-location" />
@@ -82,7 +82,7 @@ if(md5($_POST['pf-password']) == $pass) {
 <!--Album stats -->
 <form id="album-edit-form" action="">
 <div>
-<label for="album-name">Name:</label> <input id="album-name" value="Name" />
+<label for="album-name">Name:</label> <input id="album-name" value="Name" readonly/>
 </div>
 
 <div>
