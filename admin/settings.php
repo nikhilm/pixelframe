@@ -66,7 +66,7 @@ if(md5($_POST['pf-password']) == $pass) {
 
 <form id="album-add-form" action="">
 <div>
-<label for="album-add-name">Name</label><input id="album-add-name" />
+<label for="album-add-name">Name</label><input id="album-add-name" readonly/>
 </div>
 <div>
 <label for="album-add-location">Location</label><input id="album-add-location" />
