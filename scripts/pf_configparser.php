@@ -100,7 +100,7 @@ class ConfigReader {
     function getChildren($node) {
         $ret = array();
         $target = $this->getNode($node);
-        
+        if(!$target) return FALSE;
         $i = 0;
         while(($child = $target->childNodes->item($i++))) {
             if($child->nodeType == XML_ELEMENT_NODE) {
@@ -215,6 +215,26 @@ class ConfigWriter {
             $target = $target->getElementsByTagName($elem)->item(0);
         }
         return @$target->removeChild(@$target->getElementsByTagName($node)->item(0));
+    }
+    
+    /**
+     * Accepts a name and gets all tags matching the name and deletes the ones which has $attrName
+     * where the value is equal to $attrValue
+    */
+    function removeWithAttributes($name, $attrName, $attrValue) {
+        $parent = $this->ensureNodes($name);
+        $nodeName = array_pop(explode('/', $name));
+        $matches = @$parent->getElementsByTagName($nodeName);
+        if(!$matches) return FALSE;
+        $i = 0;
+        $node = NULL;
+        while($node = $matches->item($i++)) {
+            if($node->hasAttribute($attrName) && $node->getAttribute($attrName) == $attrValue) {
+                return @$parent->removeChild($node);
+            }
+        }
+        if($node == NULL) return FALSE;
+        return TRUE;
     }
     
     /**
