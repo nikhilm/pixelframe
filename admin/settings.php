@@ -77,18 +77,10 @@ if(md5($_POST['pf-password']) == $pass) {
 </div>
 
 <div id="edit-panel">
-<h2>Edit album</h2>
+<h2>Edit <span id="album-name"></span></h2>
 
 <!--Album stats -->
 <form id="album-edit-form" action="">
-<div>
-<label for="album-name">Name:</label> <input id="album-name" value="Name" readonly/>
-</div>
-
-<div>
-<label>Photos: &lt;Number&gt;</label>
-</div>
-
 <div>
 <label for="album-theme-selector">Change theme:</label>
 <select id="album-theme-selector">

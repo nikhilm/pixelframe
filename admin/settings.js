@@ -85,9 +85,7 @@ function launchEditPanel(evt) {
     //fetch and set edit panel data here
     
     addCancelButton('edit-panel');
-    
-    var heading = $('edit-panel').getElementsByTagName('h2')[0];
-    heading.childNodes[0].nodeValue = "Edit "+evt.target.childNodes[0].nodeValue;
+    $('album-name').firstChild.nodeValue = evt.target.childNodes[0].nodeValue;
     
     
     showPanel('edit-panel');
