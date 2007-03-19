@@ -29,11 +29,15 @@ define("PF_REL_INSTALL_DIR", str_replace($_SERVER['DOCUMENT_ROOT'], "", PF_INSTA
 //assign both relative and absolute paths
 foreach( array( "_CONFIG_FILE" => "config.xml",
                 "_SCRIPTS_DIR" => "scripts/",
-                "_IMAGES_DIR" => "images/" )
+                "_IMAGES_DIR" => "images/",
+                "_THEME_DIR" => "themes/" )
         as $k=>$v) {
         define("PF".$k, PF_INSTALL_DIR.$v);
         define("PF_REL".$k, PF_REL_INSTALL_DIR.$v);
 }
 
 define("PF_THUMBNAIL_DIR", "thumbnails/");//relative thumbnail directory
+define("PF_DEFAULT_THEME", "default/");
+define("PF_THEME_INFO_FILE", "theme.xml");
+define("PF_THEME_STYLE_FILE", "style.css");
 ?>
