@@ -87,7 +87,7 @@ function launchEditPanel(evt) {
     addCancelButton('edit-panel');
     
     var aN = $('album-name'); 
-    aN.replaceChild(evt.target.childNodes[0], aN.firstChild);
+    aN.replaceChild(document.createTextNode(evt.target.childNodes[0].nodeValue), aN.firstChild);
     
     
     showPanel('edit-panel');
@@ -304,8 +304,17 @@ function deleteAlbum(evt) {
     
     loading();
     new Ajax(URL, {}, {
-            onSuccess: function(req) { displayMessage(req.responseXML); },
-            onFailure: function(req) { error(req.status); },
+            onSuccess: function(req) {                
+                var albums = $('album-list').getElementsByTagName('li');
+                var currentAlbumName = $('album-name').firstChild.nodeValue;
+                $A(albums).each(function(elem) {
+                    if(elem.firstChild.nodeValue == currentAlbumName) {
+                        elem.remove();
+                    }
+                });
+                displayMessage(req.responseXML);
+            },
+            onFailure: function(req) { displayMessage(req.responseXML); },
             method:'post',
             payload:formatParameters({
                 action:"deletealbum",
@@ -313,5 +322,4 @@ function deleteAlbum(evt) {
             })
         }
     );
-    $('album-list').getElementsByTagName('li')[0].remove();
 }
