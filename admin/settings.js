@@ -85,7 +85,9 @@ function launchEditPanel(evt) {
     //fetch and set edit panel data here
     
     addCancelButton('edit-panel');
-    $('album-name').firstChild.nodeValue = evt.target.childNodes[0].nodeValue;
+    
+    var aN = $('album-name'); 
+    aN.replaceChild(evt.target.childNodes[0], aN.firstChild);
     
     
     showPanel('edit-panel');

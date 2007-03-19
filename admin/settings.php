@@ -77,7 +77,7 @@ if(md5($_POST['pf-password']) == $pass) {
 </div>
 
 <div id="edit-panel">
-<h2>Edit <span id="album-name"></span></h2>
+<h2>Edit <span id="album-name">album</span></h2>
 
 <!--Album stats -->
 <form id="album-edit-form" action="">
