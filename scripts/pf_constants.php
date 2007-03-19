@@ -37,7 +37,7 @@ foreach( array( "_CONFIG_FILE" => "config.xml",
 }
 
 define("PF_THUMBNAIL_DIR", "thumbnails/");//relative thumbnail directory
-define("PF_DEFAULT_THEME", "default/");
+define("PF_DEFAULT_THEME", "Default");
 define("PF_THEME_INFO_FILE", "theme.xml");
 define("PF_THEME_STYLE_FILE", "style.css");
 ?>
