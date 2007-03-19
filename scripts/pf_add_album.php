@@ -24,6 +24,7 @@
 include_once("pf_constants.php");
 include_once(PF_SCRIPTS_DIR."pf_thumbnail.php");
 include_once(PF_SCRIPTS_DIR."pf_configparser.php");
+include_once(PF_SCRIPTS_DIR."pf_theme_manager.php");
 
 // success and error are external functions in ../admin/settings-control.php
 
@@ -67,7 +68,7 @@ function init($args) {
     
     //add album to config file
     $cp = new ConfigWriter(PF_CONFIG_FILE);
-    $attributes = array( "name" => $name, "location" => $location );
+    $attributes = array( "name" => $name, "location" => $location, "theme" => PF_DEFAULT_THEME );
     $cp->addWithAttributes('settings/albums/album', $attributes, "");
     if(!$cp->close()) {
         error("Could not write to configuration file");
