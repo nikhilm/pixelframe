@@ -195,8 +195,8 @@ class ConfigWriter {
      * Adds an option alongwith attributes
      * @param $attrs Array array of attributes in name=>value pairs
     */
-    function addWithAttributes($name, $attrs, $data) {
-        $n = $this->add($name, $data);
+    function addWithAttributes($name, $attrs, $data, $replace=FALSE) {
+        $n = $this->add($name, $data, $replace);
         foreach($attrs as $name=>$value)
             $n->setAttribute($name, $value);
         return $n;
