@@ -275,10 +275,15 @@ function addAlbum(evt) {
     loading();
     new Ajax(URL, {}, {
             onSuccess: function(req) {
+                var listElem = document.createElement('li');
+                listElem.appendChild(document.createTextNode($('album-add-name').value));
+                $(listElem).addEvent('click', launchEditPanel, false);
+                $('album-list').appendChild(listElem);
                 displayMessage(req.responseXML);
+                $('album-add-form').reset();
             },
             onFailure: function(req) {
-                luanchMessagePanel("error", req.status);
+                displayMessage(req.responseXML);
             },
             
             method:'post',
@@ -289,11 +294,6 @@ function addAlbum(evt) {
             })
         }
     );
-    var albumName = $('album-add-name').value;
-    var li = document.createElement('li');
-    li.appendChild(document.createTextNode(albumName));
-    $('album-list').appendChild(li);
-    $('album-add-form').reset();
 }
 
 function deleteAlbum(evt) {
@@ -309,7 +309,7 @@ function deleteAlbum(evt) {
             method:'post',
             payload:formatParameters({
                 action:"deletealbum",
-                name:$('album-name').value,
+                name:$('album-name').firstChild.nodeValue,
             })
         }
     );
