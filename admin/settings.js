@@ -89,7 +89,7 @@ function launchEditPanel(evt) {
         payload: formatParameters({
             action:'gettheme',
             name:albumName
-        });
+        }),
         onSuccess:function(req) {
             /* getthemelist uses a different response than other actions */
             var doc = req.responseXML;
