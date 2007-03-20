@@ -65,3 +65,15 @@ function getThemeNames() {
     return $names;
 }
 
+/**
+ * Gets the current theme for the album
+*/
+function getCurrentTheme($albumName) {
+    $cp = new ConfigReader(PF_CONFIG_FILE);
+    $albums = $cp->getChildren("settings/albums");
+    foreach($albums as $album) {
+        if($album['attributes']['name'] == $albumName) {
+            return $album['attributes']['theme'];
+        }
+    }
+}
