@@ -119,9 +119,6 @@ if(md5($_POST['pf-password']) == $pass) {
 <h4>Select an Album below to change its settings:</h4>
 <!--= getFormattedAlbumList(); -->
 <ul id="album-list">
-        <li>Album 1</li>
-        <li>Album 2</li>
-        <li>Europe pics</li>
 </ul>
 
 

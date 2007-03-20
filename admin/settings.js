@@ -221,7 +221,7 @@ function saveChanges(evt) {
             
             method:'post',
             payload:formatParameters({
-                action:'save',
+                action:'savechanges',
                 name:'crap'
             })
         }

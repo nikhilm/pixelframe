@@ -83,7 +83,7 @@ function error($message) {
  * All scripts in the DELEGATES array MUST IMPLEMENT an init method accepting an array
 */
 
-$DELEGATES = array( "save" => "pf_save_album.php",
+$DELEGATES = array( "savechanges" => "pf_save_album.php",
                     "changepassword" => "pf_change_password.php",
                     "addalbum" => "pf_add_album.php",
                     "deletealbum" => "pf_delete_album.php" );
