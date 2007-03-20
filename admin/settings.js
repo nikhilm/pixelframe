@@ -95,6 +95,7 @@ function launchEditPanel(evt) {
             var doc = req.responseXML;
             var status = doc.getElementsByTagName('status')[0].firstChild.nodeValue;
             if(status == "success") {
+                clearPanel();
                 $A(doc.getElementsByTagName('option')).each(function(theme) {
                     $('album-theme-selector').appendChild(theme);
                 });
