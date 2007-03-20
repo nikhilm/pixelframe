@@ -86,7 +86,8 @@ function error($message) {
 $DELEGATES = array( "savechanges" => "pf_save_album.php",
                     "changepassword" => "pf_change_password.php",
                     "addalbum" => "pf_add_album.php",
-                    "deletealbum" => "pf_delete_album.php" );
+                    "deletealbum" => "pf_delete_album.php",
+                    "gettheme" => "pf_get_theme.php" );
 
 if(array_key_exists($_POST[PF_SETTINGS_ACTION], $DELEGATES)) {
     include_once(PF_SCRIPTS_DIR.$DELEGATES[$_POST[PF_SETTINGS_ACTION]]);
