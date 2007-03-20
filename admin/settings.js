@@ -84,7 +84,7 @@ function launchEditPanel(evt) {
     clearPanel();
     loading();
     var albumName = evt.target.childNodes[0].nodeValue;
-    new Ajax(URL, {} {
+    new Ajax(URL, {}, {
         method:'post',
         payload: formatParameters({
             action:'gettheme',
