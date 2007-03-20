@@ -95,17 +95,8 @@ function launchEditPanel(evt) {
             var doc = req.responseXML;
             var status = doc.getElementsByTagName('status')[0].firstChild.nodeValue;
             if(status == "success") {
-                var themes = doc.getElementsByTagName('themes');
-                $A(themes).each( function(theme) {
-                    var themeName = theme.firstChild.nodeValue;
-                    
-                    var option = document.createElement('option');
-                    option.appendChild(document.createTextNode(themeName));
-                    if(theme.hasAttribute('default')) {
-                        option.setAttribute('default');
-                    }
-                        
-                    $('album-theme-selector').appendChild(option);
+                $A(doc.getElementsByTagName('theme')).each(function(theme) {
+                    $('album-theme-selector').appendChild(theme);
                 });
                 
                 addCancelButton('edit-panel');
