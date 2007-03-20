@@ -82,18 +82,50 @@ function showPanel(elem) {
 function launchEditPanel(evt) {
     
     clearPanel();
-    //fetch and set edit panel data here
+    loading();
+    var albumName = evt.target.childNodes[0].nodeValue;
+    new Ajax(URL, {} {
+        method:'post',
+        payload: formatParameters({
+            action:'gettheme',
+            name:albumName
+        });
+        onSuccess:function(req) {
+            /* getthemelist uses a different response than other actions */
+            var doc = req.responseXML;
+            var status = doc.getElementsByTagName('status')[0].firstChild.nodeValue;
+            if(status == "success") {
+                var themes = doc.getElementsByTagName('themes');
+                $A(themes).each( function(theme) {
+                    var themeName = theme.firstChild.nodeValue;
+                    
+                    var option = document.createElement('option');
+                    option.appendChild(document.createTextNode(themeName));
+                    if(theme.hasAttribute('default')) {
+                        option.setAttribute('default');
+                    }
+                        
+                    $('album-theme-selector').appendChild(option);
+                });
+                
+                addCancelButton('edit-panel');
+            
+                var aN = $('album-name'); 
+                aN.replaceChild(document.createTextNode(albumName), aN.firstChild);
+            
+            
+                showPanel('edit-panel');
+                new Effects.BlindDown('edit-panel');
+            
+                $('album-delete').addEvent('click', deleteAlbum, false);
+            }
+            else if(status == "error") {
+                error("There was an error retrieving album information. Please check that "+albumName+" exists.");
+            }
+        },
+        onFailure:function(req) { displayMessage(req.responseXML); }
+    });
     
-    addCancelButton('edit-panel');
-    
-    var aN = $('album-name'); 
-    aN.replaceChild(document.createTextNode(evt.target.childNodes[0].nodeValue), aN.firstChild);
-    
-    
-    showPanel('edit-panel');
-    new Effects.BlindDown('edit-panel');
-    
-    $('album-delete').addEvent('click', deleteAlbum, false);
 }
 
 function launchAddAlbumPanel(evt) {
