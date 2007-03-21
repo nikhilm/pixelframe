@@ -228,3 +228,9 @@ form#login-password-form input {
     margin-left:3%;
 }
 
+/*-- no album message --*/
+p#no-albums-message {
+    font-size:18px;
+    padding:30px;
+    font-weight:bold;
+}

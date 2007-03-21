@@ -124,7 +124,7 @@ $albums = $cp->getChildren("settings/albums");
 
 //if there are no albums show alternate message
 if(!$albums) {
-    print("<p id=\"no-albums-message\">It seems you don't have any albums yet. Perhaps you would like to create one.</p>");
+    print("<p id=\"no-albums-message\">It seems you don't have any albums yet. Click on \"Add an Album\" above to add one.</p>");
     print('<ul id="album-list">');
     print('</ul>');
 }
