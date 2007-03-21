@@ -32,24 +32,11 @@ function init($args) {
     $albumDefault = getCurrentTheme($albumName);
     $outString = "";
     foreach($themeList as $name=>$html) {
-        if($name == $albumDefault) {
-            $html = str_replace('<option>', '<option selected="">', $html);
-        }
-        $outString .= $html;
+        $outString .="<theme ";
+        if($name == $albumDefault)
+            $outString .= "default=\"true\"";
+        $outString .= ">$name</theme>";
     }
-    /*
-    var themes = doc.getElementsByTagName('themes');
-                $A(themes).each( function(theme) {
-                    var themeName = theme.firstChild.nodeValue;
-                    
-                    var option = document.createElement('option');
-                    option.appendChild(document.createTextNode(themeName));
-                    if(theme.hasAttribute('default')) {
-                        option.setAttribute('default');
-                    }
-                        
-                    $('album-theme-selector').appendChild(option);
-                });*/
     outputXML("<status>success</status>$outString");
 }
 ?>
