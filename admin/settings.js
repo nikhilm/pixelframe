@@ -119,6 +119,7 @@ function launchEditPanel(evt) {
                 showPanel('edit-panel');
                 new Effects.BlindDown('edit-panel');
             
+                $('album-save').addEvent('submit', saveChanges, false);
                 $('album-delete').addEvent('click', deleteAlbum, false);
             }
             else if(status == "error") {
@@ -256,7 +257,7 @@ function saveChanges(evt) {
             method:'post',
             payload:formatParameters({
                 action:'savechanges',
-                name:'crap'
+                name:$('album-theme-selector')
             })
         }
     );
