@@ -83,7 +83,7 @@ if(md5($_POST['pf-password']) == $pass) {
 <form id="album-edit-form" action="">
 <div>
 <label for="album-theme-selector">Change theme:</label>
-<select id="album-theme-selector">
+<select id="album-theme-selector" name="album-theme-selector">
 </select>
 </div>
 
