@@ -56,22 +56,20 @@ function init($args) {
     
     $thumbnailDir = $_SERVER['DOCUMENT_ROOT'].'/'.$location.'/'.PF_THUMBNAIL_DIR;
     //try removing the thumbnails
-    chdir($thumbnailDir);
-    $pattern = array("*.jpg", "*.jpeg", "*.png");
-    foreach($pattern as $pat) {
-        foreach(glob($pat) as $file) {
-            if(!unlink($file)) {
-                error("Could not remove thumbnail for image $file");
-                return;
+    if(@chdir($thumbnailDir)) {        
+        $pattern = array("*.jpg", "*.jpeg", "*.png");
+        foreach($pattern as $pat) {
+            foreach(glob($pat) as $file) {
+                if(!unlink($file)) {
+                    error("Could not remove thumbnail for image $file");
+                    return;
+                }
             }
         }
     }
     
     //try removing thumbnails directory
-    if(!rmdir($thumbnailDir)) {
-        error("Could not remove thumbnails directory for album $name in $location");
-        return;
-    }
+    @rmdir($thumbnailDir)
     
     //remove from config
     $cp = new ConfigWriter(PF_CONFIG_FILE);
