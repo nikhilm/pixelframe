@@ -69,7 +69,7 @@ function init($args) {
     }
     
     //try removing thumbnails directory
-    @rmdir($thumbnailDir)
+    @rmdir($thumbnailDir);
     
     //remove from config
     $cp = new ConfigWriter(PF_CONFIG_FILE);
