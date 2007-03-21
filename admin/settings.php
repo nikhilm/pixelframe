@@ -115,10 +115,27 @@ if(md5($_POST['pf-password']) == $pass) {
 <a href="" id="add-album-link">Add an Album</a>
 </div>
 <h4>Select an Album below to change its settings:</h4>
-<!--= getFormattedAlbumList(); -->
-<ul id="album-list">
-</ul>
+<?php
+include_once("../scripts/pf_constants.php");
+include_once(PF_SCRIPTS_DIR."pf_configparser.php");
 
+$cp = new ConfigReader(PF_CONFIG_FILE);
+$albums = $cp->getChildren("settings/albums");
+
+//if there are no albums show alternate message
+if(!$albums) {
+    print("<p id=\"no-albums-message\">It seems you don't have any albums yet. Perhaps you would like to create one.</p>");
+    print('<ul id="album-list">');
+    print('</ul>');
+}
+else {
+    print('<ul id="album-list">');
+    foreach($albums as $album) {
+        print('<li>'.$album['attributes']['name'].'</li>');
+    }
+    print('</ul>');
+}
+?>
 
 
 

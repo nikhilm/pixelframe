@@ -305,6 +305,7 @@ function addAlbum(evt) {
                 $('album-list').appendChild(listElem);
                 displayMessage(req.responseXML);
                 $('album-add-form').reset();
+                $('no-albums-message').setStyle({display:'none', visibility:'hidden'});
             },
             onFailure: function(req) {
                 displayMessage(req.responseXML);
@@ -337,6 +338,9 @@ function deleteAlbum(evt) {
                     }
                 });
                 displayMessage(req.responseXML);
+                
+                if($('album-list').getElementsByTagName('li').length == 0)
+                    $('no-albums-message').setStyle({display:'block', visibility:'visible'});
             },
             onFailure: function(req) { displayMessage(req.responseXML); },
             method:'post',
