@@ -92,12 +92,22 @@ function launchEditPanel(evt) {
         }),
         onSuccess:function(req) {
             /* getthemelist uses a different response than other actions */
-            var doc = req.responseXML;
+            var doc = req.responseXML.getElementsByTagName('reply')[0];
             var status = doc.getElementsByTagName('status')[0].firstChild.nodeValue;
             if(status == "success") {
                 clearPanel();
-                $A(doc.getElementsByTagName('option')).each(function(theme) {
-                    $('album-theme-selector').appendChild(theme);
+                
+                var themes = doc.getElementsByTagName('theme');
+                $A(themes).each( function(theme) {
+                    var themeName = theme.firstChild.nodeValue;
+                    
+                    var option = document.createElement('option');
+                    option.appendChild(document.createTextNode(themeName));
+                    if(theme.hasAttribute('default')) {
+                        option.setAttribute('selected', 'true');
+                    }
+                        
+                    $('album-theme-selector').appendChild(option);
                 });
                 
                 addCancelButton('edit-panel');
