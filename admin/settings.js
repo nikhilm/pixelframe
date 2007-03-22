@@ -257,7 +257,8 @@ function saveChanges(evt) {
             method:'post',
             payload:formatParameters({
                 action:'savechanges',
-                name:$('album-theme-selector')
+                theme:$('album-theme-selector'),
+                albumName:$('album-name').firstChild.nodeValue
             })
         }
     );
