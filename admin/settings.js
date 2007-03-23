@@ -233,6 +233,10 @@ function displayMessage(doc) {
     }
 }
 
+function requestFailed(req) {
+    error("There was a problem connecting to the server.");
+}
+
 /*
  * Formats data as a request
 */
@@ -254,9 +258,7 @@ function saveChanges(evt) {
             onSuccess: function(req) {
                 displayMessage(req.responseXML);
             },
-            onFailure: function(req) {
-                displayMessage(req.responseXML);
-            },
+            onFailure: requestFailed,
             
             method:'post',
             payload:formatParameters({
@@ -297,9 +299,7 @@ function changePassword(evt) {
             onSuccess: function(req) {
                 displayMessage(req.responseXML);
             },
-            onFailure: function(req) {
-                error( req.status);
-            },
+            onFailure: requestFailed,
             
             method:'post',
             payload:formatParameters({
@@ -326,9 +326,7 @@ function addAlbum(evt) {
                 }
                 else { displayMessage(req.responseXML); }
             },
-            onFailure: function(req) {
-                displayMessage(req.responseXML);
-            },
+            onFailure: requestFailed,
             
             method:'post',
             payload:formatParameters( {
@@ -364,7 +362,7 @@ function deleteAlbum(evt) {
                 }
                 else { displayMessage(req.responseXML); }
             },
-            onFailure: function(req) { displayMessage(req.responseXML); },
+            onFailure: requestFailed,
             method:'post',
             payload:formatParameters({
                 action:"deletealbum",
