@@ -212,19 +212,24 @@ function setup() {
  * MOST BACKGROUND/COMMUNICATION FUNCTIONS BEGIN HERE
 *****************************************************/
 
+//returns true if success, false if not
+function goodStatus(doc) {
+    var reply = doc.getElementsByTagName('reply')[0];
+    if(reply.getElementsByTagName('status')) {
+        var status = reply.getElementsByTagName('status')[0].firstChild.nodeValue;
+        return status == "success";
+    }
+
 /*
  * Accepts an XML document. If it contains a node status('error'/'success')
  * then it displays the contents of the node message
 */
 function displayMessage(doc) {
     var reply = doc.getElementsByTagName('reply')[0];
-    if(reply.getElementsByTagName('status')) {
-        var status = reply.getElementsByTagName('status')[0].firstChild.nodeValue;
-        if(reply.getElementsByTagName('message')) {
-            var message = reply.getElementsByTagName('message')[0].firstChild.nodeValue
-            if(status == 'error') error(message);
-            else if(status == 'success') success(message);
-        }
+    if(reply.getElementsByTagName('message')) {
+        var message = reply.getElementsByTagName('message')[0].firstChild.nodeValue
+        if(goodStatus(doc)) success(message);
+        else error(message);
     }
 }
 
@@ -248,10 +253,9 @@ function saveChanges(evt) {
     new Ajax(URL, {}, {
             onSuccess: function(req) {
                 displayMessage(req.responseXML);
-                refreshAlbums();
             },
             onFailure: function(req) {
-                error( req.status);
+                displayMessage(req.responseXML);
             },
             
             method:'post',
@@ -311,13 +315,16 @@ function addAlbum(evt) {
     loading();
     new Ajax(URL, {}, {
             onSuccess: function(req) {
-                var listElem = document.createElement('li');
-                listElem.appendChild(document.createTextNode($('album-add-name').value));
-                $(listElem).addEvent('click', launchEditPanel, false);
-                $('album-list').appendChild(listElem);
-                displayMessage(req.responseXML);
-                $('album-add-form').reset();
-                $('no-albums-message').setStyle({display:'none', visibility:'hidden'});
+                if(goodStatus(req.responseXML)) {
+                    var listElem = document.createElement('li');
+                    listElem.appendChild(document.createTextNode($('album-add-name').value));
+                    $(listElem).addEvent('click', launchEditPanel, false);
+                    $('album-list').appendChild(listElem);
+                    displayMessage(req.responseXML);
+                    $('album-add-form').reset();
+                    $('no-albums-message').setStyle({display:'none', visibility:'hidden'});
+                }
+                else { displayMessage(req.responseXML); }
             },
             onFailure: function(req) {
                 displayMessage(req.responseXML);
@@ -341,18 +348,21 @@ function deleteAlbum(evt) {
     
     loading();
     new Ajax(URL, {}, {
-            onSuccess: function(req) {                
-                var albums = $('album-list').getElementsByTagName('li');
-                var currentAlbumName = $('album-name').firstChild.nodeValue;
-                $A(albums).each(function(elem) {
-                    if(elem.firstChild.nodeValue == currentAlbumName) {
-                        elem.remove();
-                    }
-                });
-                displayMessage(req.responseXML);
-                
-                if($('album-list').getElementsByTagName('li').length == 0)
-                    $('no-albums-message').setStyle({display:'block', visibility:'visible'});
+            onSuccess: function(req) {
+                if(goodStatus(req)) {    
+                    var albums = $('album-list').getElementsByTagName('li');
+                    var currentAlbumName = $('album-name').firstChild.nodeValue;
+                    $A(albums).each(function(elem) {
+                        if(elem.firstChild.nodeValue == currentAlbumName) {
+                            elem.remove();
+                        }
+                    });
+                    displayMessage(req.responseXML);
+                    
+                    if($('album-list').getElementsByTagName('li').length == 0)
+                        $('no-albums-message').setStyle({display:'block', visibility:'visible'});
+                }
+                else { displayMessage(req.responseXML); }
             },
             onFailure: function(req) { displayMessage(req.responseXML); },
             method:'post',
