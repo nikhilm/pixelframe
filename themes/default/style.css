@@ -1,7 +1,7 @@
 /*Stylesheet for Default pixelframe theme*/
 
 div#container {
-    margin:auto;
+    margin:5% auto;
     width:60%;
     height:60%;
 }
@@ -9,7 +9,25 @@ div#container {
 div#thumbnail-view {
     background:#ff6600;
 }
+div#thumbnail-view img {
+    padding:10px 50px;
+}
 
 div#photo-viewer {
     background:#999;
+    margin-top:2%;
+    min-height:40%;
+    text-align:center;
+}
+
+div#photo-viewer img {
+    margin:auto;
+}
+
+div#prev-button {
+    clear:none;
+    display:inline;
+    float:left;
+    height:100%;
+    background:url(images/previous.png) center no-repeat #555;
 }
