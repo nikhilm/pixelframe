@@ -1,0 +1,15 @@
+/*Stylesheet for Default pixelframe theme*/
+
+div#container {
+    margin:auto;
+    width:60%;
+    height:60%;
+}
+
+div#thumbnail-view {
+    background:#ff6600;
+}
+
+div#photo-viewer {
+    background:#999;
+}
