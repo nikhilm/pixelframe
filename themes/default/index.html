@@ -1,12 +1,13 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <title><?php print $ALBUM_TITLE ?></title>
 
-<link rel="stylesheet" type="text/css" href="<?php print($CLIENT_STYLE); ?>" />
-<script language="javascript" type="text/javascript" src="<?php print($CLIENT_JS); ?>"></script>
+<!--<?php print($CLIENT_STYLE); ?>
+<?php print($CLIENT_JS); ?>-->
+<link rel="stylesheet" type="text/css" href="style.css" />
+<script language="javascript" type="text/javascript" src=""></script>
 <!-- rounded corners -->
 <link rel="stylesheet" type="text/css" href="corners/rounded.css" />
 <script language="javascript" type="text/javascript" src="corners/rounded.js"></script>
@@ -14,7 +15,7 @@
 <body onload="roundAll()">
 
 <div id="container">
-<div id="thumbnail-view" class="rounded"></div>
+<div id="thumbnail-view" class="rounded">Test</div>
 <div id="prev-button"></div>
 <div id="photo-viewer" class="rounded"></div>
 <div id="next-button"></div>
