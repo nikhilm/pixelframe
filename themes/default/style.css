@@ -6,6 +6,12 @@ div#container {
     height:60%;
 }
 
+div#wrapper {
+    background:#999;
+    text-align:center;
+    margin-top:2%;
+}
+
 div#thumbnail-view {
     background:#ff6600;
 }
@@ -13,21 +19,29 @@ div#thumbnail-view img {
     padding:10px 50px;
 }
 
-div#photo-viewer {
-    background:#999;
-    margin-top:2%;
-    min-height:40%;
-    text-align:center;
+div#buttons-wrapper {
+    background:#555;
+    width:100%;
+    margin-bottom:70px;
 }
 
-div#photo-viewer img {
-    margin:auto;
+img#main-image {
+    padding-bottom:50px;
 }
 
-div#prev-button {
-    clear:none;
-    display:inline;
+div#prev-button, div#next-button {
+    background:#555;
+    width:50%;
     float:left;
-    height:100%;
-    background:url(images/previous.png) center no-repeat #555;
+}
+
+div#prev-button:hover, div#next-button:hover {
+    background:#000;
+}
+
+div#next-button {
+}
+
+div#prev-button img, div#next-button img {
+    margin:3% 0;
 }
