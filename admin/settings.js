@@ -219,7 +219,7 @@ function goodStatus(doc) {
         var status = reply.getElementsByTagName('status')[0].firstChild.nodeValue;
         return status == "success";
     }
-
+}
 /*
  * Accepts an XML document. If it contains a node status('error'/'success')
  * then it displays the contents of the node message
