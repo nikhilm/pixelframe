@@ -17,7 +17,7 @@ Install
 include_once("../scripts/pf_constants.php");
 include_once(PF_SCRIPTS_DIR."pf_configparser.php");
 
-define("GOOD_TO_GO", PF_NAME." is all set to go.  The default password is <strong>".PF_DEFAULT_PASSWORD."</strong> To change password, add albums or change settings go to <a href=\"settings.php\">settings.php</a>\n");
+define("GOOD_TO_GO", PF_NAME." is all set to go.  The default password is <br /><strong>".PF_DEFAULT_PASSWORD."</strong><br />To change password, add albums or change settings go to <a href=\"settings.php\">settings.php</a>\n");
 
 function success($msg) {
     print("<p class=\"success\">$msg</p>\n");
