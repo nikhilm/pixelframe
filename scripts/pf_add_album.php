@@ -53,7 +53,7 @@ function init($args) {
     }
     //check if directory writeable
     if(!is_writeable(ALBUM_DIR)) {
-        error("Could not create album. Could not write to $location. Make sure you entered the correct path ".ALBUM_DIR);
+        error("Could not create album. Could not write to $location.".ALBUM_DIR);
         return;
     }
     
