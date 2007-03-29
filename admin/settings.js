@@ -126,7 +126,7 @@ function launchEditPanel(evt) {
                 error("There was an error retrieving album information. Please check that "+albumName+" exists.");
             }
         },
-        onFailure:function(req) { displayMessage(req.responseXML); }
+        onFailure:requestFailed
     });
     
 }
