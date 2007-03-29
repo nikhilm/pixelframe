@@ -75,6 +75,7 @@ function init($args) {
         foreach(glob($pat) as $file) {
             if(!makeThumbnail($file, PF_THUMBNAIL_DIR.$file)) {
                 error("Could not create thumbnail for image $file");
+                return;
             }
         }
     }
