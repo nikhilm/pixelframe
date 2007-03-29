@@ -111,6 +111,7 @@ ul#album-list li {
     color:#555;
     padding:15px;
     cursor:pointer;
+    border:solid 1px transparent;
 }
 
 ul#album-list li:hover {
