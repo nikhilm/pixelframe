@@ -32,6 +32,19 @@ function init($args) {
     $name = $args['name'];
     $location = $args['location'];
     
+    //check if album already exists
+    $cp = new ConfigReader(PF_CONFIG_FILE);
+    $albums = $cp->getChildren("settings/albums");
+    if($albums)
+        foreach($albums as $album) {
+            if($album['attributes']['name'] == $name) {
+                error("Album $name already exists!");
+                return;
+            }
+        }
+        
+        
+    
     define("ALBUM_DIR", $_SERVER['DOCUMENT_ROOT'].'/'.$location);
     //check if it exists
     if(!is_dir(ALBUM_DIR)) {
