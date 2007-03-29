@@ -298,6 +298,7 @@ function changePassword(evt) {
     new Ajax(URL, {}, {
             onSuccess: function(req) {
                 displayMessage(req.responseXML);
+                $('password-change-form').reset();
             },
             onFailure: requestFailed,
             
