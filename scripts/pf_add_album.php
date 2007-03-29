@@ -45,7 +45,7 @@ function init($args) {
         
         
     
-    define("ALBUM_DIR", $_SERVER['DOCUMENT_ROOT'].'/'.$location);
+    define("ALBUM_DIR", realpath($_SERVER['DOCUMENT_ROOT'].'/'.$location));
     //check if it exists
     if(!is_dir(ALBUM_DIR)) {
         error("It seems like the directory $location does not exist.");
@@ -82,7 +82,7 @@ function init($args) {
     
     //add album to config file
     $cp = new ConfigWriter(PF_CONFIG_FILE);
-    $attributes = array( "name" => $name, "location" => $location, "theme" => PF_DEFAULT_THEME );
+    $attributes = array( "name" => $name, "location" => str_replace($_SERVER['DOCUMENT_ROOT'], "", ALBUM_DIR), "theme" => PF_DEFAULT_THEME );
     $cp->addWithAttributes('settings/albums/album', $attributes, "");
     if(!$cp->close()) {
         error("Could not write to configuration file");
