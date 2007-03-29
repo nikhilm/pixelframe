@@ -73,7 +73,7 @@ function showPanel(elem) {
     $('panel').style.visibility = "visible";
     $(elem).style.display = "inherit";
     $(elem).style.visibility = "visible";
-    window.location="#";
+    window.location = "#panel";
 }
     
 /**

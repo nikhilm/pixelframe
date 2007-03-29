@@ -51,6 +51,7 @@ if(md5($_POST['pf-password']) == $pass) {
 
 <!--Control and Information Panels hidden -->
 <div id="panel">
+<a name="panel"></a>
 <div id="success-panel">
 <h2>Success!</h2>
 </div>
