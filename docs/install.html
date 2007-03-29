@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<title>Installing Pixelframe</title>
+</head>
+<body>
+
+<h1>Installing Pixelframe</h1>
+<p>Welcome to the Pixelframe installation guide. This document will help you download and setup Pixelframe for use.</p>
+
+<h2>Requirements</h2>
+<p>Pixelframe doesn't have many requirements, but here are some things you <strong>will</strong> need to get it up and running.</p>
+<ul>
+<li>Ability to upload files to your web host</li>
+<li><a href="http://www.php.net">PHP</a> 5 or greater. Check with your administrator if you are not sure about this.</li>
+<li>Write access for the PHP user to your server directories. Again check with the administrator if you are not sure.</li>
+<li>The GD and XML libraries. These are generally enabled, but you should search for them in your host's PHPinfo just to be sure.</li>
+</ul>
+
+<h2>Download</h2>
+<p>If you haven't already downloaded the Pixelframe package, you should do so now. Visit <a href="/code/pixelframe">the Pixelframe homepage</a> to download and save the compressed archive to your computer. You should extract the archive or you can directly do it on the server if your host supports it. You should now have a directory called pixelframe-x.x. I recommend renaming it to just pixelframe. Once you have done this connect to your web server using an FTP client. Upload the pixelframe directory to the server. This finishes the first step.</p>
+
+<p>Now just point your browser to <strong>http://yourdomain.name/&lt;dir&gt;/pixelframe/admin/install.php</strong> where dir is any directory in which the pixelframe directory was copied. If your host satisfies all the requirements the you will get a success message. If you get any errors make sure your host satisfies all the requirements above and then try again.</p>
+
+<p>The next step is to hide your configuration file from external users. Using your host's control panel or an FTP client navigate to the pixelframe directory. There you should find a file called config.xml. Change the file's permissions so that only you can read or write to it.</p>
+
+<p> Thats it! Just go to http://yourdomain.name/&lt;dir&gt;/pixelframe/admin/settings.php whenever you want:
+<ul>
+<li>Add an album</li>
+<li>Edit an existing album's properties or delete it</li>
+<li>Change the password<li>
+</ul>
+
+The first time after installation you should <strong>immediately</strong> go to the settings page and change the password. This will prevent malicious users from using the default password to edit your settings.
+</p>
+
+<h2>Uninstalling Pixelframe</h2>
+<p>I really hope you won't need to do this :D, but incase you must then follow the steps below.</p>
+<ul>
+<li>If you want all the thumbnails to be deleted then individually delete each album using the Settings page</li>
+<li>Remove the Pixelframe directory</li>
+</ul>
