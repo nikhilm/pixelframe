@@ -86,14 +86,12 @@ Object.extend(CustomElement.prototype, {
     },
     
     /**
-     * Remove nodes from the element
+     * Remove all nodes from the element
     */
-    removeNodes:function(nodes) {
-        __realThis = this;
-        $A(this.childNodes).each(function(el) {
-            if(nodes.indexOf(el))
-                __realThis.removeChild(el);
-        });
+    removeNodes:function() {
+        if(this.hasChildNodes())
+            while(this.hasChildNodes())
+                this.removeChild(this.firstChild);
         return this;
     },
     /**
