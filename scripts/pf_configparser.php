@@ -228,12 +228,14 @@ class ConfigWriter {
         if(!$matches) return FALSE;
         $i = 0;
         $node = NULL;
+        $found = FALSE;
         while($node = $matches->item($i++)) {
             if($node->hasAttribute($attrName) && $node->getAttribute($attrName) == $attrValue) {
+                $found = TRUE;
                 return @$parent->removeChild($node);
             }
         }
-        if($node == NULL) return FALSE;
+        if($node == NULL || $found == FALSE) return FALSE;
         return TRUE;
     }
     
