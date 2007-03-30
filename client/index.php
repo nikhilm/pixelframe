@@ -25,11 +25,14 @@
 
 include_once("../scripts/pf_constants.php");
 include_once(PF_SCRIPTS_DIR."pf_configparser.php");
+include_once(PF_SCRIPTS_DIR."pf_theme_manager.php");
 
 //begin new session
 session_start();
 
-//check if album exists
+/**************************
+ 1. check if album exists
+**************************/
 $albumName = $_GET['album'];
 
 $albumLocation = "";
@@ -56,3 +59,11 @@ else {
     return;
 }
 
+/********************************
+ 2. Check if theme exists.
+    Otherwise switch to default
+********************************/
+$availableThemes = getThemeList();
+if(!array_key_exists($availableThemes, $albumTheme))
+    $albumTheme = PF_DEFAULT_THEME;
+$albumThemeLocation = $availableThemes[$albumTheme];
