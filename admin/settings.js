@@ -263,7 +263,8 @@ function saveChanges(evt) {
             method:'post',
             payload:formatParameters({
                 action:'savechanges',
-                theme:$('album-theme-selector'),
+                //ripped straight from firebug console LOL
+                theme:$('album-theme-selector').getElementsByTagName('option')[$('album-theme-selector').selectedIndex].firstChild.nodeValue,
                 albumName:$('album-name').firstChild.nodeValue
             })
         }
