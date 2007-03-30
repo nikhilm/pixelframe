@@ -256,6 +256,8 @@ function saveChanges(evt) {
     //transmit changes
     new Ajax(URL, {}, {
             onSuccess: function(req) {
+                //remove all children of theme selector
+                $('album-theme-selector').removeNodes();
                 displayMessage(req.responseXML);
             },
             onFailure: requestFailed,
