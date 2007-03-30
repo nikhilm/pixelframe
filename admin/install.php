@@ -26,25 +26,43 @@ function error($msg) {
     print("<p class=\"error\">$msg</p>\n");
 }
 
+//if all done is true at the end give the go ahead
+$allDone = TRUE;
 
 if(is_writable(PF_INSTALL_DIR))
     success(PF_INSTALL_DIR." is writeable");
-else
+else {
     error("Could not write to ".PF_INSTALL_DIR);
+    $allDone = FALSE;
+}
+
+//check for gd and dom xml extensions
+if(!extension_loaded('dom')) {
+    error("The DOM extension is not loaded. It is needed for Pixelframe to run");
+    $allDone = FALSE;
+}
+if(!extension_loaded('gd')) {
+    error("The GD extension is not loaded. It is needed for Pixelframe to run");
+    $allDone = FALSE;
+}
 
 //generate default stuff if needed
 if(file_exists(PF_CONFIG_FILE)) {
-    success(GOOD_TO_GO);
+    if($allDone)
+        success(GOOD_TO_GO);
 }
 else {    
     $conf = new ConfigWriter(PF_CONFIG_FILE);
     $conf->add("settings/password", md5(PF_DEFAULT_PASSWORD));
     if(!$conf->close()) {
         error("Could not write to file ".PF_CONFIG_FILE);
+        $allDone = FALSE;
     }
     else {
-        success("Wrote ".PF_NAME." settings.");
-        success(GOOD_TO_GO);
+        if($allDone) {
+            success("Wrote ".PF_NAME." settings.");
+            success(GOOD_TO_GO);
+        }
     }
 }
 
