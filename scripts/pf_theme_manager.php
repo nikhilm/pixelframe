@@ -31,7 +31,7 @@ function toHTML($name) {
 /**
  * Returns the list of installed themes in the following format
  * {
- *   theme_name => PF_REL_THEME_DIR.theme_dir.PF_THEME_STYLE_FILE,
+ *   theme_name => PF_REL_THEME_DIR.theme_dir.'/',
  *   ...
  * }
  */
@@ -47,7 +47,7 @@ function getThemeList() {
     foreach($themedirs as $themedir) {
         $cp = new ConfigReader($themedir.'/'.PF_THEME_INFO_FILE);
         $data = $cp->get("theme/name");
-        $ret[$data['data']] = PF_REL_THEME_DIR.$theme.'/'.PF_THEME_STYLE_FILE;        
+        $ret[$data['data']] = PF_REL_THEME_DIR.$theme.'/';        
     }
     return $ret;
 }
