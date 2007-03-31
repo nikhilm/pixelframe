@@ -37,7 +37,7 @@ class ConfigReader {
     function __construct($filename) {
         $this->dom = new DomDocument;
         if(!@$this->dom->load($filename)) {
-            print("Could not open file $filename");
+            trigger_error("Could not open file $filename");
             exit();
         }
     }
