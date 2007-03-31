@@ -78,8 +78,8 @@ $albumThemeLocation = $availableThemes[$albumTheme];
 define(ALBUM_TITLE, $albumName);
 define(COMMON_STYLE, "style.css");
 define(CLIENT_STYLE, $albumThemeLocation.PF_THEME_STYLE_FILE);
-define(CLIENT_JS, PF_CLIENT_JS);
+define(CLIENT_JS, PF_REL_INSTALL_DIR."client/".PF_CLIENT_JS);
 
 //include the theme index.html
-include($albumThemeLocation."index.html");
+include($_SERVER['DOCUMENT_ROOT'].$albumThemeLocation."index.html");
 ?>
