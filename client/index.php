@@ -30,6 +30,12 @@ include_once(PF_SCRIPTS_DIR."pf_theme_manager.php");
 //begin new session
 session_start();
 
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<?php
 /**************************
  1. check if album exists
 **************************/
@@ -64,6 +70,16 @@ else {
     Otherwise switch to default
 ********************************/
 $availableThemes = getThemeList();
-if(!array_key_exists($availableThemes, $albumTheme))
+if(!array_key_exists($albumTheme, $availableThemes))
     $albumTheme = PF_DEFAULT_THEME;
 $albumThemeLocation = $availableThemes[$albumTheme];
+
+//now generate the headers
+define(ALBUM_TITLE, $albumName);
+define(COMMON_STYLE, "style.css");
+define(CLIENT_STYLE, $albumThemeLocation.PF_THEME_STYLE_FILE);
+define(CLIENT_JS, PF_CLIENT_JS);
+
+//include the theme index.html
+include($albumThemeLocation."index.html");
+?>
