@@ -47,7 +47,7 @@ function getThemeList() {
     foreach($themedirs as $themedir) {
         $cp = new ConfigReader($themedir.'/'.PF_THEME_INFO_FILE);
         $data = $cp->get("theme/name");
-        $ret[$data['data']] = PF_REL_THEME_DIR.$theme.'/';
+        $ret[$data['data']] = PF_REL_THEME_DIR.$themedir.'/';
     }
     return $ret;
 }
