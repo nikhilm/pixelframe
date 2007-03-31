@@ -40,4 +40,5 @@ define("PF_THUMBNAIL_DIR", "thumbnails/");//relative thumbnail directory
 define("PF_DEFAULT_THEME", "Default Pixelframe theme");
 define("PF_THEME_INFO_FILE", "theme.xml");
 define("PF_THEME_STYLE_FILE", "style.css");
+define("PF_CLIENT_JS", "pixelframe.js");
 ?>
