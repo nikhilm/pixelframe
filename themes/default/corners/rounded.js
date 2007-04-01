@@ -38,19 +38,19 @@ function getElementsByClassName(cName) {
 * Valid values for the second argument are {top:true/false, bottom:true/false]
 */
 function roundCorners(elem) {
-    var ar = ['corner_tl', 'corner_tr', 'corner_bl', 'corner_br'];
+    var corner_classes = ['corner_tl', 'corner_tr', 'corner_bl', 'corner_br'];
     //create the appropriate div elements
     var nodes = [];        
-    for(i = 0; i < ar.length; i++) {
+    for(i = 0; i < corner_classes.length; i++) {
         nodes.push(document.createElement('div'));
-        nodes[i].className = ar[i];
+        nodes[i].className = corner_classes[i];
     }
     
     var validCorners = []
     if(!arguments[1]) {
-        a = ['tl', 'tr', 'bl', 'br']
-        for(var i = 0; i < a.length; i++)
-            validCorners[a[i]] = true;
+        corners = ['tl', 'tr', 'bl', 'br']
+        for(var i = 0; i < corners.length; i++)
+            validCorners[corners[i]] = true;
     }
     else {
         for(prop in arguments[1])
