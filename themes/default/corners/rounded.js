@@ -1,37 +1,5 @@
 // Copyright Nikhil Marathe (2007) nsm.nikhil@gmail.com
 // GNU GPL 2.0
-function $() {
-    if(arguments.length == 1) return getElem(arguments[0]);
-    var ret = [];
-    for(var i = 0; i < arguments.length; i++)
-            ret.push(getElem(arguments[i]));
-    
-    function getElem(el) {
-        if (typeof el == 'string' )
-            el = document.getElementById(el);
-        return ( el ? el : false);
-    }
-    return ret;
-}
-
-function hasClassName(elem, name) {
-    if(elem.className)
-        return elem.className.match("\\b"+name+"\\b");
-    else
-        return false;
-}
-
-function getElementsByClassName(cName) {
-    elements = document.body.getElementsByTagName("*");
-    //console.log(elements);
-    var ret = [];
-    for(var i = 0; i < elements.length;i++) {
-        if(hasClassName(elements[i], cName))
-            ret.push(elements[i]);
-    }
-    
-    return ret;
-}
 
 /*
 * Accepts the element to round and the corners to round
@@ -68,7 +36,7 @@ function roundCorners(elem) {
     }
     if(validCorners['br']) {
         //needs special handling
-        if(elem.lastChild.className && elem.lastChild.className.match("\\bcorner_bl\\b"))
+        if($(elem.lastChild).hasClassName("corner_bl"))
             elem.lastChild.appendChild(nodes[3]);
         else {
             elem.appendChild(document.createElement('div'));
