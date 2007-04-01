@@ -21,17 +21,21 @@
 */
 
  
-//temp list
-var images = ['cube.png', 'flower.png', 'drops.png', 'dont_panic.png'];
-
-$('next-button').remove('click', nextImage, false);
-$('prev-button').addEvent('click', prevImage, false);
-
-var count = 0;
-function nextImage(evt) {
-    $('main-image').src = '/albums/inkscape/'+images[++count];
+function setup() {
+    //temp list
+    var images = ['cube.png', 'flower.png', 'drops.png', 'dont_panic.png'];
+    console.log($('next-button'), typeof $('next-button'));
+    $('next-button').remove();
+    $('prev-button').addEvent('click', prevImage, false);
+    
+    var count = 0;
+    function nextImage(evt) {
+        $('main-image').src = '/albums/inkscape/'+images[++count];
+    }
+    
+    function prevImage(evt) {
+        $('main-image').src = '/albums/inkscape/'+images[--count];
+    }
 }
 
-function prevImage(evt) {
-    $('main-image').src = '/albums/inkscape/'+images[--count];
-}
+window.onload = setup
