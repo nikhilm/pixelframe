@@ -19,7 +19,7 @@
 function getElementsByClassName(cName) {
     elements = document.getElementsByTagName("*");
     var ret = [];
-    $A(elements).each(function(el) { if(el.hasClassName(cName)) ret.push(el); });
+    $A(elements).each(function(el) { if($(el).hasClassName(cName)) ret.push(el); });
     return ret;
 }
 
