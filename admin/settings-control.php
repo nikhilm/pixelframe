@@ -21,52 +21,7 @@
 */
 
 include_once('../scripts/pf_constants.php');
-
-//CONSTANTS
-define("PF_SETTINGS_DOCUMENT_ROOT", "reply");
-define("PF_STATUS_TAG", "status");
-define("PF_STATUS_SUCCESS", "success");
-define("PF_STATUS_ERROR", "error");
-define("PF_MESSAGE_TAG", "message");
-define("PF_SETTINGS_ACTION", "action"); //the key for the action name in _POST
-
-/*######################
-####   UTILITIES   #####
-######################*/
-
-/*
- * outputs XML header and stuff before outputting message
-*/
-function outputXML($message) { 
-    header('Content-Type: text/xml');
-    print('<?xml version="1.0" encoding="utf-8" ?>');
-    print('<'.PF_SETTINGS_DOCUMENT_ROOT.'>');
-    print($message);
-    print('</'.PF_SETTINGS_DOCUMENT_ROOT.'>');
-}
-
-/*
- * Handles message formatting
-*/
-function formatMessage($status, $message) {
-    $out = "<".PF_STATUS_TAG.">".$status."</".PF_STATUS_TAG.">";
-    $out .= "<".PF_MESSAGE_TAG.">".$message."</".PF_MESSAGE_TAG.">";
-    outputXML($out);
-}
-
-/*
- * outputs message with success status
-*/
-function success($message) {
-    formatMessage(PF_STATUS_SUCCESS, $message);
-}
-
-/*
- * outputs message with error status
-*/
-function error($message) {
-    formatMessage(PF_STATUS_ERROR, $message);
-}
+include_once(PF_SCRIPTS_DIR."pf_messaging.php");
 
 /*############################
 ####   DELEGATION STUFF   ####
