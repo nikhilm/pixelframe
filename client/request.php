@@ -1,5 +1,6 @@
+<?php
 /*
-*  pixelframe.js - handles all client functions for Pixelframe gallery
+*  request.php - handles ajax requests from client
 *
 * Copyright (C)      2007  Nikhil Marathe <nsm.nikhil@gmail.com>
 *               
@@ -20,14 +21,7 @@
 * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
- 
-function setup() {
-    //temp list
-    var images = ['cube.png', 'flower.png', 'drops.png', 'dont_panic.png'];
-    console.log($('next-button'), typeof $('next-button'));
-    $('next-button').addEvent('click', nextImage, false);
-    $('prev-button').addEvent('click', prevImage, false);
-    
-}
-
-window.addEvent('load', setup, false);
+//do some setup
+//keep track of the image we are viewing now
+if(!isset($_SESSION['imageCounter']))
+    $_SESSION['imageCounter'] = 0;
