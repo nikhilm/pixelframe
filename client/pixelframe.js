@@ -30,7 +30,12 @@ function setup() {
     
     var count = 0;
     function nextImage(evt) {
-        $('main-image').src = '/albums/inkscape/'+images[++count];
+        $('main-image').src = '/pixelframe/images/loading.gif';
+        new Ajax("notexist", {}, {
+            onSuccess:function(req) { $('main-image').src = '/albums/inkscape/'+images[++count]; }
+        }
+        );
+        
     }
     
     function prevImage(evt) {
