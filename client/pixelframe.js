@@ -38,4 +38,4 @@ function setup() {
     }
 }
 
-window.onload = setup
+window.addEvent('load', setup, false);
