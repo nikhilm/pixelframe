@@ -54,13 +54,13 @@ define("PF_SETTINGS_ACTION", "action"); //the key for the action name in _POST
 $DELEGATES = array( "next"=>"nextImage",
                     "previous"=>"previousImage");
 
-if(array_key_exists($_POST[PF_SETTINGS_ACTION], $DELEGATES) &&
-    function_exists($_POST[PF_SETTINGS_ACTION]))
+if(array_key_exists($_GET[PF_SETTINGS_ACTION], $DELEGATES) &&
+    function_exists($_GET[PF_SETTINGS_ACTION]))
 {
-    unset($_POST[PF_SETTINGS_ACTION]);
-    $$_DELEGATES[$_POST[PF_SETTINGS_ACTION]]($_POST);    
+    unset($_GET[PF_SETTINGS_ACTION]);
+    $$_DELEGATES[$_GET[PF_SETTINGS_ACTION]]($_GET);    
     
 }
 else {
-    error("No such action {$_POST[PF_SETTINGS_ACTION]}");
+    error("No such action {$_GET[PF_SETTINGS_ACTION]}");
 }
