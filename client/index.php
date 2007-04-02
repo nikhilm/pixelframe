@@ -65,6 +65,9 @@ else {
     return;
 }
 
+//everything went fine so store album location in session
+$_SESSION['albumLocation'] = $albumLocation;
+
 /********************************
  2. Check if theme exists.
     Otherwise switch to default
