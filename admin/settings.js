@@ -214,6 +214,7 @@ function setup() {
 
 //returns true if success, false if not
 function goodStatus(doc) {
+    console.log(doc, doc.prototype);
     var reply = doc.getElementsByTagName('reply')[0];
     if(reply.getElementsByTagName('status')) {
         var status = reply.getElementsByTagName('status')[0].firstChild.nodeValue;
@@ -351,7 +352,7 @@ function deleteAlbum(evt) {
     loading();
     new Ajax(URL, {}, {
             onSuccess: function(req) {
-                if(goodStatus(req)) {    
+                if(goodStatus(req.responseXML)) {    
                     var albums = $('album-list').getElementsByTagName('li');
                     var currentAlbumName = $('album-name').firstChild.nodeValue;
                     $A(albums).each(function(elem) {
