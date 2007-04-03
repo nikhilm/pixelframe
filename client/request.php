@@ -64,3 +64,19 @@ if(array_key_exists($_GET[PF_SETTINGS_ACTION], $DELEGATES) &&
 else {
     error("No such action {$_GET[PF_SETTINGS_ACTION]}");
 }
+
+
+
+
+/*##################
+## MAIN FUNCTIONS ##
+##################*/
+function makeNiceUrl($name) {
+    return $_SESSION['albumLocation'].'/'.$name;
+}
+function nextImage($args) {
+    success(makeNiceUrl($_SESSION['imageList'][++$_SESSION['imageCount']]));
+}
+function prevImage($args) {
+    success(makeNiceUrl($_SESSION['imageList'][--$_SESSION['imageCount']]));
+}
