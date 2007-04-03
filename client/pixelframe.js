@@ -20,11 +20,24 @@
 * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
+var URL = "request.php";
+
+
+function nextImage(evt) {
+    evt.preventDefault();
+    new Ajax(URL, {action:'next'}, {
+        onSuccess: function(req) {
+            console.log(req.responseXML);
+            $('main-image').src = req.responseXML.getElementsByTagName('message')[0].firstChild.nodeValue;
+        }
+    });
+}
+
+function prevImage() {}
  
 function setup() {
     //temp list
     var images = ['cube.png', 'flower.png', 'drops.png', 'dont_panic.png'];
-    console.log($('next-button'), typeof $('next-button'));
     $('next-button').addEvent('click', nextImage, false);
     $('prev-button').addEvent('click', prevImage, false);
     

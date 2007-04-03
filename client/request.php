@@ -53,12 +53,13 @@ if(isset($_SESSION['albumLocation']) and !isset($_SESSION['imageList'])) {
 define("PF_SETTINGS_ACTION", "action"); //the key for the action name in _POST
 $DELEGATES = array( "next"=>"nextImage",
                     "previous"=>"previousImage");
-
+                    
 if(array_key_exists($_GET[PF_SETTINGS_ACTION], $DELEGATES) &&
     function_exists($_GET[PF_SETTINGS_ACTION]))
 {
+    $func = $DELEGATES[$_GET[PF_SETTINGS_ACTION]];    
     unset($_GET[PF_SETTINGS_ACTION]);
-    $$_DELEGATES[$_GET[PF_SETTINGS_ACTION]]($_GET);    
+    call_user_func($func, $_GET) ;
     
 }
 else {
