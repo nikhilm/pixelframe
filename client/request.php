@@ -78,6 +78,6 @@ function makeNiceUrl($name) {
 function nextImage($args) {
     success(makeNiceUrl($_SESSION['imageList'][++$_SESSION['imageCount']]));
 }
-function prevImage($args) {
+function previousImage($args) {
     success(makeNiceUrl($_SESSION['imageList'][--$_SESSION['imageCount']]));
 }

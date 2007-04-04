@@ -35,7 +35,7 @@ function nextImage(evt) {
 
 function prevImage(evt) {
     evt.preventDefault();
-    new Ajax(URL, {action:'prev'}, {
+    new Ajax(URL, {action:'previous'}, {
         onSuccess: function(req) {
             console.log(req.responseXML);
             $('main-image').src = req.responseXML.getElementsByTagName('message')[0].firstChild.nodeValue;
