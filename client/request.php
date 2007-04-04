@@ -63,6 +63,7 @@ else {
 ## MAIN FUNCTIONS ##
 ##################*/
 //generates album location and thumbnail location
+//returns true if write successful
 function formatAndWriteOutput() {
     if(inRange()) {
         $out = "<image>".$_SESSION['albumLocation'].'/'.
@@ -73,9 +74,11 @@ function formatAndWriteOutput() {
                 $_SESSION['imageList'][$_SESSION['imageCount']].
                 "</thumbnail>";
         success($out);
+        return true;
     }
     else {
         error("");
+        return false;
     }
 }
 
@@ -85,9 +88,11 @@ function inRange() {
 
 function nextImage($args) {
     ++$_SESSION['imageCount'];
-    formatAndWriteOutput();
+    if(!formatAndWriteOutput()) //restore
+        --$_SESSION['imageCount'];
 }
 function previousImage($args) {
     --$_SESSION['imageCount'];
-    formatAndWriteOutput();
+    if(!formatAndWriteOutput())        
+        ++$_SESSION['imageCount'];
 }
