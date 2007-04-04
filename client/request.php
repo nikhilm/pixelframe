@@ -72,12 +72,32 @@ else {
 /*##################
 ## MAIN FUNCTIONS ##
 ##################*/
-function makeNiceUrl($name) {
-    return $_SESSION['albumLocation'].'/'.$name;
+//generates album location and thumbnail location
+function formatAndWriteOutput() {
+    if(inRange()) {
+        $out = "<image>".$_SESSION['albumLocation'].'/'.
+                $_SESSION['imageList'][$_SESSION['imageCount']]."</image>";
+        $out .= "<thumbnail>".
+                $_SESSION['albumLocation'].'/'.
+                PF_THUMBNAIL_DIR.
+                $_SESSION['imageList'][$_SESSION['imageCount']].
+                "</thumbnail>";
+        success($out);
+    }
+    else {
+        error("");
+    }
 }
+
+function inRange() {
+    return $_SESSION['imageCount'] >= 0 && $_SESSION['imageCount'] < count($_SESSION['imageList']);
+}
+
 function nextImage($args) {
-    success(makeNiceUrl($_SESSION['imageList'][++$_SESSION['imageCount']]));
+    ++$_SESSION['imageCount'];
+    formatAndWriteOutput();
 }
 function previousImage($args) {
-    success(makeNiceUrl($_SESSION['imageList'][--$_SESSION['imageCount']]));
+    --$_SESSION['imageCount'];
+    formatAndWriteOutput();
 }
