@@ -55,7 +55,7 @@ if($albums) {
             $albumExists = TRUE;
         }
     }
-    if(!albumExists) {
+    if(!$albumExists) {
         print("There is no album called $albumName.");
         return;
     }
