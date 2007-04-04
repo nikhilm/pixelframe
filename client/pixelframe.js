@@ -22,30 +22,42 @@
 
 var URL = "request.php";
 
+//returns true if success, false if not
+function goodStatus(doc) {
+    var reply = doc.getElementsByTagName('reply')[0];
+    if(reply.getElementsByTagName('status')) {
+        var status = reply.getElementsByTagName('status')[0].firstChild.nodeValue;
+        return status == "success";
+    }
+}
 
+function error(req) {
+    alert("There was an error in fetching the image");
+}
+
+function setImage(req) {
+    if(goodStatus(req.responseXML)) {
+        $('main-image').src = req.responseXML.getElementsByTagName('message')[0].firstChild.nodeValue;
+    }
+}
+    
 function nextImage(evt) {
     evt.preventDefault();
     new Ajax(URL, {action:'next'}, {
-        onSuccess: function(req) {
-            console.log(req.responseXML);
-            $('main-image').src = req.responseXML.getElementsByTagName('message')[0].firstChild.nodeValue;
-        }
+        onSuccess: setImage,
+        onFailure: error
     });
 }
 
 function prevImage(evt) {
     evt.preventDefault();
     new Ajax(URL, {action:'previous'}, {
-        onSuccess: function(req) {
-            console.log(req.responseXML);
-            $('main-image').src = req.responseXML.getElementsByTagName('message')[0].firstChild.nodeValue;
-        }
+        onSuccess: setImage,
+        onFailure: error
     });
 }
  
 function setup() {
-    //temp list
-    var images = ['cube.png', 'flower.png', 'drops.png', 'dont_panic.png'];
     $('next-button').addEvent('click', nextImage, false);
     $('prev-button').addEvent('click', prevImage, false);
     
