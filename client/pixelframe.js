@@ -37,7 +37,7 @@ function error(req) {
 
 function setImage(req) {
     if(goodStatus(req.responseXML)) {
-        $('main-image').src = req.responseXML.getElementsByTagName('message')[0].firstChild.nodeValue;
+        $('main-image').src = req.responseXML.getElementsByTagName('image')[0].firstChild.nodeValue;
     }
 }
     
