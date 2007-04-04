@@ -214,7 +214,6 @@ function setup() {
 
 //returns true if success, false if not
 function goodStatus(doc) {
-    console.log(doc, doc.prototype);
     var reply = doc.getElementsByTagName('reply')[0];
     if(reply.getElementsByTagName('status')) {
         var status = reply.getElementsByTagName('status')[0].firstChild.nodeValue;
