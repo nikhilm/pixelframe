@@ -55,7 +55,7 @@ $DELEGATES = array( "next"=>"nextImage",
                     "previous"=>"previousImage");
                     
 if(array_key_exists($_GET[PF_SETTINGS_ACTION], $DELEGATES) &&
-    function_exists($_GET[PF_SETTINGS_ACTION]))
+    function_exists($DELEGATES[$_GET[PF_SETTINGS_ACTION]]))
 {
     $func = $DELEGATES[$_GET[PF_SETTINGS_ACTION]];    
     unset($_GET[PF_SETTINGS_ACTION]);
