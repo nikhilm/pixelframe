@@ -21,6 +21,11 @@
 */
 
 var URL = "request.php";
+var LOADING_IMAGE = "../images/loading.gif";
+
+function setLoading() {
+    $('main-image').src = LOADING_IMAGE;
+}
 
 //returns true if success, false if not
 function goodStatus(doc) {
@@ -43,6 +48,7 @@ function setImage(req) {
     
 function nextImage(evt) {
     evt.preventDefault();
+    setLoading();
     new Ajax(URL, {action:'next'}, {
         onSuccess: setImage,
         onFailure: error
@@ -51,6 +57,7 @@ function nextImage(evt) {
 
 function prevImage(evt) {
     evt.preventDefault();
+    setLoading();
     new Ajax(URL, {action:'previous'}, {
         onSuccess: setImage,
         onFailure: error
