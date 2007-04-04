@@ -68,6 +68,14 @@ else {
 //everything went fine so store album location in session
 $_SESSION['albumLocation'] = $albumLocation;
 
+    print($_SERVER['DOCUMENT_ROOT'].'/'.$_SESSION['albumLocation']);
+//get a image listing
+if(isset($_SESSION['albumLocation'])) {
+    chdir($_SERVER['DOCUMENT_ROOT'].'/'.$_SESSION['albumLocation']);
+    $_SESSION['imageList'] = glob('*.png')+glob('*.jpg')+glob('*.jpeg') + glob('*.gif');
+}
+
+$_SESSION['imageCount'] = 0;
 /********************************
  2. Check if theme exists.
     Otherwise switch to default

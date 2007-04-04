@@ -27,16 +27,6 @@ session_start();
 include_once("../scripts/pf_constants.php");
 include_once(PF_SCRIPTS_DIR."pf_messaging.php");
 
-//do some setup
-//keep track of the image we are viewing now
-if(!isset($_SESSION['imageCounter']))
-    $_SESSION['imageCounter'] = 0;
-    
-//get a image listing
-if(isset($_SESSION['albumLocation']) and !isset($_SESSION['imageList'])) {
-    chdir($_SERVER['DOCUMENT_ROOT'].'/'.$_SESSION['albumLocation']);
-    $_SESSION['imageList'] = glob('*.png')+glob('*.jpg')+glob('*.jpeg') + glob('*.gif');
-}
 
 /*############################
 ####   DELEGATION STUFF   ####
