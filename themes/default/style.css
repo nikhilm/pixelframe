@@ -25,6 +25,9 @@ div#buttons-wrapper {
     margin-bottom:70px;
 }
 
+img#main-image {
+    max-width:600px;
+}
 
 div#prev-button, div#next-button {
     background:#555;
