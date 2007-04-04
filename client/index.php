@@ -68,7 +68,6 @@ else {
 //everything went fine so store album location in session
 $_SESSION['albumLocation'] = $albumLocation;
 
-    print($_SERVER['DOCUMENT_ROOT'].'/'.$_SESSION['albumLocation']);
 //get a image listing
 if(isset($_SESSION['albumLocation'])) {
     chdir($_SERVER['DOCUMENT_ROOT'].'/'.$_SESSION['albumLocation']);
