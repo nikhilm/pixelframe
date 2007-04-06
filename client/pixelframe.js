@@ -24,6 +24,9 @@ var URL = "request.php";
 var LOADING_IMAGE = "../images/loading.gif";
 
 var pf_originalImage = "";
+//records already loaded thumbnails as strings
+var pf_loadedThumbnails = [];
+
 function setLoading() {
     pf_originalImage = $('main-image').src;
     $('main-image').src = LOADING_IMAGE;
@@ -52,7 +55,29 @@ function nextImage(evt) {
     evt.preventDefault();
     setLoading();
     new Ajax(URL, {action:'next'}, {
-        onSuccess: setImage,
+        onSuccess: function (req) {
+            if(goodStatus(req.responseXML)) {
+                var thumbSrc = req.responseXML.getElementsByTagName('thumbnail')[0].firstChild.nodeValue;
+                
+                var exists = false;
+                $A(pf_loadedThumbnails).each( function(thmb) {
+                    console.log("current %s   fetched %s", thmb, thumbSrc);
+                    if(thmb == thumbSrc) {
+                        console.log("Equals");
+                        exists = true;
+                        return;
+                    }
+                });
+                
+                if(!exists) {
+                    var thumbImg = document.createElement('img');
+                    thumbImg.src = thumbSrc;
+                    $('thumbnail-view').appendChild(thumbImg);
+                    pf_loadedThumbnails.push(thumbSrc);
+                }
+            }
+            setImage(req);
+        },
         onFailure: error
     });
 }
