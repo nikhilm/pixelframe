@@ -61,9 +61,7 @@ function nextImage(evt) {
                 
                 var exists = false;
                 $A(pf_loadedThumbnails).each( function(thmb) {
-                    console.log("current %s   fetched %s", thmb, thumbSrc);
                     if(thmb == thumbSrc) {
-                        console.log("Equals");
                         exists = true;
                         return;
                     }
