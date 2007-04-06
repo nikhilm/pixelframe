@@ -23,7 +23,9 @@
 var URL = "request.php";
 var LOADING_IMAGE = "../images/loading.gif";
 
+var pf_originalImage = "";
 function setLoading() {
+    pf_originalImage = $('main-image').src;
     $('main-image').src = LOADING_IMAGE;
 }
 
@@ -41,9 +43,9 @@ function error(req) {
 }
 
 function setImage(req) {
-    if(goodStatus(req.responseXML)) {
-        $('main-image').src = req.responseXML.getElementsByTagName('image')[0].firstChild.nodeValue;
-    }
+    $('main-image').src = ( goodStatus(req.responseXML) ?
+    req.responseXML.getElementsByTagName('image')[0].firstChild.nodeValue :
+    pf_originalImage );
 }
     
 function nextImage(evt) {

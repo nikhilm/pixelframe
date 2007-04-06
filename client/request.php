@@ -77,7 +77,7 @@ function formatAndWriteOutput() {
         return true;
     }
     else {
-        error("");
+        error("PF_RESTORE_IMAGE");
         return false;
     }
 }
