@@ -12,11 +12,25 @@ div#wrapper {
     margin-top:2%;
 }
 
-div#thumbnail-view {
+div#thumbnail-wrapper {
     background:#ff6600;
+    width:8%;
+    float:left;
+    margin-top:0.5%;
+    margin-left:10%;
+    position:absolute;
 }
+
+div#thumbnail-view {
+    display:block;
+    overflow:auto;
+    height:500px;
+}
+
 div#thumbnail-view img {
-    padding:10px 50px;
+    padding:10px;
+    display:inline;
+    clear:both;
 }
 
 div#buttons-wrapper {
