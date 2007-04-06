@@ -71,7 +71,7 @@ $_SESSION['albumLocation'] = $albumLocation;
 //get a image listing
 if(isset($_SESSION['albumLocation'])) {
     chdir($_SERVER['DOCUMENT_ROOT'].'/'.$_SESSION['albumLocation']);
-    $_SESSION['imageList'] = glob('*.png')+glob('*.jpg')+glob('*.jpeg') + glob('*.gif');
+    $_SESSION['imageList'] = array_merge(glob('*.png'), glob('*.jpg'), glob('*.jpeg'), glob('*.gif'));
 }
 
 $_SESSION['imageCount'] = 0;
