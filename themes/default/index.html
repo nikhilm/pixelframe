@@ -13,6 +13,22 @@
 <!-- rounded corners -->
 <link rel="stylesheet" type="text/css" href="<?php print($albumThemeLocation);?>corners/rounded.css" />
 <script language="javascript" type="text/javascript" src="<?php print($albumThemeLocation);?>corners/rounded.js"></script>
+
+<!--theme script-->
+<script language="javascript" type="text/javascript">
+function default_setup() {
+    $('toggle-thumbnail').addEvent('click', toggleThumbnails, false);
+}
+
+function toggleThumbnails() {
+    state = "block";
+    if($('thumbnail-view').getStyle("display") == "block")
+        state = "none";
+    $('thumbnail-view').setStyle({display:state});
+}
+
+window.addEvent('load', default_setup, false);
+</script>
 </head>
 <body onload="roundAll();">
 <h1 id="album-name"></h1>
