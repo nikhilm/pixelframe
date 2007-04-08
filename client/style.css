@@ -23,3 +23,7 @@
 img#main-image {
     border:solid 5px white;
 }
+
+div#thumbnail-view img {
+    cursor:pointer;
+}
