@@ -22,9 +22,13 @@ function default_setup() {
 
 function toggleThumbnails() {
     state = "block";
-    if($('thumbnail-view').getStyle("display") == "block")
+    text = "Hide thumbnails";
+    if($('thumbnail-view').getStyle("display") == "block") {
         state = "none";
+        text = "Show thumbnails";
+    }
     $('thumbnail-view').setStyle({display:state});
+    $('toggle-thumbnail').firstChild.nodeValue = text;
 }
 
 window.addEvent('load', default_setup, false);
