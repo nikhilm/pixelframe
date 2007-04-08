@@ -32,7 +32,6 @@ div#toggle-thumbnail:hover {
 
 div#thumbnail-view {
     overflow:auto;
-    height:500px;
     display:none;
 }
 
