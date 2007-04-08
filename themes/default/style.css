@@ -14,17 +14,26 @@ div#wrapper {
 
 div#thumbnail-wrapper {
     background:#ff6600;
-    width:8%;
-    float:left;
     margin-top:0.5%;
-    margin-left:10%;
-    position:absolute;
+}
+
+div#toggle-thumbnail {
+    margin-left:80%;
+    font-size:12px;
+    color:#fff;
+    padding:0 5px;
+    width:15%;
+}
+
+div#toggle-thumbnail:hover {
+    background:#555;
+    cursor:pointer;
 }
 
 div#thumbnail-view {
-    display:block;
     overflow:auto;
     height:500px;
+    display:none;
 }
 
 div#thumbnail-view img {
