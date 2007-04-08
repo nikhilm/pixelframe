@@ -50,6 +50,11 @@ function setImage(req) {
     req.responseXML.getElementsByTagName('image')[0].firstChild.nodeValue :
     pf_originalImage );
 }
+
+function setThumbnailAsImage(evt) {
+    var src = evt.target.src;
+    $('main-image').src = src.replace("thumbnails/", "");
+}
     
 function nextImage(evt) {
     evt.preventDefault();
@@ -70,6 +75,7 @@ function nextImage(evt) {
                 if(!exists) {
                     var thumbImg = document.createElement('img');
                     thumbImg.src = thumbSrc;
+                    $(thumbImg).addEvent('click', setThumbnailAsImage, false);
                     $('thumbnail-view').appendChild(thumbImg);
                     pf_loadedThumbnails.push(thumbSrc);
                 }
