@@ -74,7 +74,7 @@ if(isset($_SESSION['albumLocation'])) {
     $_SESSION['imageList'] = array_merge(glob('*.png'), glob('*.jpg'), glob('*.jpeg'), glob('*.gif'));
 }
 
-$_SESSION['imageCount'] = 0;
+$_SESSION['imageCount'] = -1;//set to -1 so that first load arranges everything properly
 /********************************
  2. Check if theme exists.
     Otherwise switch to default

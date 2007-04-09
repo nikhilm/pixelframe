@@ -98,7 +98,7 @@ function prevImage(evt) {
 function setup() {
     $('next-button').addEvent('click', nextImage, false);
     $('prev-button').addEvent('click', prevImage, false);
-    
+    nextImage({preventDefault:function(){}});
 }
 
 window.addEvent('load', setup, false);
