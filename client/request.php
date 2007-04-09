@@ -42,7 +42,8 @@ include_once(PF_SCRIPTS_DIR."pf_messaging.php");
 */
 define("PF_SETTINGS_ACTION", "action"); //the key for the action name in _POST
 $DELEGATES = array( "next"=>"nextImage",
-                    "previous"=>"previousImage");
+                    "previous"=>"previousImage",
+                    "setthumbnail"=>"setThumbnail");
                     
 if(array_key_exists($_GET[PF_SETTINGS_ACTION], $DELEGATES) &&
     function_exists($DELEGATES[$_GET[PF_SETTINGS_ACTION]]))
@@ -95,4 +96,13 @@ function previousImage($args) {
     --$_SESSION['imageCount'];
     if(!formatAndWriteOutput())        
         ++$_SESSION['imageCount'];
+}
+
+function setThumbnail($args) {
+    $thumb = basename($args['thumbnail']);
+    $srch = array_search($thumb, $_SESSION['imageList']);
+    if($srch !== FALSE) {
+        $_SESSION['imageCount'] = $srch;
+        formatAndWriteOutput();
+    }
 }

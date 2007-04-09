@@ -53,6 +53,13 @@ function setImage(req) {
 
 function setThumbnailAsImage(evt) {
     var src = evt.target.src;
+    new Ajax(URL, {action:'setthumbnail', thumbnail:src}, {
+        onSuccess: function(req) {
+            if(goodStatus(req.responseXML))
+                setImage(req);
+        },
+        onFailure: error
+    });
     $('main-image').src = src.replace("thumbnails/", "");
 }
     
