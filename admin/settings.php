@@ -1,7 +1,6 @@
 <?php
 include_once("../scripts/pf_constants.php");
 ?>
-<!---Add password checking code here -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
@@ -9,11 +8,7 @@ include_once("../scripts/pf_constants.php");
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <title>Pixelframe: Settings</title>
 <link rel="stylesheet" type="text/css" href="style.css" />
-<script language="javascript" src="../js/base.js" type="text/javascript" />
-<script language="javascript" src="../js/dom.js" type="text/javascript" />
-<script language="javascript" src="../js/extension.js" type="text/javascript" />
-<script language="javascript" src="../js/effects.js" type="text/javascript" />
-<script language="javascript" src="../js/ajax.js" type="text/javascript" />
+<script language="javascript" src="<?php print(PF_REL_INSTALL_DIR.'js/juice.js'); ?>" type="text/javascript" />
 <script language="javascript" src="settings.js" type="text/javascript" />
 </head>
 
