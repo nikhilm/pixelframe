@@ -192,7 +192,7 @@ return {x:_27,y:top,width:w,height:h};
 },addEvent:function(_2d,_2e,_2f){
 if(window.addEventListener){
 this.addEventListener(_2d,_2e,_2f);
-}else{this.id);
+}else{
 this.attachEvent("on"+_2d,_2e);
 }
 },removeEvent:function(_30,_31,_32){
