@@ -52,7 +52,7 @@ function setImage(req) {
 }
 
 function setThumbnailAsImage(evt) {
-    var src = evt.target.src;
+    var src = this.src;
     new Ajax(URL, {action:'setthumbnail', thumbnail:src}, {
         onSuccess: function(req) {
             if(goodStatus(req.responseXML))
