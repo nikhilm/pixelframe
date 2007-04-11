@@ -35,9 +35,10 @@ function setLoading() {
 //returns true if success, false if not
 function goodStatus(doc) {
     var reply = doc.getElementsByTagName('reply')[0];
-    if(reply.getElementsByTagName('status')) {
-        var status = reply.getElementsByTagName('status')[0].firstChild.nodeValue;
-        return status == "success";
+    var replyStatus = reply.getElementsByTagName('status');
+    if(replyStatus) {
+        replyStatus = reply.getElementsByTagName('status')[0].firstChild.nodeValue;
+        return replyStatus == "success";
     }
 }
 
