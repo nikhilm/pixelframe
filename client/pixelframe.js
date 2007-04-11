@@ -64,7 +64,7 @@ function setThumbnailAsImage(evt) {
 }
     
 function nextImage(evt) {
-    if(evt) evt.preventDefault();
+    if(evt) Event.stopDefault(evt);
     setLoading();
     new Ajax(URL, {action:'next'}, {
         onSuccess: function (req) {
@@ -94,7 +94,7 @@ function nextImage(evt) {
 }
 
 function prevImage(evt) {
-    if(evt) evt.preventDefault();
+    if(evt) Event.stopDefault(evt);
     setLoading();
     new Ajax(URL, {action:'previous'}, {
         onSuccess: setImage,
@@ -105,7 +105,7 @@ function prevImage(evt) {
 function setup() {
     $('next-button').addEvent('click', nextImage, false);
     $('prev-button').addEvent('click', prevImage, false);
-    nextImage({preventDefault:function(){}});
+    nextImage(null);
 }
 
 window.addEvent('load', setup, false);
