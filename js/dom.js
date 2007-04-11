@@ -116,8 +116,8 @@ Object.extend(CustomElement.prototype, {
             if(document.defaultView && document.defaultView.getComputedStyle) {
                 ret = document.defaultView.getComputedStyle(this, null).getPropertyValue(property.camelize());
             }
-            else if(element.currentStyle) {
-                ret = element.currentStyle[property.camelize()];
+            else if(this.currentStyle) {
+                ret = this.currentStyle[property.camelize()];
             }
         }
         return ret;
@@ -151,7 +151,7 @@ Object.extend(CustomElement.prototype, {
     },
     
     addEvent:function(type, callback, useCapture) {
-        //Event.push([this, type, callback, useCapture]);
+        Events.push([this, type, callback, useCapture]);
         //try W3C
         if(window.addEventListener) {
             this.addEventListener(type, callback, useCapture);
@@ -199,9 +199,22 @@ function $() {
     return ret;
 }
 
-
-Event = Class.create();
+if(!window.Event)
+    var Event = Class.create();
 Object.extend(Event, {
+    stopEvent: function(event) {
+        if(event.stopPropagation) event.stopPropagation();
+        event.cancelBubble = true;
+    },
+    
+    stopDefault: function(event) {
+        if(event.preventDefault) event.preventDefault();
+        event.returnValue = false;
+    }
+});
+
+var Events = Class.create();
+Object.extend(Events, {
     eventList : false,
     push:function(event) {
         if(!this.eventList) this.eventList = [];
@@ -216,4 +229,4 @@ Object.extend(Event, {
     }
 });
 
-$(window).addEvent('unload', Event.unloadAll, false);
+$(window).addEvent('unload', Events.unloadAll, false);
