@@ -64,7 +64,7 @@ function setThumbnailAsImage(evt) {
 }
     
 function nextImage(evt) {
-    evt.preventDefault();
+    if(evt) evt.preventDefault();
     setLoading();
     new Ajax(URL, {action:'next'}, {
         onSuccess: function (req) {
@@ -94,7 +94,7 @@ function nextImage(evt) {
 }
 
 function prevImage(evt) {
-    evt.preventDefault();
+    if(evt) evt.preventDefault();
     setLoading();
     new Ajax(URL, {action:'previous'}, {
         onSuccess: setImage,
