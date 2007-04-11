@@ -269,8 +269,8 @@ alert("Could not create Ajax object");
 this.requestObject=req;
 },_formatParameters:function(){
 var _3c=[];
-for(item in this.parameters){
-_3c.push(item+"="+this.parameters[item]);
+for(param in this.parameters){
+_3c.push(param+"="+this.parameters[param]);
 }
 return _3c.join("&");
 },activate:function(){

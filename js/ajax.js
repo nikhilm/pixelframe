@@ -67,8 +67,8 @@ Object.extend(Ajax.prototype, {
     
     _formatParameters: function() {
         var formatted = [];
-        for(item in this.parameters)
-            formatted.push(item + "=" + this.parameters[item]);
+        for(param in this.parameters)
+            formatted.push(param + "=" + this.parameters[param]);
         return formatted.join('&');
     },
     
