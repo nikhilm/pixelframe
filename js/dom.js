@@ -169,7 +169,7 @@ Object.extend(CustomElement.prototype, {
         }
         //else MS
         else {
-            this.detachEvent('on'+type, callback);
+            this.detachEvent('on'+type, callback.bind(this));
         }
     } 
 });
