@@ -158,7 +158,7 @@ Object.extend(CustomElement.prototype, {
         }
         //else MS
         else {
-            this.attachEvent(type, callback);
+            this.attachEvent('on'+type, callback);
         }
     },
 
