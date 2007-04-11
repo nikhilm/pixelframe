@@ -204,12 +204,12 @@ if(!window.Event)
 Object.extend(Event, {
     stopEvent: function(event) {
         if(event.stopPropagation) event.stopPropagation();
-        event.cancelBubble = true;
+        else event.cancelBubble = true;
     },
     
     stopDefault: function(event) {
         if(event.preventDefault) event.preventDefault();
-        event.returnValue = false;
+        else event.returnValue = false;
     }
 });
 
