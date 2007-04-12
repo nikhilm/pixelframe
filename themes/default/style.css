@@ -25,7 +25,7 @@ div#toggle-thumbnail {
 }
 
 div#toggle-thumbnail:hover {
-    background:#555;
+    background:#5 55;
     cursor:pointer;
 }
 
@@ -53,9 +53,13 @@ img#main-image {
 
 div#prev-button, div#next-button {
     background:#555;
-    width:49%;
+    width:50%;
     float:left;
     display:inline;
+}
+
+* html div#prev-button {
+    width:49%;
 }
 
 div#prev-button:hover, div#next-button:hover {
