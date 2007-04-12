@@ -29,7 +29,16 @@ function roundCorners(elem) {
         elem.insertBefore(nodes[0], elem.firstChild);
     }
     if(validCorners['tr']) {
-        elem.insertBefore(nodes[1], elem.firstChild);
+        //needs special handling
+        if($(elem.firstChild).hasClassName("corner_tl")) {
+            elem.replaceChild(nodes[1], elem.firstChild);
+            elem.firstChild.appendChild(nodes[0]);
+        }
+        else {
+            elem.insertBefore(document.createElement('div'), elem.firstChild);
+            elem.firstChild.addClass('corner_spacer');
+            elem.firstChild.appendChild(nodes[1]);
+        }
     }    
     if(validCorners['bl']) {
         elem.appendChild(nodes[2]);
@@ -40,7 +49,7 @@ function roundCorners(elem) {
             elem.lastChild.appendChild(nodes[3]);
         else {
             elem.appendChild(document.createElement('div'));
-            elem.lastChild.className += ' corner_spacer ';
+            elem.lastChild.addClass('corner_spacer');
             elem.lastChild.appendChild(nodes[3]);
         }
     }
