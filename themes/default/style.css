@@ -54,8 +54,9 @@ img#main-image {
 
 div#prev-button, div#next-button {
     background:#555;
-    width:50%;
+    width:49%;
     float:left;
+    display:inline;
 }
 
 div#prev-button:hover, div#next-button:hover {
