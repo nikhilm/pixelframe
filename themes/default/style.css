@@ -37,7 +37,7 @@ div#thumbnail-view {
 div#thumbnail-view img {
     padding:10px;
     display:inline;
-    clear:both;
+    border:solid 5px white;
 }
 
 div#buttons-wrapper {

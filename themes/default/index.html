@@ -16,9 +16,9 @@ function default_setup() {
 }
 
 function toggleThumbnails() {
-    state = "block";
+    state = "inline";
     text = "Hide thumbnails";
-    if($('thumbnail-view').getStyle("display") == "block") {
+    if($('thumbnail-view').getStyle("display") == "inline") {
         state = "none";
         text = "Show thumbnails";
     }
