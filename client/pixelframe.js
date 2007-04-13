@@ -34,10 +34,9 @@ function setLoading() {
 
 //returns true if success, false if not
 function goodStatus(doc) {
-    var reply = doc.getElementsByTagName('reply')[0];
-    var replyStatus = reply.getElementsByTagName('status');
+    var replyStatus = doc.getElementsByTagName('status')[0];
     if(replyStatus) {
-        replyStatus = reply.getElementsByTagName('status')[0].firstChild.nodeValue;
+        replyStatus = replyStatus.firstChild.nodeValue;
         return replyStatus == "success";
     }
 }
