@@ -207,7 +207,7 @@ function setup() {
     
 }
 
-
+window.addEvent('load', setup, false);
 /*****************************************************
  * MOST BACKGROUND/COMMUNICATION FUNCTIONS BEGIN HERE
 *****************************************************/
@@ -370,7 +370,7 @@ function deleteAlbum(evt) {
             method:'post',
             payload:formatParameters({
                 action:"deletealbum",
-                name:$('album-name').firstChild.nodeValue,
+                name:$('album-name').firstChild.nodeValue
             })
         }
     );

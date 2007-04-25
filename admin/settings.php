@@ -8,11 +8,11 @@ include_once("../scripts/pf_constants.php");
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <title>Pixelframe: Settings</title>
 <link rel="stylesheet" type="text/css" href="style.css" />
-<script language="javascript" src="<?php print(PF_REL_INSTALL_DIR.'js/juice.js'); ?>" type="text/javascript" />
-<script language="javascript" src="settings.js" type="text/javascript" />
+<script language="javascript" src="<?php print(PF_REL_INSTALL_DIR.'js/juice.js'); ?>" type="text/javascript" > </script>
+<script language="javascript" src="settings.js" type="text/javascript" > </script>
 </head>
 
-<body onload="setup()">
+<body>
 
 <div id="wrapper">
 <div id="header">
