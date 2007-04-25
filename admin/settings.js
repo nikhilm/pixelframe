@@ -52,10 +52,10 @@ function addCancelButton(elem) {
 * Clear the panel by hiding all children
 */
 function clearPanel() {
-    panel = $('panel');
+    var panel = $('panel');
     if(panel.childNodes) {
         $A(panel.childNodes).each(function (elem) { 
-            if(elem.nodeType == Node.ELEMENT_NODE) {
+            if(elem.nodeType == 1 /* element node */) {
                 elem.style.visibility = "hidden";
                 elem.style.display = "none";
             }
@@ -187,7 +187,7 @@ function loading() { clearPanel();showPanel($('loading-panel')); }
 function setup() {
     if($('album-list').childNodes) {
         $A($('album-list').childNodes).each( function (elem) { 
-            if(elem.nodeType == Node.ELEMENT_NODE) {
+            if(elem.nodeType == 1 /* element node */) {
                 $(elem).addEvent('click', launchEditPanel, false);
             }
         });
