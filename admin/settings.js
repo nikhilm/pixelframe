@@ -43,8 +43,7 @@ function _restoreSize(elem, w, h) {
 function addCancelButton(elem) {
     cancel = $('cancel-button');
     cancel.addEvent('click', clearPanel, false);
-    cancel.style.visibility = "visible";
-    cancel.style.display = "";
+    cancel.setStyle({visibility : "visible", display : ""});
     $(elem).appendChild(cancel);
 }
 
@@ -56,8 +55,7 @@ function clearPanel() {
     if(panel.childNodes) {
         $A(panel.childNodes).each(function (elem) { 
             if(elem.nodeType == 1 /* element node */) {
-                elem.style.visibility = "hidden";
-                elem.style.display = "none";
+                $(elem).setStyle({visibility : "hidden", display : "none"});
             }
         }
         );
@@ -69,10 +67,8 @@ function clearPanel() {
  * Show the panel along with the elem
 */
 function showPanel(elem) {
-    $('panel').style.display = "inherit";
-    $('panel').style.visibility = "visible";
-    $(elem).style.display = "inherit";
-    $(elem).style.visibility = "visible";
+    $('panel').setStyle({visibility : "visible", display : "inherit"});
+    $(elem).setStyle({visibility : "visible", display : "inherit"});
     window.location = "#panel";
 }
     
