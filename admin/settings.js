@@ -60,7 +60,7 @@ function clearPanel() {
         }
         );
     }
-    panel.style.display = "none";
+    panel.setStyle({display : "none"});
 }
 
 /*
