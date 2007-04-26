@@ -99,7 +99,13 @@ function launchEditPanel(evt) {
                     
                     var option = document.createElement('option');
                     option.appendChild(document.createTextNode(themeName));
-                    if(theme.hasAttribute('default')) {
+                    
+                    selectedThemeIsDefault = false;
+                    if(theme.hasAttribute)
+                        selectedThemeIsDefault = theme.hasAttribute('default');
+                    else if(theme.attributes)
+                        selectedThemeIsDefault = theme.attributes['default'];
+                    if(selectedThemeIsDefault) {
                         option.setAttribute('selected', 'true');
                     }
                         
