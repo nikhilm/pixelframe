@@ -67,8 +67,9 @@ function clearPanel() {
  * Show the panel along with the elem
 */
 function showPanel(elem) {
-    $('panel').setStyle({visibility : "visible", display : "inherit"});
-    $(elem).setStyle({visibility : "visible", display : "inherit"});
+    var panel = $('panel');
+    panel.setStyle({visibility : "visible", display : "block"});
+    $(elem).setStyle({visibility : "visible", display : "block"});
     window.location = "#panel";
 }
     
@@ -76,10 +77,9 @@ function showPanel(elem) {
 * Fetch and launch the edit panel for the album
 */
 function launchEditPanel(evt) {
-    
     clearPanel();
     loading();
-    var albumName = evt.target.childNodes[0].nodeValue;
+    var albumName = (evt.target||evt.srcElement).childNodes[0].nodeValue;
     new Ajax(URL, {}, {
         method:'post',
         payload: formatParameters({
@@ -105,12 +105,10 @@ function launchEditPanel(evt) {
                         
                     $('album-theme-selector').appendChild(option);
                 });
-                
                 addCancelButton('edit-panel');
             
                 var aN = $('album-name'); 
                 aN.replaceChild(document.createTextNode(albumName), aN.firstChild);
-            
             
                 showPanel('edit-panel');
                 new Effects.BlindDown('edit-panel');
@@ -175,7 +173,7 @@ function launchMessagePanel(mode, msg) {
 
 function success(msg) { launchMessagePanel("success", msg); }
 function error(msg) { launchMessagePanel("error", msg); }
-function loading() { clearPanel();showPanel($('loading-panel')); }
+function loading() { clearPanel();showPanel('loading-panel'); }
 
 /*
  * Setup the application on load
