@@ -236,8 +236,8 @@ function requestFailed(req) {
 */
 function formatParameters(obj) {
     var formatted = [];
-    for(item in obj)
-        formatted.push(item + "=" + obj[item]);    
+    for(param in obj)
+        formatted.push(param + "=" + obj[param]);    
     return formatted.join('&');
 }
 
