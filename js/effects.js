@@ -124,11 +124,10 @@ Object.extend(Object.extend(Effects.Multiple.prototype, new Effects.Base()), {
 Effects.Move = Class.create();
 Object.extend(Object.extend(Effects.Move.prototype, new Effects.Multiple()), {
     initialize:function(el) {
-        //alert("Effects.Move constructer called");
         this.element = $(el);
         this.setOptions(arguments[1]);
-        oLeft = parseFloat(this.element.getStyle('left') || this.element.offsetLeft);
-        oTop  = parseFloat(this.element.getStyle('top')  || this.element.offsetTop);
+        oLeft = parseFloat(this.element.getStyle('left')) || this.element.offsetLeft;
+        oTop  = parseFloat(this.element.getStyle('top'))  || this.element.offsetTop;
         if(this.options.mode == 'absolute') {
             this.options.x = this.options.x - oLeft;
             this.options.y = this.options.y - oTop;
@@ -137,16 +136,14 @@ Object.extend(Object.extend(Effects.Move.prototype, new Effects.Multiple()), {
         this.activate({x:oLeft, y:oTop}, {x:this.options.x, y:this.options.y});
     },
     update:function() {
-        //alert("Updating");
         this.element.setStyle({
-            left: Math.round(this.now['x']),
-            top: Math.round(this.now['y'])
+            left: Math.round(this.now['x'])+"px",
+            top: Math.round(this.now['y'])+"px"
         });
     }
 });
 
 function _restoreSize(elem, w, h) {
-    console.log(elem, w, h);
    $(elem).setStyle({width:w+"px", height:h+"px"});
 } 
 
@@ -165,7 +162,6 @@ Object.extend(Object.extend(Effects.Width.prototype, new Effects.Base()), {
         this.activate(parseInt((this.element.getStyle('width')||this.element.offsetWidth)), this.options.width);
     },    
     update:function() {
-        console.log(this.now);
         this.element.setStyle({
             width:Math.round(this.now)+"px"
         });
@@ -207,7 +203,7 @@ Object.extend(Object.extend(Effects.Opacity.prototype, new Effects.Base()), {
         this.activate(parseFloat(this.element.getStyle('opacity')||'1.0'), this.options.opacity||0.0);
     },
     update:function() {
-        this.element.setStyle( { opacity:this.now,  filter:'alpha(opacity=' + this.now*20 + ')' });
+        this.element.setStyle( { opacity:Math.round(this.now),  filter:'alpha(opacity=' + Math.round(this.now*20) + ')' });
     }
 });
 
@@ -237,7 +233,6 @@ Object.extend(Object.extend(Effects.Colour.prototype, new Effects.Multiple()), {
             colour += Math.ceil(this.now[val]).toHex();;
         }
         eval('this.element.setStyle({'+this.style.camelize()+':\''+colour+'\'})');
-        //this.element.setStyle({background:colour});
     }
 });
 
@@ -281,7 +276,7 @@ Effects.Highlight = function(el) {
 */
 Effects.Appear = function(el) {
     element = $(el);
-    element.setStyle({opacity:0});
+    element.setStyle({opacity:0, filter:'alpha(opacity=' + 0 + ')'});
     new Effects.Opacity(element, Object.extend({opacity:1.0}, arguments[1]));
 }
 
