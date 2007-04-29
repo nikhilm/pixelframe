@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<title>Installing Pixelframe</title>
+</head>
+<body>
+
+    <h1>Themeing Guide</h1>
+
+    <p>Pixelframe themes allow you to change the look of the page in which the user views images. This document will take a look at creating themes for Pixelframe. Creating themes is quite easy. All you need is a little HTML and CSS knowledge.</p>
+
+    <h2>Getting Started</h2>
+    <p>Every Pixelframe theme consists of the following files</p>
+    <ul>
+        <li><strong>theme.xml</strong> - Contains some information about the theme including name, author etc.</li>
+        <li><strong>style.css</strong> - Contains CSS rules for the theme.</li>
+        <li><strong>index.html</strong> - Contains the HTML structure for the theme.</li>
+    </ul>
+
+    <p>Pixelframe themes are stored in the themes directory, one directory per theme. The Pixelframe scripts load themes from here. So if your theme name is "BlackAndWhite" then you should create a directory in the themes directory. The directory can have any name, but it is recommended to make it relevant to your theme name.</p>
+
+    <h2>theme.xml</h2>
+    <p>Your theme.xml should have the following structure:</p>
+    <pre>
+&lt;?xml version="1.0"?&gt;
+&lt;theme&gt;
+&lt;name&gt;name&lt;/name&gt;
+&lt;author&gt;author&lt;/author&gt;
+&lt;homepage&gt;homepage&lt;/homepage&gt;
+&lt;/theme&gt;
+
+    </pre>
+
+    <p>You should replace name, author and homepage with your own values</p>
+
+    <h2>style.css</h2>
+    <p>The style.css file contains all the CSS rules required for the theme. This file should have styles defined for the following elements ( id (type) ):</p>
+    <ul>
+        <li><strong>album-name (h1)</strong> - Will have the album name as its contents</li>
+        <li><strong>thumbnail-view (div)</strong> - Thumbnails imgs will be added to this</li>
+        <li><strong>main-image (img)</strong> - The fullsize main image.</li>
+        <li><strong>prev-button (div)</strong> - The button to move to the previous image</li>
+        <li><strong>next-button (div)</strong> - The button to move to the next image</li>
+    </ul>
+
+    <h2>index.html</h2>
+    <p>Index.html is automatically embedded into the PHP script and should have certain elements defined. The best way to implement this is just to copy the file <strong>template.html</strong> located in the themes directory of Pixelframe and use it as a basis for your theme. You can add other elements around it. But <strong>DO NOT</strong> change the lines of PHP/HTML code which will ensure that your stylesheet and the Pixelframe client Javascript is properly included in the page.</p>
+
+    <h2>Distributing themes</h2>
+    <p>It is best to distribute themes to others in the form of a compressed archive like Zip or Tar. The user can extract them to his Pixelframe themes directory.
+    Also it will be appreciated if you can drop a message to nsm.nikhil <at> gmail <dot> com if you create a theme/themes. That way I can add a link on the Pixelframe homepage to your site.</p>
+
+    <h2>Advanced themeing</h2>
+    <h3>Including other images or Javascript or other media</h3>
+    <p>If your script requires additional files ( like the default theme does ) then these files should be contained in your theme directory and your index.html should take the responsibility to include them</p>
+    
+</body>
+</html>
