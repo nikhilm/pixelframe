@@ -101,6 +101,7 @@ Object.extend(CustomElement.prototype, {
     */
     setStyle:function(style) {
         for(property in style) {
+            //alert("Setting "+this.id+"'s style "+property+" = "+style[property]);
             this.style[property.camelize()] = style[property];
         }
         return this;

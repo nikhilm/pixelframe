@@ -159,7 +159,7 @@ Object.extend(Object.extend(Effects.Width.prototype, new Effects.Base()), {
         this.setOptions(arguments[1]); 
         this.element.setStyle({overflow:'hidden'});       
 
-        this.activate(parseInt((this.element.getStyle('width')||this.element.offsetWidth)), this.options.width);
+        this.activate(parseInt(this.element.getStyle('width'))||this.element.offsetWidth, this.options.width);
     },    
     update:function() {
         this.element.setStyle({
@@ -180,7 +180,7 @@ Object.extend(Object.extend(Effects.Height.prototype, new Effects.Base()), {
         this.setOptions(arguments[1]);
         this.element.setStyle({overflow:'hidden'});
 
-        this.activate(parseInt((this.element.getStyle('height')||this.element.offsetHeight)), this.options.height);
+        this.activate(parseInt(this.element.getStyle('height'))||this.element.offsetHeight, this.options.height);
     },
     update:function() {
         this.element.setStyle({
