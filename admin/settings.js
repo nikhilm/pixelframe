@@ -152,8 +152,7 @@ function launchAddAlbumPanel(evt) {
 */
 function launchMessagePanel(mode, msg) {
     clearPanel();
-
-    panel = $(mode+"-panel");
+    var panel = $(mode+"-panel");
     if(!panel) alert("Invalid mode");
     
     
@@ -163,7 +162,6 @@ function launchMessagePanel(mode, msg) {
     panel.replaceChild(msgDiv, panel.lastChild);
     showPanel(panel);
     window.location = "#";//move focus to top
-    
     //save size
     w = panel.getDimensions().width;
     h = panel.getDimensions().height;
@@ -251,7 +249,7 @@ function formatParameters(obj) {
  * Send changes to server
 */
 function saveChanges(evt) {
-    evt.preventDefault();
+    if(evt) Event.stopDefault(evt);
     loading();
     //transmit changes
     new Ajax(URL, {}, {
@@ -278,11 +276,11 @@ function saveChanges(evt) {
  * Change the password
 */
 function changePassword(evt) {
-    evt.preventDefault();
+    if(evt) Event.stopDefault(evt);
     
     //check if new password and confirm match
     pass = $("password-input").value;
-    confirm = $("password-confirm-input").value;
+    confirmPass = $("password-confirm-input").value;
 
     if(pass == "") {
         error( "The new password field is empty");
@@ -290,7 +288,7 @@ function changePassword(evt) {
         return;
     }
 
-    if(pass != confirm) {
+    if(pass != confirmPass) {
         error( "New password and confirmation do not match");
         $("password-input").focus();
         return;
@@ -315,7 +313,7 @@ function changePassword(evt) {
 }
 
 function addAlbum(evt) {
-    evt.preventDefault();
+    if(evt) Event.stopDefault(evt);
     loading();
     new Ajax(URL, {}, {
             onSuccess: function(req) {
@@ -343,10 +341,10 @@ function addAlbum(evt) {
 }
 
 function deleteAlbum(evt) {
+    if(evt) Event.stopDefault(evt);
     var deleteIt = confirm("Are you sure you want to delete the album? This action is irreversible!");
     if(!deleteIt) return;
 
-    evt.preventDefault();
     
     loading();
     new Ajax(URL, {}, {
