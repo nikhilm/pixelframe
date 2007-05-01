@@ -167,7 +167,7 @@ function launchMessagePanel(mode, msg) {
     h = panel.getDimensions().height;
     setTimeout(function () {
         new Effects.BlindUp(panel, {
-            onComplete:function() { _restoreSize(this, w, h); },
+            onComplete:function() { _restoreSize(panel, w, h); },
             duration:arguments[2]||1000
         });
         
