@@ -128,27 +128,28 @@ Object.extend(CustomElement.prototype, {
      * Accessible fields are x, y, width, height
     */
     getDimensions:function() {
-        var left = this.parentNode.offsetWidth - this.offsetWidth;
-        var top = this.parentNode.offsetHeight - this.offsetHeight;
-        var w = this.clientWidth;
-        var h = this.clientHeight;
+        function get(elem) {
+            var left = elem.parentNode.offsetWidth - elem.offsetWidth;
+            var top = elem.parentNode.offsetHeight - elem.offsetHeight;
+            var w = parseInt(elem.getStyle('width'))||elem.offsetWidth;
+            var h = parseInt(elem.getStyle('height'))||elem.offsetHeight;
+            return { x:left, y:top, width:w, height:h};
+        }
         if(this.getStyle('display') == 'none') {
             var originalVisibility = this.visibility;
             var originalPosition = this.position;
             this.visibility = 'hidden';
             this.position = 'absolute';
-            this.setStyle({display: ''});
+            this.setStyle({display: 'block'});
             
-            left = this.parentNode.offsetWidth - this.offsetWidth;
-            top = this.parentNode.offsetHeight - this.offsetHeight;
-            w = this.clientWidth;
-            h = this.clientHeight;
-            
+            var ret = get(this);            
             this.visibility = originalVisibility;
             this.position = originalPosition;
             this.setStyle({display:'none'});
+            return ret;
         }
-        return { x:left, y:top, width:w, height:h};
+        return get(this);
+        
     },
     
     addEvent:function(type, callback, useCapture) {
