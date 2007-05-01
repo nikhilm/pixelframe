@@ -132,7 +132,7 @@ function launchEditPanel(evt) {
 }
 
 function launchAddAlbumPanel(evt) {
-    evt.preventDefault();
+    if(evt) Event.stopDefault(evt);
     clearPanel();
     addCancelButton('add-album-panel');
     showPanel('add-album-panel');
