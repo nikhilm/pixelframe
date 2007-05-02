@@ -186,7 +186,7 @@ div #password-div input#password-change-button {
 
 
 /*--Success panel--*/
-div#success-panel {
+div#success-panel, div#error-panel {
     background:#EFFFEB;
     border:solid 1px #6AB450;
     padding:0 20px;
@@ -208,7 +208,6 @@ div#success-panel h2, div#error-panel h2 {
 div#error-panel {
     background:#FFECEC;
     border:solid 1px #FF0000;
-    padding:0 20px;
 }
 
 div#error-panel h2 {

@@ -70,7 +70,7 @@ function showPanel(elem) {
     var panel = $('panel');
     panel.setStyle({visibility : "visible", display : "block"});
     $(elem).setStyle({visibility : "visible", display : "block"});
-    window.location = "#panel";
+    new Effects.BlindDown(elem);
 }
     
 /**
@@ -117,7 +117,6 @@ function launchEditPanel(evt) {
                 aN.replaceChild(document.createTextNode(albumName), aN.firstChild);
             
                 showPanel('edit-panel');
-                new Effects.BlindDown('edit-panel');
             
                 $('album-save').addEvent('submit', saveChanges, false);
                 $('album-delete').addEvent('click', deleteAlbum, false);
@@ -136,10 +135,8 @@ function launchAddAlbumPanel(evt) {
     clearPanel();
     addCancelButton('add-album-panel');
     showPanel('add-album-panel');
-    new Effects.BlindDown('add-album-panel', {duration:200,onComplete:function() {
-        //solves a problem with showing the title
-        $('add-album-panel').setStyle({overflow: "inherit"});
-    }});
+    //solves a problem with showing the title
+    $('add-album-panel').setStyle({overflow: "auto"});
     $('album-add-name').focus();
 }
 
@@ -165,14 +162,7 @@ function launchMessagePanel(mode, msg) {
     //save size
     w = panel.getDimensions().width;
     h = panel.getDimensions().height;
-    setTimeout(function () {
-        new Effects.BlindUp(panel, {
-            onComplete:function() { _restoreSize(panel, w, h); },
-            duration:arguments[2]||1000
-        });
-        
-        setTimeout(clearPanel, arguments[2]||1000);
-    }, arguments[2]||1000);
+    setTimeout(clearPanel, arguments[2]||2000);
 }
 
 function success(msg) { launchMessagePanel("success", msg); }
