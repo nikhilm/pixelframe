@@ -54,9 +54,9 @@ div.message p {
 }
 
 p.error {
-    background:url(../images/error_small.png) top left no-repeat;
+    background:url(../images/error_small.gif) top left no-repeat;
 }
 
 p.success {
-    background:url(../images/success_small.png) top left no-repeat;
+    background:url(../images/success_small.gif) top left no-repeat;
 }

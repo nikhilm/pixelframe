@@ -71,7 +71,7 @@ div#add-album-div {
 div#add-album-div a {    
     text-decoration:none;    
     color:#888;
-    background:url(../images/add_album.png) center left no-repeat;
+    background:url(../images/add_album.gif) center left no-repeat;
     padding:0 0 0 40px;
 }
 
@@ -197,7 +197,7 @@ div#success-panel *, div#error-panel * {
 }
 
 div#success-panel h2, div#error-panel h2 {
-    background:url(../images/success.png) top left no-repeat ;
+    background:url(../images/success.gif) top left no-repeat ;
     height:46px;
     margin-left:10px;
     padding: 10px 0 0 70px;
@@ -211,7 +211,7 @@ div#error-panel {
 }
 
 div#error-panel h2 {
-    background:url(../images/error.png) top left no-repeat ;
+    background:url(../images/error.gif) top left no-repeat ;
 }
 
 /*--Loading Panel--*/
