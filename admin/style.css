@@ -197,7 +197,7 @@ div#success-panel *, div#error-panel * {
 }
 
 div#success-panel h2, div#error-panel h2 {
-    background:url(../images/success.gif) top left no-repeat ;
+    background:url(../images/success.gif) top left no-repeat transparent;
     height:46px;
     margin-left:10px;
     padding: 10px 0 0 70px;

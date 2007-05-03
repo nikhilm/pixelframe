@@ -160,11 +160,15 @@ function launchMessagePanel(mode, msg) {
     var panel = $(mode+"-panel");
     if(!panel) alert("Invalid mode");
     
-    
     msgDiv = document.createElement('div');
     text = document.createTextNode(msg);
     msgDiv.appendChild(text);
-    panel.replaceChild(msgDiv, panel.lastChild);
+    if(panel.lastChild.nodeName.toLowerCase() == 'h2') {
+        panel.appendChild(msgDiv);
+    }
+    else {
+        panel.replaceChild(msgDiv, panel.lastChild);
+    }    
     showPanel(panel);
     window.location = "#";//move focus to top
     //save size
