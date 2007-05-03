@@ -204,6 +204,11 @@ div#success-panel h2, div#error-panel h2 {
     border:none;
 }
 
+/* IE hack since it doesn't support padding the way it should */
+* html div#success-panel h2, * html div#error-panel h2 {
+    margin:10px;
+}
+
 /*--Error panel--*/
 div#error-panel {
     background:#FFECEC;
