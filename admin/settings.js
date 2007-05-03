@@ -93,6 +93,14 @@ function launchEditPanel(evt) {
             if(status == "success") {
                 clearPanel();
                 
+                //clear the theme box
+                if($('album-theme-selector').childNodes) {
+                    $A($('album-theme-selector').childNodes).each(
+                        function(elem) {
+                            $(elem).remove();
+                        });
+                }
+                
                 var themes = doc.getElementsByTagName('theme');
                 $A(themes).each( function(theme) {
                     var themeName = theme.firstChild.nodeValue;
