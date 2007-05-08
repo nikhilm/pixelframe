@@ -21,7 +21,7 @@
 */
 
 var URL = "request.php";
-var LOADING_IMAGE = "../images/loading.gif";
+var LOADING_IMAGE = "../images/loading-client.gif";
 
 var pf_originalImage = "";
 //records already loaded thumbnails as strings

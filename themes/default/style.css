@@ -7,13 +7,13 @@ div#container {
 }
 
 div#wrapper {
-    background:#999;
+    background:#333;
     text-align:center;
-    margin-top:2%;
 }
 
 div#thumbnail-wrapper {
     background:#ff6600;
+    margin-top:2%;
 }
 
 div#toggle-thumbnail {
