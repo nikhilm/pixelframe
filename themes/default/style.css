@@ -1,7 +1,11 @@
 /*Stylesheet for Default pixelframe theme*/
+html, body {
+    margin:0;
+    padding:0;
+}
 
 div#container {
-    margin:1% auto;
+    margin:0% auto;
     width:60%;
     height:60%;
 }
@@ -25,7 +29,6 @@ div#toggle-thumbnail {
 }
 
 div#toggle-thumbnail:hover {
-    background:#5 55;
     cursor:pointer;
 }
 
