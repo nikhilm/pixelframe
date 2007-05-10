@@ -13,12 +13,14 @@
 <script language="javascript" type="text/javascript">
 function default_setup() {
     $('toggle-thumbnail').addEvent('click', toggleThumbnails, false);
+    //call it once
+    toggleThumbnails();
 }
 
 function toggleThumbnails() {
-    state = "inline";
+    state = "block";
     text = "Hide thumbnails";
-    if($('thumbnail-view').getStyle("display") == "inline") {
+    if($('thumbnail-view').getStyle("display") != "none") {
         state = "none";
         text = "Show thumbnails";
     }
@@ -34,6 +36,12 @@ window.addEvent('load', default_setup, false);
 
 <div id="container">
 
+<div id="thumbnail-wrapper" class="rounded">
+<div id="toggle-thumbnail">Show thumbnails</div>
+<div id="thumbnail-view"></div>
+
+</div>
+
 <div id="wrapper" class="rounded">
 <div id="buttons-wrapper">
     <div id="prev-button"><img src="<?php print($albumThemeLocation);?>images/previous.gif" alt="Previous" /></div>
@@ -44,11 +52,7 @@ window.addEvent('load', default_setup, false);
 
 </div>
 
-<div id="thumbnail-wrapper" class="rounded">
-<div id="thumbnail-view"></div>
 
-<div id="toggle-thumbnail">Show thumbnails</div>
-</div>
 </div>
 
 
