@@ -54,7 +54,14 @@
 
     <h2>Advanced themeing</h2>
     <h3>Including other images or Javascript or other media</h3>
-    <p>If your script requires additional files ( like the default theme does ) then these files should be contained in your theme directory and your index.html should take the responsibility to include them</p>
+    <p>If your script requires additional files ( like the default theme does ) then these files should be contained in your theme directory and your index.html should take the responsibility to include them. To get the path to your theme you should embed the following PHP code before your relative path.</p>
+    <code>
+    &lt;?php print($albumThemeLocation);?&gt;
+    </code>
+    <p>For example if you want to display next.png in the images directory in your theme directory, you would do the following</p>
+    <code>
+    &lt;img src="&lt;?php print($albumThemeLocation); ?&gt;images/next.png" /&gt;
+    </code>
     
 </body>
 </html>
