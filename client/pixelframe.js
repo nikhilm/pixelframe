@@ -66,28 +66,7 @@ function nextImage(evt) {
     if(evt) Event.stopDefault(evt);
     setLoading();
     new Ajax(URL, {action:'next'}, {
-        onSuccess: function (req) {
-            if(goodStatus(req.responseXML)) {
-                var thumbSrc = req.responseXML.getElementsByTagName('thumbnail')[0].firstChild.nodeValue;
-                
-                var exists = false;
-                $A(pf_loadedThumbnails).each( function(thmb) {
-                    if(thmb == thumbSrc) {
-                        exists = true;
-                        return;
-                    }
-                });
-                
-                if(!exists) {
-                    var thumbImg = document.createElement('img');
-                    thumbImg.src = thumbSrc;
-                    $(thumbImg).addEvent('click', setThumbnailAsImage, false);
-                    $('thumbnail-view').appendChild(thumbImg);
-                    pf_loadedThumbnails.push(thumbSrc);
-                }
-            }
-            setImage(req);
-        },
+        onSuccess: setImage,
         onFailure: error
     });
 }
