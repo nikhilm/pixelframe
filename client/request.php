@@ -106,3 +106,4 @@ function setThumbnail($args) {
         formatAndWriteOutput();
     }
 }
+?>
