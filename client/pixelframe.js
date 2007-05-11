@@ -84,7 +84,6 @@ function prevImage(evt) {
 function setup() {
     $('next-button').addEvent('click', nextImage, false);
     $('prev-button').addEvent('click', prevImage, false);
-    nextImage(null);
     //add handler to all thumbnails
     $A($('thumbnail-view').getElementsByTagName('img')).each(function(elem) {
         $(elem).addEvent('click', setThumbnailAsImage, false);
