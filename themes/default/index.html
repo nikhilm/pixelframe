@@ -12,6 +12,11 @@
 <!--theme script-->
 <script language="javascript" type="text/javascript">
 function default_setup() {
+    var thmbToggle = document.createElement('div');
+    thmbToggle.id = "toggle-thumbnail";
+    thmbToggle.appendChild(document.createTextNode(''));
+    $('thumbnail-wrapper').insertBefore( thmbToggle, $('thumbnail-wrapper').firstChild);
+    
     $('toggle-thumbnail').addEvent('click', toggleThumbnails, false);
     //call it once
     toggleThumbnails();
@@ -38,7 +43,6 @@ window.addEvent('load', default_setup, false);
 
 <!---thumbnail bar--->
 <div id="thumbnail-wrapper" class="rounded">
-<div id="toggle-thumbnail">Show thumbnails</div>
 <div id="thumbnail-view"></div>
 
 </div>
