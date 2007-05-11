@@ -23,3 +23,8 @@
 div#thumbnail-view img {
     cursor:pointer;
 }
+
+/* remove borders from images */
+img {
+    border:none;
+}
