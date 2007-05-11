@@ -28,9 +28,11 @@ session_start();
 
 function generateThumbnailsList() {
     foreach($_SESSION['imageList'] as $image) {
-        print ("<img src=\"");
+        print("<a href=\"");
+        print(PF_REL_INSTALL_DIR."client/request-noajax.php?action=setthumbnail&thumbnail=".$image);
+        print ("\"><img src=\"");
         print($_SESSION['albumLocation'].'/'.PF_THUMBNAIL_DIR.$image);
-        print("\"></img>");
+        print("\"></img></a>");
     }
 }
 ?>
