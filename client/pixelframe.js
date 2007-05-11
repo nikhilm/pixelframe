@@ -52,6 +52,7 @@ function setImage(req) {
 }
 
 function setThumbnailAsImage(evt) {
+    if(evt) Event.stopDefault(evt);
     var Src = this.src;
     new Ajax(URL, {action:'setthumbnail', thumbnail:Src}, {
         onSuccess: function(req) {
@@ -84,6 +85,10 @@ function setup() {
     $('next-button').addEvent('click', nextImage, false);
     $('prev-button').addEvent('click', prevImage, false);
     nextImage(null);
+    //add handler to all thumbnails
+    $A($('thumbnail-view').getElementsByTagName('img')).each(function(elem) {
+        $(elem).addEvent('click', setThumbnailAsImage, false);
+    });
 }
 
 window.addEvent('load', setup, false);
