@@ -43,11 +43,14 @@ define(JUICE, PF_REL_INSTALL_DIR."js/juice.js");
 $albumThemeLocation = $_SESSION['albumThemeLocation'];
 
 
-if(initiateAction($_GET)) {
-    define(CURRENT_IMAGE, $_SESSION['albumLocation'].'/'.getCurrentImage());
+if(/*defined($_SESSION['albumName']) && */initiateAction($_GET)) {
+    define(CURRENT_IMAGE, $_SESSION['albumLocation'].'/'.getCurrentImage());    
+    //include the theme index.html
+    include($_SERVER['DOCUMENT_ROOT'].$albumThemeLocation."/index.html");
+}
+else {
+    print("There was an error in processing the request.");
 }
 
-//include the theme index.html
-include($_SERVER['DOCUMENT_ROOT'].$albumThemeLocation."/index.html");
 ?>
 

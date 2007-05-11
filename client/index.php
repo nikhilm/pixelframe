@@ -75,7 +75,7 @@ if(isset($_SESSION['albumLocation'])) {
     $_SESSION['imageList'] = array_merge(glob('*.png'), glob('*.jpg'), glob('*.jpeg'), glob('*.gif'));
 }
 
-$_SESSION['imageCount'] = -1;//set to -1 so that first load arranges everything properly
+$_SESSION['imageCount'] = 0;//set to -1 so that first load arranges everything properly
 /********************************
  2. Check if theme exists.
     Otherwise switch to default
@@ -95,6 +95,8 @@ define(COMMON_STYLE, "style.css");
 define(CLIENT_STYLE, $albumThemeLocation.PF_THEME_STYLE_FILE);
 define(CLIENT_JS, PF_REL_INSTALL_DIR."client/".PF_CLIENT_JS);
 define(JUICE, PF_REL_INSTALL_DIR."js/juice.js");
+
+define(CURRENT_IMAGE, $_SESSION['albumLocation'].'/'.$_SESSION['imageList'][$_SESSION['imageCount']]);
 
 //include the theme index.html
 include($_SERVER['DOCUMENT_ROOT'].$albumThemeLocation."index.html");
