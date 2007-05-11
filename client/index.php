@@ -85,6 +85,10 @@ if(!array_key_exists($albumTheme, $availableThemes))
     $albumTheme = PF_DEFAULT_THEME;
 $albumThemeLocation = $availableThemes[$albumTheme];
 
+//assign variables to session equivalents
+$_SESSION['albumThemeLocation'] = $albumThemeLocation;
+$_SESSION['albumName'] = $albumName;
+
 //now generate the headers
 define(ALBUM_TITLE, $albumName);
 define(COMMON_STYLE, "style.css");
