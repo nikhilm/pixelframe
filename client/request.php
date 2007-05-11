@@ -26,84 +26,21 @@ session_start();
 
 include_once("../scripts/pf_constants.php");
 include_once(PF_SCRIPTS_DIR."pf_messaging.php");
+include_once("request-common.php");
 
 
-/*############################
-####   DELEGATION STUFF   ####
-############################*/
-
-/*
- * HOW DELEGATION WORKS
- * --------------------
- * The DELEGATES array contains a key => value pair with each action
- * associated with a certain function.
- * The 'action' element of the _POST array is checked with the DELEGATES array
- * and the matching function is called. The function recieves all remaining arguments.
-*/
-define("PF_SETTINGS_ACTION", "action"); //the key for the action name in _POST
-$DELEGATES = array( "next"=>"nextImage",
-                    "previous"=>"previousImage",
-                    "setthumbnail"=>"setThumbnail");
-                    
-if(array_key_exists($_GET[PF_SETTINGS_ACTION], $DELEGATES) &&
-    function_exists($DELEGATES[$_GET[PF_SETTINGS_ACTION]]))
-{
-    $func = $DELEGATES[$_GET[PF_SETTINGS_ACTION]];    
-    unset($_GET[PF_SETTINGS_ACTION]);
-    call_user_func($func, $_GET) ;
+if(initiateAction($_GET)) {
     
+    $out = "<image>".$_SESSION['albumLocation'].'/'.
+            getCurrentImage()."</image>";
+    $out .= "<thumbnail>".
+            $_SESSION['albumLocation'].'/'.
+            PF_THUMBNAIL_DIR.
+            getCurrentImage().
+            "</thumbnail>";
+    success($out);
 }
-else {
-    error("No such action {$_GET[PF_SETTINGS_ACTION]}");
-}
+else
+    error("PF_RESTORE_IMAGE");
 
-
-
-
-/*##################
-## MAIN FUNCTIONS ##
-##################*/
-//generates album location and thumbnail location
-//returns true if write successful
-function formatAndWriteOutput() {
-    if(inRange()) {
-        $out = "<image>".$_SESSION['albumLocation'].'/'.
-                $_SESSION['imageList'][$_SESSION['imageCount']]."</image>";
-        $out .= "<thumbnail>".
-                $_SESSION['albumLocation'].'/'.
-                PF_THUMBNAIL_DIR.
-                $_SESSION['imageList'][$_SESSION['imageCount']].
-                "</thumbnail>";
-        success($out);
-        return true;
-    }
-    else {
-        error("PF_RESTORE_IMAGE");
-        return false;
-    }
-}
-
-function inRange() {
-    return $_SESSION['imageCount'] >= 0 && $_SESSION['imageCount'] < count($_SESSION['imageList']);
-}
-
-function nextImage($args) {
-    ++$_SESSION['imageCount'];
-    if(!formatAndWriteOutput()) //restore
-        --$_SESSION['imageCount'];
-}
-function previousImage($args) {
-    --$_SESSION['imageCount'];
-    if(!formatAndWriteOutput())        
-        ++$_SESSION['imageCount'];
-}
-
-function setThumbnail($args) {
-    $thumb = basename($args['thumbnail']);
-    $srch = array_search($thumb, $_SESSION['imageList']);
-    if($srch !== FALSE) {
-        $_SESSION['imageCount'] = $srch;
-        formatAndWriteOutput();
-    }
-}
 ?>
