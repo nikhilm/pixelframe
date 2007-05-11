@@ -26,6 +26,7 @@
 include_once("../scripts/pf_constants.php");
 include_once(PF_SCRIPTS_DIR."pf_configparser.php");
 include_once(PF_SCRIPTS_DIR."pf_theme_manager.php");
+include_once("thumbnail_lister.php");
 
 //begin new session
 session_start();
