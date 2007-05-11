@@ -79,7 +79,7 @@ function nextImage($args) {
 */
 function previousImage($args) {
     --$_SESSION['imageCount'];
-    if(!inRange) {
+    if(!inRange()) {
         ++$_SESSION['imageCount'];
     }
     return true;
