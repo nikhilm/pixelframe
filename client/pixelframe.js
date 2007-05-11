@@ -54,6 +54,7 @@ function setImage(req) {
 function setThumbnailAsImage(evt) {
     if(evt) Event.stopDefault(evt);
     var Src = this.src;
+    setLoading();
     new Ajax(URL, {action:'setthumbnail', thumbnail:Src}, {
         onSuccess: function(req) {
             if(goodStatus(req.responseXML))
