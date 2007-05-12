@@ -1,16 +1,38 @@
+<!-- Template file for Pixelframe themes -->
+<!-- You are encouraged to remove all comments before distribution -->
+
+<!-- Title -->
 <title><?php print ALBUM_TITLE ?></title>
 
+<!-- REQUIRED styles and scripts -->
 <link rel="stylesheet" type="text/css" href="<?php print(COMMON_STYLE); ?>" />
 <link rel="stylesheet" type="text/css" href="<?php print(CLIENT_STYLE); ?>" />
-<script language="javascript" type="text/javascript" src="<?php print(JUICE); ?>"></script>
+<script language="javascript" type="text/javascript" src="<?php print(JUICE); ?>"> </script>
 <script language="javascript" type="text/javascript" src="<?php print(CLIENT_JS); ?>"></script>
+
 </head>
 <body>
 <h1 id="album-name"></h1>
-<div id="thumbnail-view"></div>
-<div id="prev-button"></div>
-<img id="main-image"></img>
-<div id="next-button"></div>
+
+<!-- Thumbnail bar -->
+<div id="thumbnail-view">
+<?php generateThumbnailsList(); ?>
+</div>
+
+<!-- Previous button code -->
+<a href="<? print(PF_REL_INSTALL_DIR)?>client/request-noajax.php?action=previous" id="prev-button">
+Previous
+</a>
+<!-- End previous button code -->
+
+<!-- Next button code -->
+<a href="<? print(PF_REL_INSTALL_DIR)?>client/request-noajax.php?action=next" id="next-button">
+Next
+</a>
+<!-- End next button code -->
+
+<!-- MAIN image -->
+<img id="main-image" src="<?php echo(CURRENT_IMAGE); ?>"></img>
 
 
 </body>
