@@ -83,11 +83,14 @@ function prevImage(evt) {
 }
  
 function setup() {
+    //remove links and attach JS handlers
     $('next-button').addEvent('click', nextImage, false);
-    $('prev-button').addEvent('click', prevImage, false);
-    //add handler to all thumbnails
+    $('next-button').href="";
+    $('prev-button').addEvent('click', prevImage, false);    
+    $('prev-button').href="";
     $A($('thumbnail-view').getElementsByTagName('img')).each(function(elem) {
         $(elem).addEvent('click', setThumbnailAsImage, false);
+        elem.parentNode.href="";
     });
 }
 
