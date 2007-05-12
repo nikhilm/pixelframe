@@ -58,24 +58,22 @@ img#main-image {
     margin:20px auto;
 }
 
-div#prev-button, div#next-button {
+div#prev-button-div, div#next-button-div {
     background:#555;
     width:50%;
     float:left;
     display:inline;
 }
 
-* html div#prev-button {
+* html div#prev-button-div {
     width:49%;
 }
 
-div#prev-button:hover, div#next-button:hover {
+div#prev-button-div:hover, div#next-button-div:hover {
     background:#000;
 }
 
-div#next-button {
-}
 
-div#prev-button img, div#next-button img {
+div#prev-button-div img, div#next-button-div img {
     margin:3% 0;
 }
