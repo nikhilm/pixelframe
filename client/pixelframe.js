@@ -54,6 +54,13 @@ function setImage(req) {
     $('main-image').src = ( goodStatus(req.responseXML) ?
     req.responseXML.getElementsByTagName('image')[0].firstChild.nodeValue :
     pf_originalImage );
+    
+    //loop through thumbnails and set id = current
+    $A($('thumbnail-view').getElementsByTagName('img')).each(function(elem) {
+        elem.id = '';
+        if(baseName(elem.src) == baseName($('main-image').src))
+            elem.id = 'current';
+    });
 }
 
 function setThumbnailAsImage(evt) {
