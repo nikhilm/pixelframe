@@ -27,6 +27,11 @@ var pf_originalImage = "";
 //records already loaded thumbnails as strings
 var pf_loadedThumbnails = [];
 
+function baseName(path) {
+    var pos = path.lastIndexOf('/');
+    return (pos >= 0 ? path.substring(pos+1) : path);
+}
+
 function setLoading() {
     pf_originalImage = $('main-image').src;
     $('main-image').src = LOADING_IMAGE;
