@@ -41,10 +41,14 @@ div#thumbnail-view {
     margin-top:20px;
 }
 
-div#thumbnail-view img {
+div#thumbnail-view a img {
     margin:auto 0 10px 10px;
     display:inline;
     border:solid 5px white;
+}
+
+div#thumbnail-view a img#current {
+    border:solid 8px #333;
 }
 
 div#buttons-wrapper {
