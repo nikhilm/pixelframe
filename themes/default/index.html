@@ -18,14 +18,18 @@ function default_setup() {
     $('thumbnail-wrapper').insertBefore( thmbToggle, $('thumbnail-wrapper').firstChild);
     
     $('toggle-thumbnail').addEvent('click', toggleThumbnails, false);
-    //call it once
+    
+    $('thumbnail-view').setStyle({display:"none"});
     toggleThumbnails();
 }
 
 function toggleThumbnails() {
-    state = "block";
-    text = "Hide thumbnails";
-    if($('thumbnail-view').getStyle("display") != "none") {
+    var state, text;
+    if($('thumbnail-view').getStyle('display') == 'none') {
+        state = "block";
+        text = "Hide thumbnails";
+    }
+    else {
         state = "none";
         text = "Show thumbnails";
     }
