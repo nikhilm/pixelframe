@@ -48,7 +48,8 @@ div#thumbnail-view a img {
 }
 
 div#thumbnail-view a img#current {
-    border:solid 8px #333;
+    padding:2px;
+    margin-left:8px;
 }
 
 div#buttons-wrapper {
